@@ -249,6 +249,10 @@ You can find more information on cloning a repository from GitHub [here](https:/
 * [jQuery](https://jquery.com/) is used to simplify the implementation of interactive JavaScript components.
 * [Google Fonts](https://fonts.google.com/) are used to provide the typography for the website.
 * [Font Awesome](https://fontawesome.com/) is used to provide the icons for the website.
+* [PostgreSQL](https://www.postgresql.org/) is used for the production database via the Heroku Add-On Heroku Postgres.
+* [DJ Database URL](https://pypi.org/project/dj-database-url/) is used to facilitate PostgreSQL.
+* [Psycopg](https://pypi.org/project/psycopg2-binary/) is also used to facilitate PostgreSQL.
+* [SQLite3]() is used for the development database.
 
 ### **Tools**
 * [Git](https://git-scm.com/)/[GitHub](https://github.com/) was used for version control and repository storage.
