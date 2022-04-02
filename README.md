@@ -244,6 +244,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 
 ### **Libraries and Frameworks**
 * The [Django](https://www.djangoproject.com/) framework is used to facilitate efficient app building and include basic security.
+* [AllAuth](https://django-allauth.readthedocs.io/en/latest/installation.html) is used for all user account functionality.
 * [Bootstrap 5](https://getbootstrap.com/) is used to provide the grid functionality for uniform design, responsiveness and to enable the use of modal and hamburger menu.
 * [jQuery](https://jquery.com/) is used to simplify the implementation of interactive JavaScript components.
 * [Google Fonts](https://fonts.google.com/) are used to provide the typography for the website.
