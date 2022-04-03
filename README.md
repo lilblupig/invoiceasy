@@ -266,6 +266,10 @@ You can find more information on cloning a repository from GitHub [here](https:/
 
 ### **Other Resources**
 * [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template) was used to set up the repository.
+* The following projects created by fellow Code Institute students gave great inspiration and were used to benchmark/guide my own project:
+  * [Which Way is Up](https://github.com/lemocla/Which-way-is-up) by [Claire](https://github.com/lemocla).
+  * [Postfly](https://github.com/Daph1986/postfly_jouw_online_drukkerij) by [Daphne Heimgartner](https://github.com/Daph1986)
+
 
 ## Credits
 
