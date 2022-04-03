@@ -1,0 +1,60 @@
+/* Import Google font */
+@import url('https://fonts.googleapis.com/css2?family=Flamenco:wght@300;400&display=swap');
+
+/* Define scss variables */
+$base: #292f38;
+$highlight: #ff4d00;
+$subcolor-one: #3B66A2;
+$subcolor-two: #A1C6EA;
+$subcolor-three: #BBD1EA;
+$light-text: #fff;
+
+$titlefont: Flamenco, Verdana, sans-serif;
+
+h1 {
+    color: $highlight;
+    font-family: $titlefont;
+}
+
+/* Navbar */
+#navbar-padder {
+    height: 3.5rem;
+}
+
+nav {
+    background-color: $base;
+}
+
+
+/* Footer */
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#main-content {
+    padding-bottom: 8rem;
+}
+
+footer {
+    background-color: $base;
+        position: absolute;
+    bottom: 0;
+    width:100%;
+    h2, a.nav-link, p {
+        color: $light-text;
+    }
+    
+    p, a {
+        font-size: 0.85rem;
+    }
+    
+    h2:hover, a.nav-link:hover {
+        color: $subcolor-two;
+    }
+
+    h2:focus, a.nav-link:focus {
+        color: $subcolor-three;
+    }
+}

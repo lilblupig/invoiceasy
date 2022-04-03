@@ -284,6 +284,8 @@ You can find more information on cloning a repository from GitHub [here](https:/
 #### Content
 Where did the website content come from?
 
+[Django & sass/scss tutorial](https://engineertodeveloper.com/how-to-easily-use-sass-scss-with-django/)
+
 #### Media
 * The logo was designed using [FreeLogoDesign.org](https://editor.freelogodesign.org/).
 * The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):
