@@ -115,6 +115,9 @@ In line with structure planning...
 Thought process behind colour choices and palette development.
 ![Colours option 1](documentation/readme-images/colors-opt-1.png)
 
+Dark grey - #292F38
+Orange - #FF4D00
+
 #### Typography
 Thought process behind font choices.
 1. 
@@ -122,6 +125,9 @@ Thought process behind font choices.
 1. 
 
 ![Example fonts](documentation/readme-images/typography.png)
+
+For logo and Headings etc?
+https://fonts.google.com/specimen/Flamenco?preview.text=InvoicEasy&preview.text_type=custom
 
 ## Features
 
@@ -279,6 +285,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 Where did the website content come from?
 
 #### Media
+* The logo was designed using [FreeLogoDesign.org](https://editor.freelogodesign.org/).
 * The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):
 
 * The diagrams used for the website were obtained from various places:
