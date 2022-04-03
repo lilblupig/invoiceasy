@@ -48,7 +48,6 @@ INSTALLED_APPS = [
 
     'home',
 
-    'sass_processor',
     'cloudinary',
 ]
 
@@ -166,15 +165,6 @@ STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# For SCSS processor
-""" STATIC_ROOT = BASE_DIR / 'static'
-SASS_PROCESSOR_ROOT = STATIC_ROOT
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
-] """
 
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL'),
