@@ -1,4 +1,37 @@
+/* Import Google font */
+@import url("https://fonts.googleapis.com/css2?family=Flamenco:wght@300;400&display=swap");
+/* Define scss variables */
 h1 {
-  color: blue; }
+  color: #ff4d00;
+  font-family: Flamenco, Verdana, sans-serif; }
+
+/* Navbar */
+#navbar-padder {
+  height: 3.5rem; }
+
+nav {
+  background-color: #292f38; }
+
+/* Footer */
+#page-container {
+  position: relative;
+  min-height: 100vh; }
+
+#main-content {
+  padding-bottom: 8rem; }
+
+footer {
+  background-color: #292f38;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  footer h2, footer a.nav-link, footer p {
+    color: #fff; }
+  footer p, footer a {
+    font-size: 0.85rem; }
+  footer h2:hover, footer a.nav-link:hover {
+    color: #A1C6EA; }
+  footer h2:focus, footer a.nav-link:focus {
+    color: #BBD1EA; }
 
 /*# sourceMappingURL=base.css.map */
