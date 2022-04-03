@@ -1,3 +1,5 @@
+""" View information for base public pages """
+
 from django.shortcuts import render
 
 # Create your views here.
