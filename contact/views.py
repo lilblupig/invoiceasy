@@ -3,8 +3,8 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
-from .forms import ContactForm
 from django.conf import settings
+from .forms import ContactForm
 
 # Create your views here.
 
