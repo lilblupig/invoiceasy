@@ -1,0 +1,12 @@
+Hi {{ first_name }},
+
+Thank you for getting in touch.  We have processed your submission and will be in touch as soon as possible.
+
+A copy of your message is below:
+{{ message }}
+
+
+Kind regards,
+
+
+The InvoicEasy Team
