@@ -2,6 +2,7 @@
 
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail, BadHeaderError
+from django.contrib import messages
 from django.http import HttpResponse
 from django.conf import settings
 from .forms import ContactForm
@@ -14,7 +15,7 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = form.cleaned_data['subject'],
+            subject = 'InvoicEasy contact form submission.',
             body = {
                 'first_name': form.cleaned_data['first_name'],
                 'last_name': form.cleaned_data['last_name'],
@@ -31,7 +32,11 @@ def contact(request):
                     settings.DEFAULT_FROM_EMAIL,
                     [settings.DEFAULT_FROM_EMAIL]
                 )
+                messages.success(request, 'Your message has been sent to the '
+                                          'team, we will be in touch shortly.')
             except BadHeaderError:
+                messages.error(request, 'We apologise, your message was not '
+                                        'sent, please try again later.')
                 return HttpResponse('Invalid header found.')
             return redirect('contact')
 

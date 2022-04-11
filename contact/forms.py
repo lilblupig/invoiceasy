@@ -8,12 +8,12 @@ class ContactForm(forms.Form):
     first_name = forms.CharField(
         label='First name',
         required=True,
-        max_length=50,
+        min_length=2, max_length=50,
     )
     last_name = forms.CharField(
         label='Last name',
         required=True,
-        max_length=50,
+        min_length=2, max_length=50,
     )
     email = forms.EmailField(
         label='Email address',
@@ -23,12 +23,7 @@ class ContactForm(forms.Form):
     telephone = forms.CharField(
         label='Telephone number',
         required=True,
-        max_length=20,
-    )
-    subject = forms.CharField(
-        label='Subject',
-        required=False,
-        max_length=150,
+        min_length=5, max_length=20,
     )
     message = forms.CharField(
         label='Your message',
