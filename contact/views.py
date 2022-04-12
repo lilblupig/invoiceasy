@@ -16,11 +16,11 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            web_team = [settings.EMAIL_HOST_USER]
+            web_team = settings.EMAIL_HOST_USER
             subject = 'InvoicEasy contact form submission.'
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
-            email = [form.cleaned_data['email']]
+            email = form.cleaned_data['email']
             telephone = form.cleaned_data['telephone']
             message = form.cleaned_data['message']
 
@@ -48,13 +48,13 @@ def contact(request):
                     subject,
                     enquiry,
                     email,
-                    web_team
+                    [web_team]
                 )
                 send_mail(
                     subject,
                     response,
                     web_team,
-                    email
+                    [email]
                 )
                 messages.success(request, 'Your message has been sent to the '
                                           'team, we will be in touch shortly.')
