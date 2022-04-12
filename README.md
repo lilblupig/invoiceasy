@@ -285,8 +285,9 @@ You can find more information on cloning a repository from GitHub [here](https:/
 #### Content
 Where did the website content come from?
 
-[Django & sass/scss tutorial](https://engineertodeveloper.com/how-to-easily-use-sass-scss-with-django/)
-[Django contact mail article](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend)
+* [Django & Cloudinary Storage](https://pypi.org/project/django-cloudinary-storage/)
+* [Django & sass/scss tutorial](https://engineertodeveloper.com/how-to-easily-use-sass-scss-with-django/)
+* [Django contact mail article](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend)
 
 #### Media
 * The logo was designed using [FreeLogoDesign.org](https://editor.freelogodesign.org/).
