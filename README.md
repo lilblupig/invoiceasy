@@ -251,6 +251,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 ### **Libraries and Frameworks**
 * The [Django](https://www.djangoproject.com/) framework is used to facilitate efficient app building and include basic security.
 * [AllAuth](https://django-allauth.readthedocs.io/en/latest/installation.html) is used for all user account functionality.
+* [Crispy Forms](https://pypi.org/project/crispy-bootstrap5/) is used to power forms used on the site.
 * [Bootstrap 5](https://getbootstrap.com/) is used to provide the grid functionality for uniform design, responsiveness and to enable the use of modal and hamburger menu.
 * [jQuery](https://jquery.com/) is used to simplify the implementation of interactive JavaScript components.
 * [Google Fonts](https://fonts.google.com/) are used to provide the typography for the website.
@@ -285,6 +286,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 Where did the website content come from?
 
 [Django & sass/scss tutorial](https://engineertodeveloper.com/how-to-easily-use-sass-scss-with-django/)
+[Django contact mail article](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend)
 
 #### Media
 * The logo was designed using [FreeLogoDesign.org](https://editor.freelogodesign.org/).
