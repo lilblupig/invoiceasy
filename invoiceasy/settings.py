@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'home',
     'contact',
+    'products',
 
     'cloudinary',
     'crispy_forms',
