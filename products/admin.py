@@ -11,6 +11,7 @@ class PlanAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'price',
+        'duration',
     )
 
 
