@@ -28,13 +28,9 @@ class UserProfile(models.Model):
     bank_sort_code = models.CharField(max_length=8, null=True, blank=True)
     payment_terms = models.CharField(max_length=50, null=True, blank=True)
 
-    def get_username(self):
+    def __str__(self):
         """ Get username """
         return self.user.username
-
-    def get_user_id(self):
-        """ Get user ID """
-        return self.user.user_id
 
 
 @receiver(post_save, sender=User)
