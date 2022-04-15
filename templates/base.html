@@ -45,7 +45,7 @@
                         {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item" href="#">Dashboard</a></li>
                             <li><a class="dropdown-item" href="#">Invoices</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                         {% else %}
                             <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
