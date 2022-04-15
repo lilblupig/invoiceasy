@@ -1,4 +1,4 @@
-""" View information for products and pricing pages """
+""" View information for profile pages """
 
 from django.shortcuts import render
 
