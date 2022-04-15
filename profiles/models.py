@@ -23,7 +23,8 @@ class UserProfile(models.Model):
     email = models.CharField(max_length=50, null=True, blank=True)
     vat_number = models.CharField(max_length=11)
     bank_account_name = models.CharField(max_length=50, null=True, blank=True)
-    bank_account_number = models.CharField(max_length=12, null=True, blank=True)
+    bank_account_number = models.CharField(max_length=12, null=True,
+                                           blank=True)
     bank_sort_code = models.CharField(max_length=8, null=True, blank=True)
     payment_terms = models.CharField(max_length=50, null=True, blank=True)
 
