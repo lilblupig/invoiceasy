@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+{{ block.super }}
+    | Home
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Pricing</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>We have two plans, and a free trial period:</p>
+                <div class="row">
+                    {% if plans %}
+                        {% for plan in plans %}
+                        <div class="card col-12 col-md-6 col-lg-4">
+                            <img src="{{ plan.image.url }}" class="card-img-top" alt="{{ plan.image_alt }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ plan.name }}</h5>
+                                <p class="card-text">{{ plan.description }}</p>
+                                <p>£{{ plan.price }}</p>
+                                <a href="" class="btn">More information</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Maybe we don't have any plans, doesn't seem like we are sure.  Check back later!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

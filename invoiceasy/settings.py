@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'home',
     'contact',
+    'products',
 
     'cloudinary',
     'crispy_forms',
@@ -175,6 +176,7 @@ STATICFILES_STORAGE = ('cloudinary_storage.storage.StaticHashedCloudinaryStorage
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL'),
