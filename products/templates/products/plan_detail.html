@@ -24,7 +24,7 @@
                         {% if plan.image %}
                             <img src="{{ plan.image.url }}" alt="{{ plan.image_alt }}">
                         {% else %}
-                            <p>No image</p>
+                            <img src="https://res.cloudinary.com/hpzrza9wp/image/upload/v1650125565/media/noimage_jplrvs.png" alt="InvoicEasy logo">
                         {% endif %}
                         <h5 class="">{{ plan.name }}</h5>
                         {% if plan.id != 1 %}
