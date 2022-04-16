@@ -14,5 +14,7 @@ class PlanAdmin(admin.ModelAdmin):
         'duration',
     )
 
+    ordering = ('id',)
+
 
 admin.site.register(Plan, PlanAdmin)

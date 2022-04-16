@@ -14,6 +14,6 @@ class Plan(models.Model):
     image = models.ImageField(null=True, blank=True)
     image_alt = models.CharField(max_length=100, null=True, blank=True)
 
-    def get_name(self):
+    def __str__(self):
         """ Return name of plan """
         return self.name
