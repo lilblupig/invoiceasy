@@ -3,7 +3,7 @@
 
 {% block extra_title %}
 {{ block.super }}
-    | Home
+    | Pricing
 {% endblock %}
 
 {% block content %}
@@ -23,12 +23,16 @@
                     {% if plans %}
                         {% for plan in plans %}
                         <div class="card col-12 col-md-6 col-lg-4">
-                            <img src="{{ plan.image.url }}" class="card-img-top" alt="{{ plan.image_alt }}">
+                            {% if plan.image %}
+                                <img src="{{ plan.image.url }}" class="card-img-top" alt="{{ plan.image_alt }}">
+                            {% else %}
+                            <img src="https://res.cloudinary.com/hpzrza9wp/image/upload/v1650125565/media/noimage_jplrvs.png" alt="InvoicEasy logo">
+                            {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title">{{ plan.name }}</h5>
                                 <p class="card-text">{{ plan.description }}</p>
                                 <p>£{{ plan.price }}</p>
-                                <a href="" class="btn">More information</a>
+                                <a href="{% url 'plan_detail' plan.id %}" class="btn">More information</a>
                             </div>
                         </div>
                         {% endfor %}

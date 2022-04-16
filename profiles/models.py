@@ -21,7 +21,7 @@ class UserProfile(models.Model):
     postcode = models.CharField(max_length=50)
     telephone = models.CharField(max_length=50, null=True, blank=True)
     email = models.CharField(max_length=50, null=True, blank=True)
-    vat_number = models.CharField(max_length=11)
+    vat_number = models.CharField(max_length=11, null=True, blank=True)
     bank_account_name = models.CharField(max_length=50, null=True, blank=True)
     bank_account_number = models.CharField(max_length=12, null=True,
                                            blank=True)
