@@ -1,4 +1,4 @@
-""" Test information for product and pricing pages """
+""" Test information for Profile pages """
 
 from django.test import TestCase
 

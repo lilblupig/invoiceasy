@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'home',
     'contact',
     'products',
+    'profiles',
 
     'cloudinary',
     'crispy_forms',

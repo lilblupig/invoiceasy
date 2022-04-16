@@ -292,6 +292,8 @@ Where did the website content come from?
 #### Media
 * The logo was designed using [FreeLogoDesign.org](https://editor.freelogodesign.org/).
 * The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):
+* The icons used for the website are from [FlatIcon]():
+  * [Monitor in Logo - created by DinosoftLabs](https://www.flaticon.com/free-icons/monitor>)
 
 * The diagrams used for the website were obtained from various places:
 
