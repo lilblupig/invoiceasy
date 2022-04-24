@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.subscribe, name='subscribe'),
+    path('config/', views.stripe_config),
 ]
