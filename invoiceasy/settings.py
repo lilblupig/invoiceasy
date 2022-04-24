@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'contact',
     'products',
     'profiles',
+    'subscriptions',
 
     'cloudinary',
     'crispy_forms',
