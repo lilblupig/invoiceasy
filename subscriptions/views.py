@@ -54,8 +54,8 @@ def subscribe(request):
 def stripe_config(request):
     """ Handle Stripe AJAX request """
     if request.method == 'GET':
-        stripe_config = {'publicKey': settings.STRIPE_PUBLIC_KEY}
-        return JsonResponse(stripe_config, safe=False)
+        stripe_configs = {'publicKey': settings.STRIPE_PUBLIC_KEY}
+        return JsonResponse(stripe_configs, safe=False)
 
 
 @csrf_exempt
