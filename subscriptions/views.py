@@ -49,7 +49,7 @@ def stripe_config(request):
 def create_checkout_session(request):
     """ Create a checkout session """
     if request.method == 'GET':
-        domain_url = 'https://8000-lilblupig-invoiceasy-1i26yyobyrv.ws-eu42.gitpod.io/'
+        domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
