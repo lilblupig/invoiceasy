@@ -31,9 +31,6 @@ def subscribe(request):
         subscription_end = make_date(subscription.current_period_end)
         product = stripe.Product.retrieve(subscription.plan.product)
 
-        print('Date:')
-        print(subscription_start)
-
         # Feel free to fetch any additional data from 'subscription' or 'product'
         # https://stripe.com/docs/api/subscriptions/object
         # https://stripe.com/docs/api/products/object
@@ -98,15 +95,11 @@ def cancel(request):
 @csrf_exempt
 def stripe_webhook(request):
     """ Create new StripeCustomer on subscription """
-    print("does it get here")
-
     stripe.api_key = settings.STRIPE_SECRET_KEY
     endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
-
-    print("got here 1")
 
     try:
         event = stripe.Webhook.construct_event(
@@ -118,8 +111,6 @@ def stripe_webhook(request):
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
         return HttpResponse(status=400)
-
-    print("got here 2")
 
     # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
