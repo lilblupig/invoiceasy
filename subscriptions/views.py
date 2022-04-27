@@ -7,16 +7,20 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from products.models import Plan
 from .models import StripeCustomer
 
 # Create your views here.
 
 
 @login_required
-def subscribe(request):
+def subscribe(request, plan_id):
     """ View to return checkout page """
+
+    plan = get_object_or_404(Plan, pk=plan_id)
+
     def make_date(date_value):
         """ Convert Stripe value to user friendly date """
         nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y %H:%M:%S')
@@ -44,7 +48,7 @@ def subscribe(request):
 
     # Show checkout page if not already subscribed
     except StripeCustomer.DoesNotExist:
-        return render(request, 'subscriptions/subscribe.html')
+        return render(request, 'subscriptions/subscribe.html', {'plan': plan})
 
 
 @csrf_exempt
