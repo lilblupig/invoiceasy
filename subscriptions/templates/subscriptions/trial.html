@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+{{ block.super }}
+    | Trial
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Trial</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% if subscription.status == "active" %}
+                    <h4>Your subscription:</h4>
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p>Valid from: {{ subscription_start }}</p>
+                            <p>Valid to: {{ subscription_end }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>By clicking the button below, you will subscribe to our 3 month trial plan.</p>
+                    <button type="submit" class="btn" id="submitBtn">Subscribe</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
