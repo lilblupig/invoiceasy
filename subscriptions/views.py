@@ -7,19 +7,16 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from products.models import Plan
 from .models import StripeCustomer
 
 # Create your views here.
 
 
 @login_required
-def subscribe(request, plan_id):
+def subscribe(request):
     """ View to return checkout page """
-
-    plan = get_object_or_404(Plan, pk=plan_id)
 
     def make_date(date_value):
         """ Convert Stripe value to user friendly date """
@@ -39,16 +36,25 @@ def subscribe(request, plan_id):
         # https://stripe.com/docs/api/subscriptions/object
         # https://stripe.com/docs/api/products/object
 
-        return render(request, 'subscriptions/subscribe.html', {
+        context = {
             'subscription': subscription,
             'product': product,
             'subscription_start': subscription_start,
             'subscription_end': subscription_end,
-        })
+        }
+
+        return render(request, 'subscriptions/subscribe.html', context)
 
     # Show checkout page if not already subscribed
     except StripeCustomer.DoesNotExist:
-        return render(request, 'subscriptions/subscribe.html', {'plan': plan})
+
+        plan_name = request.session.__getitem__('plan_name')
+
+        context = {
+            'plan_name': plan_name,
+        }
+
+        return render(request, 'subscriptions/subscribe.html', context)
 
 
 @csrf_exempt
@@ -65,6 +71,7 @@ def create_checkout_session(request):
     if request.method == 'GET':
         domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
+        plan_stripe_id = request.session.__getitem__('plan_stripe_id')
         try:
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
@@ -74,7 +81,7 @@ def create_checkout_session(request):
                 mode='subscription',
                 line_items=[
                     {
-                        'price': settings.STRIPE_PRICE_ID,
+                        'price': plan_stripe_id,
                         'quantity': 1,
                     }
                 ]

@@ -13,6 +13,8 @@ class Plan(models.Model):
     duration = models.IntegerField()
     image = models.ImageField(null=True, blank=True)
     image_alt = models.CharField(max_length=100, null=True, blank=True)
+    stripe_id = models.CharField(max_length=255)
+
 
     def __str__(self):
         """ Return name of plan """
