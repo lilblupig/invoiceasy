@@ -21,6 +21,16 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
     color: #BBD1EA; 
 }
 
+/* Colours */
+.bg-blue {
+    background-color: #3b66a2;
+    color: #fff;
+}
+
+.bg-blue:hover {
+    color: #A1C6EA;
+}
+
 
 /* Navbar */
 
@@ -48,6 +58,8 @@ a.navbar-brand {
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    margin-bottom: 3rem;
 }
 
 .hero-overlay-home {
@@ -72,7 +84,7 @@ a.navbar-brand {
 /* Footer */
   
 #page-container {
-      position: relative;
+    position: relative;
     min-height: 100vh;
 }
   
