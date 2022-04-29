@@ -22,11 +22,15 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
 }
 
 /* Colours */
+.bg-orange {
+    background-color: #ff4d00;
+    color: #fff;
+}
+
 .bg-blue {
     background-color: #3b66a2;
     color: #fff;
 }
-
 .bg-blue:hover {
     color: #A1C6EA;
 }
@@ -76,6 +80,20 @@ a.navbar-brand {
     height: 30vh;
 
     background: url("../../media/hero-about.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    margin-bottom: 3rem;
+}
+
+.hero-container-pricing {
+    height: 30vh;
+
+    background: url("../../media/hero-pricing.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
