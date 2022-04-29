@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'contact',
     'products',
     'profiles',
+    'subscriptions',
 
     'cloudinary',
     'crispy_forms',
@@ -204,3 +205,16 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+
+# STRIPE CONFIG
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_ENDPOINT_SECRET = os.environ.get('STRIPE_ENDPOINT_SECRET')
+
+if 'DEVELOPMENT' in os.environ:
+    DOMAIN_URL = 'https://8000-lilblupig-invoiceasy-1i26yyobyrv.ws-eu43.gitpod.io/'
+else:
+    DOMAIN_URL = 'https://invoiceasy.herokuapp.com/'
+
+STRIPE_PRICE_ID = 'price_1KpalFG7L1c3WfQs6dpYnVnM'

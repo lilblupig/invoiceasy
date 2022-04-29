@@ -27,14 +27,9 @@
                             <img src="https://res.cloudinary.com/hpzrza9wp/image/upload/v1650125565/media/noimage_jplrvs.png" alt="InvoicEasy logo">
                         {% endif %}
                         <h5 class="">{{ plan.name }}</h5>
-                        {% if plan.id != 1 %}
-                            <p>£{{ plan.price }} per month</p>
-                        {% else %}
-                            <p>£{{ plan.price }} - yep, free for three whole months!</p>
-                        {% endif %}
+                        <p>£{{ plan.price }} per month</p>
                         <p class="">{{ plan.description }}</p>
-                        
-                        <a href="" class="btn">Choose this Plan</a>
+                        <a href="{% url 'subscribe' %}" class="btn">Choose this Plan</a>
                     </div>
                 </div>
             </div>
