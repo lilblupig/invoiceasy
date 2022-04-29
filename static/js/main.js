@@ -1,5 +1,3 @@
-console.log("Check again!");
-
 // Get Stripe publishable key
 fetch("/subscriptions/config/")
 .then((result) => { return result.json(); })
