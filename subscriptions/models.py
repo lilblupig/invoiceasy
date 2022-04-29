@@ -12,5 +12,6 @@ class StripeCustomer(models.Model):
     stripeCustomerId = models.CharField(max_length=255)
     stripeSubscriptionId = models.CharField(max_length=255)
 
+
     def __str__(self):
         return self.user.username

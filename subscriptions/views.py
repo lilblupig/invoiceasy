@@ -57,12 +57,6 @@ def subscribe(request):
         return render(request, 'subscriptions/subscribe.html', context)
 
 
-@login_required
-def trial(request):
-    """ View to return trial signup page """
-    return render(request, 'subscriptions/trial.html')
-
-
 @csrf_exempt
 def stripe_config(request):
     """ Handle Stripe AJAX request """
