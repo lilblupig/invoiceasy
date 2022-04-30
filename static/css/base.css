@@ -123,6 +123,19 @@ a.navbar-brand {
     color: #fff;
 }
 
+/* Price cards */
+.card-container {
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.card-container .card {
+    min-height: 450px;
+}
+
+.card-container .card-text {
+    min-height: 80px;
+}
 
 /* Footer */
   
