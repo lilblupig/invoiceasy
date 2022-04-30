@@ -14,11 +14,11 @@ nav a.nav-link, nav a.dropdown-item, footer h2, footer a.nav-link, footer p {
 }
 
 nav a.nav-link:hover, nav a.navbar-brand:hover, nav a.dropdown-item:hover, footer h2:hover, footer a.nav-link:hover {
-    color: #A1C6EA; 
+    color: #a1c6ea; 
 }
 
 nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, footer h2:focus, footer a.nav-link:focus {
-    color: #BBD1EA; 
+    color: #bbd1ea; 
 }
 
 /* Colours */
@@ -32,7 +32,7 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
     color: #fff;
 }
 .bg-blue:hover {
-    color: #A1C6EA;
+    color: #a1c6ea;
 }
 
 
@@ -118,6 +118,62 @@ a.navbar-brand {
     margin-bottom: 3rem;
 }
 
+.hero-container-login {
+    height: 30vh;
+
+    background: url("../../media/hero-login.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    margin-bottom: 3rem;
+}
+
+.hero-container-logout {
+    height: 30vh;
+
+    background: url("../../media/hero-logout.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    margin-bottom: 3rem;
+}
+
+.hero-container-register {
+    height: 30vh;
+
+    background: url("../../media/hero-register.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    margin-bottom: 3rem;
+}
+
+.hero-container-allauth {
+    height: 30vh;
+
+    background: url("../../media/hero-allauth.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    margin-bottom: 3rem;
+}
+
 .hero-overlay-skinny {
     background-color: rgba(0, 0, 0, 0.45);
     top: 4.25rem;
@@ -149,6 +205,14 @@ a.navbar-brand {
 
 .card-container .card-text {
     min-height: 80px;
+}
+
+/* Allauth template restyling */
+.allauth-container a {
+    color: #3b66a2;
+}
+.allauth-container a:hover, .allauth-container a:focus {
+    color: #ff4d00;
 }
 
 /* Footer */
