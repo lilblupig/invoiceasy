@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid hero-container-plan-details">
+        <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 hero-text">
                 <h1>Plan Details - {{ plan.name }}</h1>
             </div>
         </div>
@@ -20,16 +21,28 @@
             <div class="col-12">
                 <p>Find out more about our {{ plan.name }} plan below.  It's important that you find the right deal for you so feel free to browse until you are ready.</p>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 col-sm-6 offset-lg-1 col-lg-5 offset-xl-2 col-xl-4">
                         {% if plan.image %}
                             <img src="{{ plan.image.url }}" alt="{{ plan.image_alt }}">
                         {% else %}
                             <img src="https://res.cloudinary.com/hpzrza9wp/image/upload/v1650125565/media/noimage_jplrvs.png" alt="InvoicEasy logo">
                         {% endif %}
+                    </div>
+                    <div class="col-12 col-sm-6">
                         <h5 class="">{{ plan.name }}</h5>
                         <p>£{{ plan.price }} per month</p>
                         <p class="">{{ plan.description }}</p>
-                        <a href="{% url 'subscribe' %}" class="btn">Choose this Plan</a>
+                        <a href="{% url 'subscribe' %}" class="btn bg-orange">Choose this Plan</a>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <h3>Full info:</h3>
+                        <p>At this time, our plans are exactly the same.  We give you a chunky discount for committing to us for 3 months and paying in advance.  Everything else is the same.</p>
+                        <ul>
+                            <li>Unlimited customers</li>
+                            <li>Unlimited invoices</li>
+                            <li>Unlimited emails</li>
+                            <li>White label approach, only your branding on your invoices</li>
+                        </ul>
                     </div>
                 </div>
             </div>
