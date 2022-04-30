@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid hero-container-pricing">
+        <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 hero-text">
                 <h1>Pricing</h1>
             </div>
         </div>
@@ -18,21 +19,25 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <p>We have two plans, and a free trial period:</p>
+                <p>At the moment we have two plans, and we are working on getting a free trial period setup.  If you aren't sure yet that we are for you, keep checking back.</p>
                 <div class="row">
                     {% if plans %}
                         {% for plan in plans %}
-                        <div class="card col-12 col-md-6 col-lg-4">
-                            {% if plan.image %}
-                                <img src="{{ plan.image.url }}" class="card-img-top" alt="{{ plan.image_alt }}">
-                            {% else %}
-                            <img src="https://res.cloudinary.com/hpzrza9wp/image/upload/v1650125565/media/noimage_jplrvs.png" alt="InvoicEasy logo">
-                            {% endif %}
-                            <div class="card-body">
-                                <h5 class="card-title">{{ plan.name }}</h5>
-                                <p class="card-text">{{ plan.description }}</p>
-                                <p>£{{ plan.price }}</p>
-                                <a href="{% url 'plan_detail' plan.id %}" class="btn">More information</a>
+                        <div class="card-container col-12 col-sm-6 col-lg-4">
+                            <div class="card">
+                                {% if plan.image %}
+                                    <img src="{{ plan.image.url }}" class="card-img-top" alt="{{ plan.image_alt }}">
+                                {% else %}
+                                <img src="https://res.cloudinary.com/hpzrza9wp/image/upload/v1650125565/media/noimage_jplrvs.png" alt="InvoicEasy logo">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ plan.name }}</h5>
+                                    <p class="card-text">{{ plan.description }}</p>
+                                    <p>£{{ plan.price }}</p>
+                                    <div class="text-center">
+                                        <a href="{% url 'plan_detail' plan.id %}" class="btn bg-orange">More information</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {% endfor %}

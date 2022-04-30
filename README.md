@@ -293,6 +293,20 @@ Where did the website content come from?
 #### Media
 * The logo was designed using [FreeLogoDesign.org](https://editor.freelogodesign.org/).
 * The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):
+
+* And [Unsplash](https://unsplash.com/):
+  * [Bulldog clip of papers](https://unsplash.com/photos/bSkAq6XEYyk)
+  * [Artisan office](https://unsplash.com/photos/cWpgJrVgkr0)
+  * [Telephone](https://unsplash.com/photos/-0xCCPIbl3M)
+  * [Typewriter](https://unsplash.com/photos/jLwVAUtLOAQ)
+  * [Stamp](https://unsplash.com/photos/e-CqOxx8oXw)
+  * [Coin jar](https://unsplash.com/photos/SoqG9RWd_FA)
+  * [Paper list](https://unsplash.com/photos/onP8BIHPkrc)
+  * [Padlock](https://unsplash.com/photos/XUJcmgEhpjA)
+  * [Enter arrow](https://unsplash.com/photos/J59wWPn09BE)
+  * [See you later sign](https://unsplash.com/photos/v_WLk_vNYRA)
+  * [Keys](https://unsplash.com/photos/C1P4wHhQbjM)
+
 * The icons used for the website are from [FlatIcon]():
   * [Monitor in Logo - created by DinosoftLabs](https://www.flaticon.com/free-icons/monitor>)
 

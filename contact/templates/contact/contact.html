@@ -7,20 +7,23 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid hero-container-contact">
+        <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 hero-text">
                 <h1>Contact Us</h1>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div class="row">
-            <div class="col-12">
-                <p>Send us a message</p>
+            <div class="col-12 col-md-6">
+                <p>Stuck with something?  Have a question?  Send us a message:</p>
                 <form id="contact-form" action="{% url 'contact' %}" method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="mt-5">
-                        <button class="btn" type="submit">Send Message</button>
+                        <button class="btn bg-orange" type="submit">Send Message</button>
                     </div>
                 </form>
             </div>
