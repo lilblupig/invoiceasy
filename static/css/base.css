@@ -59,7 +59,7 @@ span.navbar-toggler-icon {
 .hero-container-home {
     height: 90vh;
 
-    background: url("../../media/hero-home.jpg") no-repeat center center;
+    background: url("../images/hero-home.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -83,7 +83,7 @@ span.navbar-toggler-icon {
 .hero-container-about {
     height: 30vh;
 
-    background: url("../../media/hero-about.jpg") no-repeat center center;
+    background: url("../images/hero-about.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -98,7 +98,7 @@ span.navbar-toggler-icon {
 .hero-container-pricing {
     height: 30vh;
 
-    background: url("../../media/hero-pricing.jpg") no-repeat center center;
+    background: url("../images/hero-pricing.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -113,7 +113,7 @@ span.navbar-toggler-icon {
 .hero-container-plan-details {
     height: 30vh;
 
-    background: url("../../media/hero-plan-details.jpg") no-repeat center center;
+    background: url("../images/hero-plan-details.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -128,7 +128,7 @@ span.navbar-toggler-icon {
 .hero-container-contact {
     height: 30vh;
 
-    background: url("../../media/hero-contact.jpg") no-repeat center center;
+    background: url("../images/hero-contact.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -143,7 +143,7 @@ span.navbar-toggler-icon {
 .hero-container-login {
     height: 30vh;
 
-    background: url("../../media/hero-login.jpg") no-repeat center center;
+    background: url("../images/hero-login.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -158,7 +158,7 @@ span.navbar-toggler-icon {
 .hero-container-logout {
     height: 30vh;
 
-    background: url("../../media/hero-logout.jpg") no-repeat center center;
+    background: url("../images/hero-logout.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -173,7 +173,7 @@ span.navbar-toggler-icon {
 .hero-container-register {
     height: 30vh;
 
-    background: url("../../media/hero-register.jpg") no-repeat center center;
+    background: url("../imageshero-register.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
@@ -188,7 +188,7 @@ span.navbar-toggler-icon {
 .hero-container-allauth {
     height: 30vh;
 
-    background: url("../../media/hero-allauth.jpg") no-repeat center center;
+    background: url("../images/hero-allauth.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
