@@ -193,7 +193,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For deployment only
-#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Tell collectstatic where to find extra files
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Tell collectstatic where to find extra files
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 MEDIA_URL = '/media/'
