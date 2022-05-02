@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid hero-container-allauth">
+        <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 hero-text">
                 <h1>Checkout Cancelled</h1>
             </div>
         </div>
@@ -18,7 +19,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <p>You cancelled the signup process for InvoicEasy, you are not subscribed.</p>
+                <p>You cancelled the signup process for InvoicEasy, and so you are not subscribed.</p>
+            </div>
+            <div class="col-12 text-center mt-3">
+                <a class="btn bg-blue" href="{% url 'home' %}">Home</a>
+                <a class="btn bg-blue" href="{% url 'pricing' %}">Pricing</a>
             </div>
         </div>
     </div>

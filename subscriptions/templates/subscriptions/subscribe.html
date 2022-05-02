@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid hero-container-subscribe">
+        <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 hero-text">
                 <h1>Subscribe</h1>
             </div>
         </div>
@@ -19,18 +20,18 @@
         <div class="row">
             <div class="col-12">
                 {% if subscription.status == "active" %}
-                    <h4>Your subscription:</h4>
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
-                            <p>Valid from: {{ subscription_start }}</p>
-                            <p>Valid to: {{ subscription_end }}</p>
-                        </div>
+                    <p>You already have a subscription with us, your subscription details are below:</p>
+                    <div class="col-12">
+                        <h2 class="">{{ product.name }}</h2>
+                        <p>Valid from: {{ subscription_start }}</p>
+                        <p>Valid to: {{ subscription_end }}</p>
                     </div>
                 {% else %}
-                    <p>By clicking the button below, you will subscribe to our {{ plan_name }} plan.</p>
-                    <button type="submit" class="btn" id="submitBtn">Subscribe</button>
+                        <p>We are glad you found something for you, thank you!  By clicking the orange button below, you will be taken to our payment partner, Stripe, to subscribe to our {{ plan_name }} plan.  Alternatively, the blue button will take you back to the pricing plans page if you want to rethink.</p>
+                        <div class="mt-4 text-center">
+                            <button type="submit" class="btn bg-orange mt-1" id="submitBtn">Subscribe</button>
+                            <a class="btn bg-blue mt-1" href="{% url 'pricing' %}">Back to Pricing</a>
+                        </div>
                 {% endif %}
             </div>
         </div>

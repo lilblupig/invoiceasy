@@ -140,6 +140,21 @@ span.navbar-toggler-icon {
     margin-bottom: 3rem;
 }
 
+.hero-container-subscribe {
+    height: 30vh;
+
+    background: url("../images/hero-subscribe.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
 .hero-container-login {
     height: 30vh;
 
