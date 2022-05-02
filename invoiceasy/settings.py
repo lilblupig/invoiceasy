@@ -173,7 +173,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For deployment only
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Tell collectstatic where to find extra files
 STATICFILES_STORAGE = ('cloudinary_storage.storage.StaticHashedCloudinaryStorage')
 
 MEDIA_URL = '/media/'
