@@ -173,7 +173,7 @@ span.navbar-toggler-icon {
 .hero-container-register {
     height: 30vh;
 
-    background: url("../imageshero-register.jpg") no-repeat center center;
+    background: url("../images/hero-register.jpg") no-repeat center center;
     background-size: cover;
 
     display: flex;
