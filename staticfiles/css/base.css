@@ -1,0 +1,263 @@
+/* Import Google font */
+@import url("https://fonts.googleapis.com/css2?family=Flamenco:wght@300;400&display=swap");
+
+
+/* General font styles */
+
+h1, h2, h3, h4, .navbar-brand {
+    color: #ff4d00;
+    font-family: Flamenco, Verdana, sans-serif;
+}
+
+nav a.nav-link, nav a.dropdown-item, footer h2, footer a.nav-link, footer p {
+    color: #fff; 
+}
+
+nav a.nav-link:hover, nav a.navbar-brand:hover, nav a.dropdown-item:hover, footer h2:hover, footer a.nav-link:hover {
+    color: #a1c6ea; 
+}
+
+nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, footer h2:focus, footer a.nav-link:focus {
+    color: #bbd1ea; 
+}
+
+/* Colours */
+.bg-orange {
+    background-color: #ff4d00;
+    color: #fff;
+}
+
+.bg-blue {
+    background-color: #3b66a2;
+    color: #fff;
+}
+.bg-blue:hover {
+    color: #a1c6ea;
+}
+
+
+/* Navbar */
+
+#navbar-padder {
+    height: 4.25rem;
+}
+  
+nav, nav ul.dropdown-menu.show, nav a.dropdown-item:hover, nav a.dropdown-item:focus {
+    background-color: #292f38;
+}
+
+a.navbar-brand {
+    font-size: 1.75rem;
+}
+
+span.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+/* Hero */
+.hero-container-home {
+    height: 90vh;
+
+    background: url("../images/hero-home.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-overlay-home {
+    background-color: rgba(0, 0, 0, 0.45);
+    left: 0;
+    width: 100%;
+    height: 90vh;
+
+    position: absolute;
+}
+
+.hero-container-about {
+    height: 30vh;
+
+    background: url("../images/hero-about.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-container-pricing {
+    height: 30vh;
+
+    background: url("../images/hero-pricing.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-container-plan-details {
+    height: 30vh;
+
+    background: url("../images/hero-plan-details.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-container-contact {
+    height: 30vh;
+
+    background: url("../images/hero-contact.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-container-login {
+    height: 30vh;
+
+    background: url("../images/hero-login.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-container-logout {
+    height: 30vh;
+
+    background: url("../images/hero-logout.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-container-register {
+    height: 30vh;
+
+    background: url("../imageshero-register.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-container-allauth {
+    height: 30vh;
+
+    background: url("../images/hero-allauth.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.hero-overlay-skinny {
+    background-color: rgba(0, 0, 0, 0.45);
+    left: 0;
+    width: 100%;
+    height: 30vh;
+
+    position: absolute;
+}
+
+.hero-text {
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-size: 6rem;
+    color: #fff;
+}
+
+/* Price cards */
+.card-container {
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.card-container .card {
+    min-height: 450px;
+}
+
+.card-container .card-text {
+    min-height: 80px;
+}
+
+/* Allauth template restyling */
+.allauth-container a {
+    color: #3b66a2;
+}
+.allauth-container a:hover, .allauth-container a:focus {
+    color: #ff4d00;
+}
+
+/* Footer */
+  
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+  
+#main-content {
+    padding-bottom: 8rem;
+}
+  
+footer {
+    background-color: #292f38;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p, footer a {
+    font-size: 0.85rem; 
+}
