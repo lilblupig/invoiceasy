@@ -276,6 +276,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 * The following projects created by fellow Code Institute students gave great inspiration and were used to benchmark/guide my own project:
   * [Which Way is Up](https://github.com/lemocla/Which-way-is-up) by [Claire](https://github.com/lemocla).
   * [Postfly](https://github.com/Daph1986/postfly_jouw_online_drukkerij) by [Daphne Heimgartner](https://github.com/Daph1986)
+  * [Cost Report](https://github.com/dkeddie/MS4-Cost-Report)
 
 
 ## Credits
@@ -284,15 +285,12 @@ You can find more information on cloning a repository from GitHub [here](https:/
 
 #### Content
 Where did the website content come from?
-
-* [Django & Cloudinary Storage](https://pypi.org/project/django-cloudinary-storage/)
-* [Django & sass/scss tutorial](https://engineertodeveloper.com/how-to-easily-use-sass-scss-with-django/)
+* [Whitenoise setup](http://whitenoise.evans.io/en/stable/django.html)
 * [Django contact mail article](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend)
 * [Dates conversion](https://www.tutorialspoint.com/How-to-convert-an-integer-into-a-date-object-in-Python#:~:text=You%20can%20use%20the%20fromtimestamp,object%20corresponding%20to%20the%20timestamp.)
 * [Difference between Static and Media for relative paths](https://stackoverflow.com/questions/37241902/django-joined-path-is-located-outside-of-the-base-path-component-static-img)
 
 #### Media
-* The logo was designed using [FreeLogoDesign.org](https://editor.freelogodesign.org/).
 * The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):
 
 * And [Unsplash](https://unsplash.com/):
@@ -307,11 +305,10 @@ Where did the website content come from?
   * [Enter arrow](https://unsplash.com/photos/J59wWPn09BE)
   * [See you later sign](https://unsplash.com/photos/v_WLk_vNYRA)
   * [Keys](https://unsplash.com/photos/C1P4wHhQbjM)
+  * [Hola sign](https://unsplash.com/photos/8MMtYM_3xMY)
 
 * The icons used for the website are from [FlatIcon]():
   * [Monitor in Logo - created by DinosoftLabs](https://www.flaticon.com/free-icons/monitor>)
-
-* The diagrams used for the website were obtained from various places:
 
 #### Acknowledgements
 Thank you in particular to:
