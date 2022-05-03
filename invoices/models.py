@@ -1,6 +1,5 @@
 """ Model information for invoicing pages """
 
-from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings
 
@@ -8,7 +7,7 @@ from django.conf import settings
 
 
 class InvoiceCustomer(models.Model):
-    """ Store Stripe customer info """
+    """ Store user customer info """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     customer_code = models.CharField(max_length=10)
     customer_first_name = models.CharField(max_length=50)
@@ -23,4 +22,16 @@ class InvoiceCustomer(models.Model):
     customer_email = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.customer_last_name
+        return self.customer_code
+
+
+class MakeInvoice(models.Model):
+    """ Store customer invoice info """
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    customer_code = models.ForeignKey(to=InvoiceCustomer, on_delete=models.CASCADE)
+    invoice_number = models.IntegerField()
+    invoice_info = models.TextField()
+    invoice_subtotal = models.FloatField()
+
+    def __str__(self):
+        return self.invoice_number

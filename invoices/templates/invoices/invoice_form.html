@@ -3,7 +3,7 @@
 
 {% block extra_title %}
 {{ block.super }}
-    | Invoices
+    | Invoice
 {% endblock %}
 
 {% block content %}
@@ -12,21 +12,22 @@
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
             <div class="col-12 hero-text">
-                <h1>Invoices</h1>
+                <h1>Invoice</h1>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-12 mb-4">
-                <a class="btn bg-orange" href="{% url 'invoice' %}">New Invoice</a>
-                <a class="btn bg-blue" href="{% url 'customer' %}">New Customer</a>
-                <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
-            </div>
             <div class="col-12">
-                <h2>Invoice overview</h2>
-                <p>Here are your invoices</p>
+                <h2>New Invoice</h2>
+                <p>Please complete the form below for your invoice.</p>
+
+                <form id="invoice-form" action="{% url 'invoices' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn bg-orange submit">Submit</button>
+                </form>
             </div>
         </div>
     </div>

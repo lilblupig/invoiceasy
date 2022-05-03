@@ -2,8 +2,8 @@
 
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from .models import InvoiceCustomer
-from .forms import InvoiceCustomerForm
+from .models import InvoiceCustomer, MakeInvoice
+from .forms import InvoiceCustomerForm, MakeInvoiceForm
 
 # Create your views here.
 
@@ -24,10 +24,29 @@ def customer(request):
             hold_form.save()
             messages.success(request, 'Updated successfully!')
 
-    
     form = InvoiceCustomerForm()
 
     template = 'invoices/customer_form.html'
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
+
+
+def invoice(request):
+    """ View to return invoice form """
+
+    if request.method == 'POST':
+        form = MakeInvoiceForm(request.POST)
+        if form.is_valid():
+            hold_form = form.save(commit=False)
+            hold_form.user = request.user
+            hold_form.save()
+            messages.success(request, 'Updated successfully!')
+
+    form = MakeInvoiceForm()
+
+    template = 'invoices/invoice_form.html'
     context = {
         'form': form,
     }

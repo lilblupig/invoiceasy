@@ -1,7 +1,7 @@
 """ Forms information for invoicing pages """
 
 from django import forms
-from .models import InvoiceCustomer
+from .models import InvoiceCustomer, MakeInvoice
 
 
 class InvoiceCustomerForm(forms.ModelForm):
@@ -25,6 +25,27 @@ class InvoiceCustomerForm(forms.ModelForm):
             'customer_postcode': 'Postcode',
             'customer_telephone': 'Telephone number',
             'customer_email': 'Email address',
+        }
+
+        self.fields['customer_code'].widget.attrs['autofocus'] = True
+        for field in self.fields:
+            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+
+
+class MakeInvoiceForm(forms.ModelForm):
+    """ Form for subscriber to add customer """
+    class Meta:
+        """ Define form fields """
+        model = MakeInvoice
+        exclude = ('user',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'customer_code': '',
+            'invoice_number': 'This should be sequential',
+            'invoice_info': 'Write the invoice details here',
+            'invoice_subtotal': '0.00'
         }
 
         self.fields['customer_code'].widget.attrs['autofocus'] = True
