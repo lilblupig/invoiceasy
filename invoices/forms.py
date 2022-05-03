@@ -9,11 +9,12 @@ class InvoiceCustomerForm(forms.ModelForm):
     class Meta:
         """ Define form fields """
         model = InvoiceCustomer
-        exclude = ('user', 'invoice_customer_id',)
+        exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
+            'customer_code': 'Choose a code - e.g. "CUST01"',
             'customer_first_name': 'First name/s',
             'customer_last_name': 'Last name',
             'customer_business_name': 'Business name',
@@ -26,6 +27,6 @@ class InvoiceCustomerForm(forms.ModelForm):
             'customer_email': 'Email address',
         }
 
-        self.fields['customer_first_name'].widget.attrs['autofocus'] = True
+        self.fields['customer_code'].widget.attrs['autofocus'] = True
         for field in self.fields:
             self.fields[field].widget.attrs['placeholder'] = placeholders[field]

@@ -2,14 +2,15 @@
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
 
 class InvoiceCustomer(models.Model):
     """ Store Stripe customer info """
-    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
-    invoice_customer_id = models.CharField(max_length=255)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    customer_code = models.CharField(max_length=10)
     customer_first_name = models.CharField(max_length=50)
     customer_last_name = models.CharField(max_length=50)
     customer_business_name = models.CharField(max_length=50, null=True, blank=True)

@@ -23,10 +23,10 @@
                 <h2>Customer Information</h2>
                 <p>Please complete/update the form below for your customer.</p>
 
-                <form id="customer-update-form" action="{% url 'invoices' %}" method="POST">
+                <form id="customer-update-form" action="{% url 'customer' %}" method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="submit">Submit</button>
+                    <button class="btn bg-orange submit">Submit</button>
                 </form>
             </div>
         </div>
