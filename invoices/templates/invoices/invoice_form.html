@@ -23,10 +23,10 @@
                 <h2>New Invoice</h2>
                 <p>Please complete the form below for your invoice.</p>
 
-                <form id="invoice-form" action="{% url 'invoices' %}" method="POST">
+                <form id="invoice-form" action="{% url 'invoice' %}" method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn bg-orange submit">Submit</button>
+                    <button class="btn bg-orange" type="submit">Submit</button>
                 </form>
             </div>
         </div>
