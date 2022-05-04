@@ -2,12 +2,14 @@
 
 from django.shortcuts import render
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import InvoiceCustomer, Invoice
 from .forms import InvoiceCustomerForm, InvoiceForm
 
 # Create your views here.
 
 
+@login_required()
 def dashboard(request):
     """ View to return invoices page """
 
@@ -25,6 +27,7 @@ def dashboard(request):
     return render(request, template, context)
 
 
+@login_required()
 def customer(request):
     """ View to return customer form """
 
@@ -45,6 +48,7 @@ def customer(request):
     return render(request, template, context)
 
 
+@login_required()
 def invoice(request):
     """ View to return invoice form """
 
