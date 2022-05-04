@@ -14,8 +14,8 @@ def dashboard(request):
     """ View to return invoices page """
 
     user = request.user
-    invoices = Invoice.objects.all()
-    customers = InvoiceCustomer.objects.all()
+    invoices = Invoice.objects.filter(user_id__exact=user)
+    customers = InvoiceCustomer.objects.filter(user_id__exact=user)
 
     template = 'invoices/dashboard.html'
     context = {
