@@ -2,6 +2,7 @@
 
 from django.shortcuts import render
 from django.contrib import messages
+from .models import InvoiceCustomer, MakeInvoice
 from .forms import InvoiceCustomerForm, MakeInvoiceForm
 
 # Create your views here.
@@ -9,7 +10,19 @@ from .forms import InvoiceCustomerForm, MakeInvoiceForm
 
 def dashboard(request):
     """ View to return invoices page """
-    return render(request, 'invoices/dashboard.html')
+
+    user = request.user
+    invoices = MakeInvoice.objects.all()
+    customers = InvoiceCustomer.objects.all()
+
+    template = 'invoices/dashboard.html'
+    context = {
+        'user': user,
+        'invoices': invoices,
+        'customers': customers,
+    }
+
+    return render(request, template, context)
 
 
 def customer(request):

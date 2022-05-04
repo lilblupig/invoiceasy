@@ -27,10 +27,39 @@
             <div class="col-12 col-lg-6">
                 <h2>Invoice overview</h2>
                 <p>Here are your invoices</p>
+                <div>
+                    {% for invoice in invoices %}
+                        <div class="row">
+                            <div class="col-4">
+                                {{ invoice.invoice_number }}
+                            </div>
+                            <div class="col-8">
+                                {{ invoice.customer_code_id }}
+                                {{ invoice.invoice_subtotal }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
             <div class="col-12 col-lg-6">
                 <h2>Customer overview</h2>
                 <p>Here are your customers</p>
+                <div>
+                    {% for customer in customers %}
+                        <div class="row">
+                            <div class="col-4">
+                                {{ customer.customer_code }}
+                            </div>
+                            <div class="col-8">
+                                {% if customer.customer_business_name %}
+                                    {{ customer.customer_business_name }}
+                                {% else %}
+                                    {{ customer.customer_first_name }} {{ customer.customer_last_name }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
