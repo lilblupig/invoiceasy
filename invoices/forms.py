@@ -1,7 +1,7 @@
 """ Forms information for invoicing pages """
 
 from django import forms
-from .models import InvoiceCustomer, MakeInvoice
+from .models import InvoiceCustomer, Invoice
 
 
 class InvoiceCustomerForm(forms.ModelForm):
@@ -32,11 +32,11 @@ class InvoiceCustomerForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholders[field]
 
 
-class MakeInvoiceForm(forms.ModelForm):
+class InvoiceForm(forms.ModelForm):
     """ Form for subscriber to add customer """
     class Meta:
         """ Define form fields """
-        model = MakeInvoice
+        model = Invoice
         exclude = ('user',)
 
     def __init__(self, *args, **kwargs):

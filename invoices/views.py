@@ -2,8 +2,8 @@
 
 from django.shortcuts import render
 from django.contrib import messages
-from .models import InvoiceCustomer, MakeInvoice
-from .forms import InvoiceCustomerForm, MakeInvoiceForm
+from .models import InvoiceCustomer, Invoice
+from .forms import InvoiceCustomerForm, InvoiceForm
 
 # Create your views here.
 
@@ -12,7 +12,7 @@ def dashboard(request):
     """ View to return invoices page """
 
     user = request.user
-    invoices = MakeInvoice.objects.all()
+    invoices = Invoice.objects.all()
     customers = InvoiceCustomer.objects.all()
 
     template = 'invoices/dashboard.html'
@@ -49,14 +49,14 @@ def invoice(request):
     """ View to return invoice form """
 
     if request.method == 'POST':
-        form = MakeInvoiceForm(request.POST)
+        form = InvoiceForm(request.POST)
         if form.is_valid():
             hold_form = form.save(commit=False)
             hold_form.user = request.user
             hold_form.save()
             messages.success(request, 'Updated successfully!')
 
-    form = MakeInvoiceForm()
+    form = InvoiceForm()
 
     template = 'invoices/invoice_form.html'
     context = {

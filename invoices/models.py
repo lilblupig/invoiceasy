@@ -25,11 +25,11 @@ class InvoiceCustomer(models.Model):
         return self.customer_code
 
 
-class MakeInvoice(models.Model):
+class Invoice(models.Model):
     """ Store customer invoice info """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     customer_code = models.ForeignKey(to=InvoiceCustomer, on_delete=models.CASCADE)
-    invoice_number = models.IntegerField()
+    invoice_number = models.CharField(max_length=20)
     invoice_info = models.TextField()
     invoice_subtotal = models.FloatField()
 
