@@ -7,9 +7,9 @@ from .forms import InvoiceCustomerForm, MakeInvoiceForm
 # Create your views here.
 
 
-def invoices(request):
+def dashboard(request):
     """ View to return invoices page """
-    return render(request, 'invoices/invoices.html')
+    return render(request, 'invoices/dashboard.html')
 
 
 def customer(request):
