@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+{{ block.super }}
+    | Invoices
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid hero-container-invoices">
+        <div class="hero-overlay-skinny">&nbsp;</div>
+        <div class="row">
+            <div class="col-12 hero-text">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <a class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</a>
+                <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
+                <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2>Invoice overview</h2>
+                <p>Here are your invoices</p>
+                <div>
+                    {% for invoice in invoices %}
+                        <div class="row mb-1">
+                            <div class="col-2">
+                                {{ invoice.invoice_number }}
+                            </div>
+                            <div class="col-6">
+                                {{ invoice.customer_code_id }}
+                            </div>
+                            <div class="col-2">
+                                {{ invoice.invoice_subtotal }}
+                            </div>
+                            <div class="col-2">
+                                <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-blue">Edit</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h2>Customer overview</h2>
+                <p>Here are your customers</p>
+                <div>
+                    {% for customer in customers %}
+                        <div class="row mb-1">
+                            <div class="col-3">
+                                {{ customer.customer_code }}
+                            </div>
+                            <div class="col-7">
+                                {% if customer.customer_business_name %}
+                                    {{ customer.customer_business_name }}
+                                {% else %}
+                                    {{ customer.customer_first_name }} {{ customer.customer_last_name }}
+                                {% endif %}
+                            </div>
+                            <div class="col-2">
+                                <a href="{% url 'customer' customer.id %}" class="btn btn-sm bg-blue">Edit</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

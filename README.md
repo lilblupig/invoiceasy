@@ -1,7 +1,7 @@
 # **InvoicEasy**
 
 # Overview
-InvoicEasy is to be a simple online invoicing tool which allows small businesses to quickly and easily set up customer accounts and direct their customers to a secure platform to view invoices, without compromising GDPR.
+InvoicEasy is to be a simple online invoicing tool which allows small businesses to quickly and easily set up customer accounts and email out invoices.
 
 
 ![Am I Responsive Image](documentation/readme-images/am-i-responsive.png)
@@ -33,41 +33,54 @@ Note, testing information can be found in a separate document:
 ## UX
 
 ### **Overview and Broad Design Choices**
-
+The premise of InvoicEasy is to allow small businesses of all types to make use of a simple system.  As such, the design should appeal to as broad an audience as possible in terms of age and gender.  Finance systems are not known for being exciting to look at and are instead functional with as clean an interface as possible.
 
 ### **User Stories**
-1. As a new user, I want to 
-1. As a new user, I want to 
-1. As a new user, I want to 
-1. As a returning user, I want to 
-1. As a returning user, I want to 
-1. As a frequent user, I want to 
+1. As a new user, I want to learn quickly what InvoicEasy is, and how it can help me.
+1. As a new user, I want to follow as simple a process as possible to sign up, having chosen my plan.
+1. As a new user, I want to intuitively understand how the system works, and get started right away.
+1. As a returning user, I want to see my existing customers and invoices readily, so I don't duplicate input.
+1. As a returning user, I want to be able to resend invoices quickly to customers who have not yet paid.
+1. As a frequent user, I want to be able to see and manage my subscription information.
+1. As a frequent user, I want to be able to see and manage my own business information.
 
 These stories are addressed fully in the [Testing](TESTING.md) document.
 
 ### **Strategy**
-Who is the website for?
-What does the owner of the website need/want?
-What do the users of the website need/want?
+**Who is the website for?** <br>
+Any and all small businesses looking to move from a postal system, which cannot afford or justify big accounts packages.
 
-Broadly, how does the website meet these needs?
+**What does the owner of the website need/want?**
+The owner wants to:
+1. Make life easier for small businesses at as low cost as possible.
+1. Meet the costs of maintaining and hosting the website, with the possibility of extending features and plans in the future.
+
+**What do the users of the website need/want?**
+1. Simple, easy to use system.
+1. Low cost.
+1. Manage customers.
+1. Manage invoices.
+1. Manage subscription.
+1. Manage own data.
+
+**Broadly, how does the website meet these needs?**
 
 Owner aims:
-* 
-* 
-* 
-* 
-* 
+1. By providing a no-frills type service which addresses a very specific need in terms of finance record keeping.  Focussing on one particular function and nothing else. 
+2. The cost of the subscriptions can be used to cover hosting costs as the service grows and maintain the site.
 
 User aims:
-* 
-* 
-* 
-* 
-* 
+1. The system is designed with as few decorative items as possible, whilst retaining an image on each page for visual relief.  This means the UI is front and center for the user and should be easy to understand.
+1. The subscriptions are priced to beat the cost of sending 5 invoices by mail each month.
+1. There is a clear customer form for adding and editing customers.
+1. There is a clear invoice form for inputting fees.
+1. The subscription information is displayed on the dashboard at all times.
+1. There is a subscriber profile which is editable, and accessible directly from the nav.
 
 ### **Scope**
 Why does the website exist?  What does it need to meet the user/owner aims?
+<br>
+The website exists because currently, there is no scheme which caters to microbusinesses.  The likes of Sage, Xero and Quickbooks all have extensive features around expenses, payroll, reporting and VAT management and are priced accordingly.
 
 #### Feature Viability
 
@@ -112,22 +125,16 @@ In line with structure planning...
 ### **Surface**
 
 #### Colours
-Thought process behind colour choices and palette development.
+The colours chosen are based on making the UI as clean and intuitive as possible.  A dark grey was chosen as the main colour and is used for nav, footer and the majority of body text.<br><br>
+A bright orange was chosen as the highlight colour as warmer colours draw the attention better than cooler colours, and should therefore stand out more to the user as call to action items.  Red was not chosen because of negative connotations within the realms of finance, and a general association with danger/threat.<br><br>
+The complimentary colours are all cool blues, with the intent to use for secondary buttons, hover colours etc.<br><br>
 ![Colours option 1](documentation/readme-images/colors-opt-1.png)
 
-Dark grey - #292F38
-Orange - #FF4D00
-
 #### Typography
-Thought process behind font choices.
-1. 
-1. 
-1. 
+Only one font was really chosen for the site as the accent, for headers, logos and other items that need to stand out.  It was decided to proceed with the standard font used by Bootstrap for the majority of the body etc, as the creators will have chosen a suitably inclusive and easy to read design.
+1. The accent font chosen was [Flamenco](https://fonts.google.com/specimen/Flamenco?preview.text=InvoicEasy&preview.text_type=custom) since it provides a stark contrast to the standard font used in Bootstrap 5, without being overly fussy or indicative of age or gender.
 
 ![Example fonts](documentation/readme-images/typography.png)
-
-For logo and Headings etc?
-https://fonts.google.com/specimen/Flamenco?preview.text=InvoicEasy&preview.text_type=custom
 
 ## Features
 
@@ -276,6 +283,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 * The following projects created by fellow Code Institute students gave great inspiration and were used to benchmark/guide my own project:
   * [Which Way is Up](https://github.com/lemocla/Which-way-is-up) by [Claire](https://github.com/lemocla).
   * [Postfly](https://github.com/Daph1986/postfly_jouw_online_drukkerij) by [Daphne Heimgartner](https://github.com/Daph1986)
+  * [Code With Mike](https://github.com/MikeAvgeros/code-with-mike)
   * [Cost Report](https://github.com/dkeddie/MS4-Cost-Report)
 
 
@@ -286,9 +294,12 @@ You can find more information on cloning a repository from GitHub [here](https:/
 #### Content
 Where did the website content come from?
 * [Whitenoise setup](http://whitenoise.evans.io/en/stable/django.html)
+* [Stripe Subscritptions](https://testdriven.io/blog/django-stripe-subscriptions/)
 * [Django contact mail article](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend)
 * [Dates conversion](https://www.tutorialspoint.com/How-to-convert-an-integer-into-a-date-object-in-Python#:~:text=You%20can%20use%20the%20fromtimestamp,object%20corresponding%20to%20the%20timestamp.)
 * [Difference between Static and Media for relative paths](https://stackoverflow.com/questions/37241902/django-joined-path-is-located-outside-of-the-base-path-component-static-img)
+* [Save user as foreign key to form](http://www.learningaboutelectronics.com/Articles/How-to-save-the-current-user-logged-in-to-a-database-table-in-Django.php)
+* [Access user in form.py](https://stackoverflow.com/questions/7299973/django-how-to-access-current-request-user-in-modelform/7300076#7300076) Clues here also from mentor Reuben Ferrante
 
 #### Media
 * The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):
@@ -306,6 +317,7 @@ Where did the website content come from?
   * [See you later sign](https://unsplash.com/photos/v_WLk_vNYRA)
   * [Keys](https://unsplash.com/photos/C1P4wHhQbjM)
   * [Hola sign](https://unsplash.com/photos/8MMtYM_3xMY)
+  * [Filing boxes](https://unsplash.com/photos/lRoX0shwjUQ)
 
 * The icons used for the website are from [FlatIcon]():
   * [Monitor in Logo - created by DinosoftLabs](https://www.flaticon.com/free-icons/monitor>)
