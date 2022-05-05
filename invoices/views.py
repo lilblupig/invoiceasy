@@ -28,8 +28,15 @@ def dashboard(request):
 
 
 @login_required()
-def customer(request):
+def customer(request, customer_id):
     """ View to return customer form """
+
+    this_customer = InvoiceCustomer.objects.get(id=customer_id)
+
+    if customer_id == 'new':
+        form = InvoiceCustomerForm()
+    else:
+        form = InvoiceCustomerForm(instance=this_customer)
 
     if request.method == 'POST':
         form = InvoiceCustomerForm(request.POST)
@@ -38,8 +45,6 @@ def customer(request):
             hold_form.user = request.user
             hold_form.save()
             messages.success(request, 'Updated successfully!')
-
-    form = InvoiceCustomerForm()
 
     template = 'invoices/customer_form.html'
     context = {
