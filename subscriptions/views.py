@@ -76,7 +76,7 @@ def create_checkout_session(request):
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
                 success_url=domain_url + 'subscriptions/success?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url=domain_url + 'subscriptions/cancel/',
+                cancel_url=domain_url + 'subscriptions/abort/',
                 payment_method_types=['card'],
                 mode='subscription',
                 line_items=[
@@ -98,9 +98,9 @@ def success(request):
 
 
 @login_required
-def cancel(request):
-    """ Return page for cancelled subscription """
-    return render(request, 'subscriptions/cancel.html')
+def abort(request):
+    """ Return page for aborted subscription """
+    return render(request, 'subscriptions/abort.html')
 
 
 @csrf_exempt
