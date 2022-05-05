@@ -1,8 +1,12 @@
 """ View information for invoicing pages """
 
+import datetime
+import stripe
+from django.conf import settings
 from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from subscriptions.models import StripeCustomer
 from .models import InvoiceCustomer, Invoice
 from .forms import InvoiceCustomerForm, InvoiceForm
 
@@ -17,12 +21,41 @@ def dashboard(request):
     invoices = Invoice.objects.filter(user_id__exact=user)
     customers = InvoiceCustomer.objects.filter(user_id__exact=user)
 
+    def make_date(date_value):
+        """ Convert Stripe value to user friendly date """
+        nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y')
+        return nice_date
+
+    try:
+        # Retrieve the subscription & product
+        stripe_customer = StripeCustomer.objects.get(user=request.user)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription_start = make_date(subscription.current_period_start)
+        subscription_end = make_date(subscription.current_period_end)
+        product = stripe.Product.retrieve(subscription.plan.product)
+
+        context = {
+            'subscription': subscription,
+            'product': product,
+            'subscription_start': subscription_start,
+            'subscription_end': subscription_end,
+            'user': user,
+            'invoices': invoices,
+            'customers': customers,
+        }
+
+    # Show checkout page if not already subscribed
+    except StripeCustomer.DoesNotExist:
+        subscription = 'No current subscription'
+        context = {
+            'subscription': subscription,
+            'user': user,
+            'invoices': invoices,
+            'customers': customers,
+        }
+
     template = 'invoices/dashboard.html'
-    context = {
-        'user': user,
-        'invoices': invoices,
-        'customers': customers,
-    }
 
     return render(request, template, context)
 

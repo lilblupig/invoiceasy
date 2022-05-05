@@ -270,6 +270,14 @@ span.navbar-toggler-icon {
     color: #ff4d00;
 }
 
+/* Dashboard */
+.subs-box {
+    border: solid 1px #292f38;
+    border-radius: 5px;
+    padding-top: 1rem;
+    background-color: #bbd1ea;
+}
+
 /* Footer */
   
 #page-container {

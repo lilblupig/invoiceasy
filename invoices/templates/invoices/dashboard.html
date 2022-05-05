@@ -19,10 +19,30 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12 mb-4">
+            <div class="col-12 col-lg-6 mb-4">
                 <a class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</a>
                 <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
                 <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+            </div>
+            <div class="col-12 col-lg-6 mb-4 subs-box">
+                {% if subscription.status == "active" %}
+                    <div class="col-12 row">
+                        <div class="col-6">
+                            <h2>Your subscription:</h2>
+                        </div>
+                        <div class="col-6">
+                            <p class=""><strong>{{ product.name }}</strong></p>
+                            <p>Valid from: {{ subscription_start }}</p>
+                            <p>Valid to: {{ subscription_end }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                        <p>We are glad you found something for you, thank you!  By clicking the orange button below, you will be taken to our payment partner, Stripe, to subscribe to our {{ plan_name }} plan.  Alternatively, the blue button will take you back to the pricing plans page if you want to rethink.</p>
+                        <div class="mt-4 text-center">
+                            <button type="submit" class="btn bg-orange mt-1" id="submitBtn">Subscribe</button>
+                            <a class="btn bg-blue mt-1" href="{% url 'pricing' %}">Back to Pricing</a>
+                        </div>
+                {% endif %}
             </div>
             <div class="col-12 col-lg-6">
                 <h2>Invoice overview</h2>
