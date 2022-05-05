@@ -11,7 +11,7 @@ from .forms import InvoiceCustomerForm, InvoiceForm
 
 @login_required()
 def dashboard(request):
-    """ View to return invoices page """
+    """ View to return dashboard page """
 
     user = request.user
     invoices = Invoice.objects.filter(user_id__exact=user)
@@ -31,44 +31,66 @@ def dashboard(request):
 def customer(request, customer_id):
     """ View to return customer form """
 
-    this_customer = InvoiceCustomer.objects.get(id=customer_id)
-
-    if customer_id == 'new':
-        form = InvoiceCustomerForm()
-    else:
-        form = InvoiceCustomerForm(instance=this_customer)
-
     if request.method == 'POST':
-        form = InvoiceCustomerForm(request.POST)
+        # If customer id == 0 save new instance
+        if customer_id == '0':
+            form = InvoiceCustomerForm(request.POST)
+        # Otherwise update existing customer
+        else:
+            this_customer = InvoiceCustomer.objects.get(id=customer_id)
+            form = InvoiceCustomerForm(request.POST, instance=this_customer)
         if form.is_valid():
             hold_form = form.save(commit=False)
             hold_form.user = request.user
             hold_form.save()
-            messages.success(request, 'Updated successfully!')
+            messages.success(request, 'Customer updated successfully!')
+
+    # If customer id == 0 render blank form
+    if customer_id == '0':
+        form = InvoiceCustomerForm()
+    # Else render form with customer details
+    else:
+        this_customer = InvoiceCustomer.objects.get(id=customer_id)
+        form = InvoiceCustomerForm(instance=this_customer)
 
     template = 'invoices/customer_form.html'
     context = {
         'form': form,
+        'customer_id': customer_id,
     }
     return render(request, template, context)
 
 
 @login_required()
-def invoice(request):
+def invoice(request, invoice_id):
     """ View to return invoice form """
 
     if request.method == 'POST':
-        form = InvoiceForm(request.POST)
+        # If invoice id == 0 save new instance
+        if invoice_id == '0':
+            form = InvoiceForm(request.POST)
+        # Otherwise update existing invoice
+        else:
+            this_invoice = Invoice.objects.get(id=invoice_id)
+            form = InvoiceForm(request.POST, instance=this_invoice)
+
         if form.is_valid():
             hold_form = form.save(commit=False)
             hold_form.user = request.user
             hold_form.save()
-            messages.success(request, 'Updated successfully!')
+            messages.success(request, 'Invoice updated successfully!')
 
-    form = InvoiceForm()
+    # If invoice id == 0 render blank form
+    if invoice_id == '0':
+        form = InvoiceForm()
+    # Else render form with invoice details
+    else:
+        this_invoice = Invoice.objects.get(id=invoice_id)
+        form = InvoiceForm(instance=this_invoice)
 
     template = 'invoices/invoice_form.html'
     context = {
         'form': form,
+        'invoice_id': invoice_id,
     }
     return render(request, template, context)

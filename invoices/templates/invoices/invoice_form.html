@@ -21,14 +21,19 @@
         <div class="row">
             <div class="col-12 mb-4">
                 <a class="btn bg-blue" href="{% url 'dashboard' %}">Dashboard</a>
-                <a class="btn bg-blue" href="{% url 'customer' %}">New Customer</a>
+                <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
                 <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
             </div>
             <div class="col-12">
-                <h2>New Invoice</h2>
-                <p>Please complete the form below for your invoice.</p>
+                {% if invoice_id == '0' %}
+                    <h2>New Customer</h2>
+                    <p>Please complete the form below for your new invoice.</p>
+                {% else %}
+                    <h2>Update Customer</h2>
+                    <p>Please update the details below for your existing invoice.</p>
+                {% endif %}
 
-                <form id="invoice-form" action="{% url 'invoice' %}" method="POST">
+                <form id="invoice-form" action="{% url 'invoice' invoice_id %}" method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <button class="btn bg-orange" type="submit">Submit</button>
