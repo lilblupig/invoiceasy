@@ -40,7 +40,10 @@ class InvoiceForm(forms.ModelForm):
         exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
+        customers = InvoiceCustomer.objects.filter(user_id__exact=user)
+        self.fields["customer_code"] = forms.ModelChoiceField(queryset=customers, required=False)
         placeholders = {
             'customer_code': '',
             'invoice_number': 'This should be sequential',

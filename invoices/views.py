@@ -68,11 +68,11 @@ def invoice(request, invoice_id):
     if request.method == 'POST':
         # If invoice id == 0 save new instance
         if invoice_id == '0':
-            form = InvoiceForm(request.POST)
+            form = InvoiceForm(request.POST, user=request.user)
         # Otherwise update existing invoice
         else:
             this_invoice = Invoice.objects.get(id=invoice_id)
-            form = InvoiceForm(request.POST, instance=this_invoice)
+            form = InvoiceForm(request.POST, instance=this_invoice, user=request.user)
 
         if form.is_valid():
             hold_form = form.save(commit=False)
@@ -82,11 +82,11 @@ def invoice(request, invoice_id):
 
     # If invoice id == 0 render blank form
     if invoice_id == '0':
-        form = InvoiceForm()
+        form = InvoiceForm(user=request.user)
     # Else render form with invoice details
     else:
         this_invoice = Invoice.objects.get(id=invoice_id)
-        form = InvoiceForm(instance=this_invoice)
+        form = InvoiceForm(instance=this_invoice, user=request.user)
 
     template = 'invoices/invoice_form.html'
     context = {
