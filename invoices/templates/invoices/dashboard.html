@@ -37,11 +37,16 @@
                         </div>
                     </div>
                 {% else %}
-                        <p>We are glad you found something for you, thank you!  By clicking the orange button below, you will be taken to our payment partner, Stripe, to subscribe to our {{ plan_name }} plan.  Alternatively, the blue button will take you back to the pricing plans page if you want to rethink.</p>
-                        <div class="mt-4 text-center">
-                            <button type="submit" class="btn bg-orange mt-1" id="submitBtn">Subscribe</button>
-                            <a class="btn bg-blue mt-1" href="{% url 'pricing' %}">Back to Pricing</a>
+                    <div class="col-12 row">
+                        <div class="col-6">
+                            <h2>Your subscription:</h2>
+                            <a class="btn bg-orange" href="{% url 'pricing' %}">See Prices</a>
                         </div>
+                        <div class="col-6">
+                            <p class=""><strong>{{ subscription }}</strong></p>
+                            <p>You don't currently have a subscription with us.  You can still view your existing documents.</p>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
             <div class="col-12 col-lg-6">
