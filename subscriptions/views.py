@@ -159,7 +159,8 @@ def cancel(request):
             subscription,
             cancel_at_period_end=True
         )
-        return redirect('/subscriptions/')
+
+        return redirect('/invoices/')
 
     return render(request, 'subscriptions/cancel.html')
 
@@ -178,4 +179,4 @@ def reactivate(request):
 
     messages.success(request, 'Subscription reactivated successfully!')
 
-    return redirect('/subscriptions/')
+    return redirect('/invoices/')

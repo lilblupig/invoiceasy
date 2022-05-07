@@ -27,10 +27,16 @@
             <div class="col-12 col-lg-6 mb-4 subs-box">
                 {% if subscription.status == "active" %}
                     <div class="col-12 row">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <h2>Your subscription:</h2>
+                            {% if cancelled %}
+                            <p>Your subscription is cancelled and will expire on {{ subscription_end }}</p>
+                            <a class="btn bg-orange mt-1 mb-3" href="{% url 'reactivate' %}">Reactivate</a>
+                        {% else %}
+                            <a class="btn bg-blue mt-1 mb-3" href="{% url 'cancel' %}">Cancel</a>
+                        {% endif %}
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <p class=""><strong>{{ product.name }}</strong></p>
                             <p>Valid from: {{ subscription_start }}</p>
                             <p>Valid to: {{ subscription_end }}</p>

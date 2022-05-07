@@ -34,6 +34,7 @@ def dashboard(request):
         subscription_start = make_date(subscription.current_period_start)
         subscription_end = make_date(subscription.current_period_end)
         product = stripe.Product.retrieve(subscription.plan.product)
+        cancelled = subscription.cancel_at_period_end
 
         context = {
             'subscription': subscription,
@@ -43,6 +44,7 @@ def dashboard(request):
             'user': user,
             'invoices': invoices,
             'customers': customers,
+            'cancelled': cancelled,
         }
 
     # Show checkout page if not already subscribed
