@@ -21,7 +21,7 @@
             <div class="col-12">
                 <p>You can cancel your subscription with us by clicking the button below.  You will retain access to all services until the end of your current subscription period, after which you will only be able to view your customers and invoices.</p>
             </div>
-            <form id="cancel-subs" action="{% url 'cancel' %}" method="POST">
+            <form id="cancel-subs" action="{% url 'cancel' %}" method="POST" class="text-center">
                 {% csrf_token %}
                 <button class="btn bg-orange" type="submit">Cancel</button>
             </form>

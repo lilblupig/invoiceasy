@@ -4,10 +4,11 @@
 import datetime
 import stripe
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from .models import StripeCustomer
 
@@ -158,6 +159,23 @@ def cancel(request):
             subscription,
             cancel_at_period_end=True
         )
-        return render(request, 'subscriptions/subscribe.html')
+        return redirect('/subscriptions/')
 
     return render(request, 'subscriptions/cancel.html')
+
+
+@login_required()
+def reactivate(request):
+    """ Reactivate subscription if still valid """
+    stripe_customer = StripeCustomer.objects.get(user=request.user)
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    subscription = stripe_customer.stripeSubscriptionId
+
+    stripe.Subscription.modify(
+        subscription,
+        cancel_at_period_end=False
+    )
+
+    messages.success(request, 'Subscription reactivated successfully!')
+
+    return redirect('/subscriptions/')

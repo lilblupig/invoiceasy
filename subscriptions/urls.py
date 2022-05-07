@@ -11,4 +11,5 @@ urlpatterns = [
     path('abort/', views.abort),
     path('webhook/', views.stripe_webhook),
     path('cancel/', views.cancel, name='cancel'),
+    path('reactivate/', views.reactivate, name='reactivate'),
 ]

@@ -26,7 +26,11 @@
                         <p>Valid from: {{ subscription_start }}</p>
                         <p>Valid to: {{ subscription_end }}</p>
                         {% if cancelled %}
-                            <p>Your subscription will expire on {{ subscription_end }}</p>
+                            <p>Your subscription is cancelled and will expire on {{ subscription_end }}</p>
+                            <div class="reactivate text-center">
+                                <h3 class="mt-5">Changed your mind?</h3>
+                                <a class="btn bg-orange mt-1" href="{% url 'reactivate' %}">Reactivate</a>
+                            </div>
                         {% else %}
                             <a class="btn bg-blue mt-1" href="{% url 'cancel' %}">Cancel</a>
                         {% endif %}
