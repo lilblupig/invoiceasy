@@ -3,7 +3,7 @@
 import datetime
 import stripe
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from subscriptions.models import StripeCustomer
@@ -20,6 +20,7 @@ def dashboard(request):
     user = request.user
     invoices = Invoice.objects.filter(user_id__exact=user)
     customers = InvoiceCustomer.objects.filter(user_id__exact=user)
+    subscribed = StripeCustomer.objects.filter(user=user).exists()
 
     def make_date(date_value):
         """ Convert Stripe value to user friendly date """
@@ -45,6 +46,7 @@ def dashboard(request):
             'invoices': invoices,
             'customers': customers,
             'cancelled': cancelled,
+            'subscribed': subscribed,
         }
 
     # Show checkout page if not already subscribed
@@ -55,6 +57,7 @@ def dashboard(request):
             'user': user,
             'invoices': invoices,
             'customers': customers,
+            'subscribed': subscribed,
         }
 
     template = 'invoices/dashboard.html'
@@ -65,6 +68,11 @@ def dashboard(request):
 @login_required()
 def customer(request, customer_id):
     """ View to return customer form """
+
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.success(request, 'You cannot add new customers as you do not have a current subscription')
+        return redirect('/invoices/')
 
     if request.method == 'POST':
         # If customer id == 0 save new instance
@@ -99,6 +107,11 @@ def customer(request, customer_id):
 @login_required()
 def invoice(request, invoice_id):
     """ View to return invoice form """
+
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.success(request, 'You cannot add new invoices as you do not have a current subscription')
+        return redirect('/invoices/')
 
     if request.method == 'POST':
         # If invoice id == 0 save new instance

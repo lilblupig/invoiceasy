@@ -35,6 +35,11 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
     color: #a1c6ea;
 }
 
+.bg-grey {
+    background-color: #292f38;
+    color: #fff;
+}
+
 
 /* Navbar */
 
