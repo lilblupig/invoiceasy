@@ -20,9 +20,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6 mb-4">
-                <a class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</a>
-                <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
-                <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+                {% if subscribed %}
+                    <button class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</button>
+                    <button class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</button>
+                    <button class="btn bg-blue" href="{% url 'profile' %}">My Details</button>
+                {% else %}
+                    <button class="btn bg-grey" href="{% url 'invoice' 0 %}" disabled>New Invoice</button>
+                    <button class="btn bg-grey" href="{% url 'customer' 0 %}" disabled>New Customer</button>
+                    <button class="btn bg-blue" href="{% url 'profile' %}">My Details</button>
+                {% endif %}
+                
             </div>
             <div class="col-12 col-lg-6 mb-4 subs-box">
                 {% if subscription.status == "active" %}
