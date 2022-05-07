@@ -17,18 +17,20 @@ from .forms import InvoiceCustomerForm, InvoiceForm
 def dashboard(request):
     """ View to return dashboard page """
 
+    # Get user and create invoices and customers, check subscription
     user = request.user
-    invoices = Invoice.objects.filter(user_id__exact=user)
+    invoices = Invoice.objects.filter(user_id__exact=user).select_related('customer_code')
     customers = InvoiceCustomer.objects.filter(user_id__exact=user)
     subscribed = StripeCustomer.objects.filter(user=user).exists()
 
+    # Function to make Stripe date values into human date
     def make_date(date_value):
         """ Convert Stripe value to user friendly date """
         nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y')
         return nice_date
 
     try:
-        # Retrieve the subscription & product
+        # Retrieve the subscription & product for Dashboard
         stripe_customer = StripeCustomer.objects.get(user=request.user)
         stripe.api_key = settings.STRIPE_SECRET_KEY
         subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
@@ -49,7 +51,7 @@ def dashboard(request):
             'subscribed': subscribed,
         }
 
-    # Show checkout page if not already subscribed
+    # Set the subscription for Dashboard where no subs in place
     except StripeCustomer.DoesNotExist:
         subscription = 'No current subscription'
         context = {

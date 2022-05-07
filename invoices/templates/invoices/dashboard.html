@@ -75,9 +75,13 @@
                                 {{ invoice.invoice_number }}
                             </div>
                             <div class="col-5">
-                                {{ invoice.customer_code_id }}
+                                {% if invoice.customer_code.customer_business_name %}
+                                    {{ invoice.customer_code.customer_business_name }}
+                                {% else %}
+                                    {{ invoice.customer_code.customer_first_name }} {{ invoice.customer_code.customer_last_name }}
+                                {% endif %}
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 text-end">
                                 {{ invoice.invoice_subtotal }}
                             </div>
                             <div class="col-3">
