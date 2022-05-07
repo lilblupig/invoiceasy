@@ -3,7 +3,7 @@
 
 {% block extra_title %}
 {{ block.super }}
-    | Cancel Subscription
+    | Cancelled
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
             <div class="col-12 hero-text">
-                <h1>Cancel Subscription</h1>
+                <h1>Checkout Cancelled</h1>
             </div>
         </div>
     </div>
@@ -19,12 +19,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <p>You can cancel your subscription with us by clicking the button below.  You will retain access to all services until the end of your current subscription period, after which you will only be able to view your customers and invoices.</p>
+                <p>You cancelled the signup process for InvoicEasy, and so you are not subscribed.</p>
             </div>
-            <form id="cancel-subs" action="{% url 'cancel' %}" method="POST" class="text-center">
-                {% csrf_token %}
-                <button class="btn bg-orange" type="submit">Cancel</button>
-            </form>
+            <div class="col-12 text-center mt-3">
+                <a class="btn bg-blue" href="{% url 'home' %}">Home</a>
+                <a class="btn bg-blue" href="{% url 'pricing' %}">Pricing</a>
+            </div>
         </div>
     </div>
 {% endblock %}

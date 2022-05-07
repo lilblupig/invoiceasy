@@ -295,11 +295,13 @@ You can find more information on cloning a repository from GitHub [here](https:/
 Where did the website content come from?
 * [Whitenoise setup](http://whitenoise.evans.io/en/stable/django.html)
 * [Stripe Subscritptions](https://testdriven.io/blog/django-stripe-subscriptions/)
+* [Stripe Documentation](https://stripe.com/docs/billing/subscriptions/)
 * [Django contact mail article](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend)
 * [Dates conversion](https://www.tutorialspoint.com/How-to-convert-an-integer-into-a-date-object-in-Python#:~:text=You%20can%20use%20the%20fromtimestamp,object%20corresponding%20to%20the%20timestamp.)
 * [Difference between Static and Media for relative paths](https://stackoverflow.com/questions/37241902/django-joined-path-is-located-outside-of-the-base-path-component-static-img)
 * [Save user as foreign key to form](http://www.learningaboutelectronics.com/Articles/How-to-save-the-current-user-logged-in-to-a-database-table-in-Django.php)
 * [Access user in form.py](https://stackoverflow.com/questions/7299973/django-how-to-access-current-request-user-in-modelform/7300076#7300076) Clues here also from mentor Reuben Ferrante
+* Make sense of redirect/render differences [Real Python](https://realpython.com/django-redirects/)
 
 #### Media
 * The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):

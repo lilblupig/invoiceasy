@@ -4,10 +4,11 @@
 import datetime
 import stripe
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from .models import StripeCustomer
 
@@ -20,7 +21,7 @@ def subscribe(request):
 
     def make_date(date_value):
         """ Convert Stripe value to user friendly date """
-        nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y %H:%M:%S')
+        nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y')
         return nice_date
 
     try:
@@ -31,6 +32,7 @@ def subscribe(request):
         subscription_start = make_date(subscription.current_period_start)
         subscription_end = make_date(subscription.current_period_end)
         product = stripe.Product.retrieve(subscription.plan.product)
+        cancelled = subscription.cancel_at_period_end
 
         # Feel free to fetch any additional data from 'subscription' or 'product'
         # https://stripe.com/docs/api/subscriptions/object
@@ -41,6 +43,7 @@ def subscribe(request):
             'product': product,
             'subscription_start': subscription_start,
             'subscription_end': subscription_end,
+            'cancelled': cancelled,
         }
 
         return render(request, 'subscriptions/subscribe.html', context)
@@ -76,7 +79,7 @@ def create_checkout_session(request):
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
                 success_url=domain_url + 'subscriptions/success?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url=domain_url + 'subscriptions/cancel/',
+                cancel_url=domain_url + 'subscriptions/abort/',
                 payment_method_types=['card'],
                 mode='subscription',
                 line_items=[
@@ -93,14 +96,14 @@ def create_checkout_session(request):
 
 @login_required
 def success(request):
-    """ Return page for succesful subscription """
+    """ Return page for successful subscription """
     return render(request, 'subscriptions/success.html')
 
 
 @login_required
-def cancel(request):
-    """ Return page for cancelled subscription """
-    return render(request, 'subscriptions/cancel.html')
+def abort(request):
+    """ Return page for aborted subscription """
+    return render(request, 'subscriptions/abort.html')
 
 
 @csrf_exempt
@@ -142,3 +145,38 @@ def stripe_webhook(request):
         print(user.username + ' just subscribed.')
 
     return HttpResponse(status=200)
+
+
+@login_required()
+def cancel(request):
+    """ Cancel subscription effective from end of current period """
+    stripe_customer = StripeCustomer.objects.get(user=request.user)
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    subscription = stripe_customer.stripeSubscriptionId
+
+    if request.method == 'POST':
+        stripe.Subscription.modify(
+            subscription,
+            cancel_at_period_end=True
+        )
+
+        return redirect('/invoices/')
+
+    return render(request, 'subscriptions/cancel.html')
+
+
+@login_required()
+def reactivate(request):
+    """ Reactivate subscription if still valid """
+    stripe_customer = StripeCustomer.objects.get(user=request.user)
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    subscription = stripe_customer.stripeSubscriptionId
+
+    stripe.Subscription.modify(
+        subscription,
+        cancel_at_period_end=False
+    )
+
+    messages.success(request, 'Subscription reactivated successfully!')
+
+    return redirect('/invoices/')

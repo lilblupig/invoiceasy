@@ -208,6 +208,6 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_ENDPOINT_SECRET = os.environ.get('STRIPE_ENDPOINT_SECRET')
 
 if 'DEVELOPMENT' in os.environ:
-    DOMAIN_URL = 'https://8000-lilblupig-invoiceasy-1i26yyobyrv.ws-eu43.gitpod.io/'
+    DOMAIN_URL = 'https://8000-lilblupig-invoiceasy-1i26yyobyrv.ws-eu44.gitpod.io/'
 else:
     DOMAIN_URL = 'https://invoiceasy.herokuapp.com/'

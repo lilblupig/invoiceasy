@@ -1,8 +1,12 @@
 """ View information for invoicing pages """
 
-from django.shortcuts import render
+import datetime
+import stripe
+from django.conf import settings
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from subscriptions.models import StripeCustomer
 from .models import InvoiceCustomer, Invoice
 from .forms import InvoiceCustomerForm, InvoiceForm
 
@@ -13,16 +17,52 @@ from .forms import InvoiceCustomerForm, InvoiceForm
 def dashboard(request):
     """ View to return dashboard page """
 
+    # Get user and create invoices and customers, check subscription
     user = request.user
-    invoices = Invoice.objects.filter(user_id__exact=user)
+    invoices = Invoice.objects.filter(user_id__exact=user).select_related('customer_code')
     customers = InvoiceCustomer.objects.filter(user_id__exact=user)
+    subscribed = StripeCustomer.objects.filter(user=user).exists()
+
+    # Function to make Stripe date values into human date
+    def make_date(date_value):
+        """ Convert Stripe value to user friendly date """
+        nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y')
+        return nice_date
+
+    try:
+        # Retrieve the subscription & product for Dashboard
+        stripe_customer = StripeCustomer.objects.get(user=request.user)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription_start = make_date(subscription.current_period_start)
+        subscription_end = make_date(subscription.current_period_end)
+        product = stripe.Product.retrieve(subscription.plan.product)
+        cancelled = subscription.cancel_at_period_end
+
+        context = {
+            'subscription': subscription,
+            'product': product,
+            'subscription_start': subscription_start,
+            'subscription_end': subscription_end,
+            'user': user,
+            'invoices': invoices,
+            'customers': customers,
+            'cancelled': cancelled,
+            'subscribed': subscribed,
+        }
+
+    # Set the subscription for Dashboard where no subs in place
+    except StripeCustomer.DoesNotExist:
+        subscription = 'No current subscription'
+        context = {
+            'subscription': subscription,
+            'user': user,
+            'invoices': invoices,
+            'customers': customers,
+            'subscribed': subscribed,
+        }
 
     template = 'invoices/dashboard.html'
-    context = {
-        'user': user,
-        'invoices': invoices,
-        'customers': customers,
-    }
 
     return render(request, template, context)
 
@@ -30,6 +70,11 @@ def dashboard(request):
 @login_required()
 def customer(request, customer_id):
     """ View to return customer form """
+
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.success(request, 'You cannot add new customers as you do not have a current subscription')
+        return redirect('/invoices/')
 
     if request.method == 'POST':
         # If customer id == 0 save new instance
@@ -64,6 +109,11 @@ def customer(request, customer_id):
 @login_required()
 def invoice(request, invoice_id):
     """ View to return invoice form """
+
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.success(request, 'You cannot add new invoices as you do not have a current subscription')
+        return redirect('/invoices/')
 
     if request.method == 'POST':
         # If invoice id == 0 save new instance

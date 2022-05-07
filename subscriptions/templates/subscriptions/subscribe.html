@@ -20,11 +20,20 @@
         <div class="row">
             <div class="col-12">
                 {% if subscription.status == "active" %}
-                    <p>You already have a subscription with us, your subscription details are below:</p>
+                    <p>Your subscription details are below:</p>
                     <div class="col-12">
                         <h2 class="">{{ product.name }}</h2>
                         <p>Valid from: {{ subscription_start }}</p>
                         <p>Valid to: {{ subscription_end }}</p>
+                        {% if cancelled %}
+                            <p>Your subscription is cancelled and will expire on {{ subscription_end }}</p>
+                            <div class="reactivate text-center">
+                                <h3 class="mt-5">Changed your mind?</h3>
+                                <a class="btn bg-orange mt-1" href="{% url 'reactivate' %}">Reactivate</a>
+                            </div>
+                        {% else %}
+                            <a class="btn bg-blue mt-1" href="{% url 'cancel' %}">Cancel</a>
+                        {% endif %}
                     </div>
                 {% else %}
                         <p>We are glad you found something for you, thank you!  By clicking the orange button below, you will be taken to our payment partner, Stripe, to subscribe to our {{ plan_name }} plan.  Alternatively, the blue button will take you back to the pricing plans page if you want to rethink.</p>

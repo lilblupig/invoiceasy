@@ -35,6 +35,11 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
     color: #a1c6ea;
 }
 
+.bg-grey {
+    background-color: #292f38;
+    color: #fff;
+}
+
 
 /* Navbar */
 
@@ -268,6 +273,14 @@ span.navbar-toggler-icon {
 }
 .allauth-container a:hover, .allauth-container a:focus {
     color: #ff4d00;
+}
+
+/* Dashboard */
+.subs-box {
+    border: solid 1px #292f38;
+    border-radius: 5px;
+    padding-top: 1rem;
+    background-color: #bbd1ea;
 }
 
 /* Footer */
