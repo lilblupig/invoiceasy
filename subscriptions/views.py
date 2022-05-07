@@ -96,7 +96,7 @@ def create_checkout_session(request):
 
 @login_required
 def success(request):
-    """ Return page for succesful subscription """
+    """ Return page for successful subscription """
     return render(request, 'subscriptions/success.html')
 
 
