@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-
+    <!-- Hero and Header -->
     <div class="container-fluid hero-container-invoices">
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
@@ -19,29 +19,30 @@
 
     <div class="container">
         <div class="row">
+            <!-- UI buttons depending on current subs -->
             <div class="col-12 col-lg-6 mb-4">
                 {% if subscribed %}
-                    <button class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</button>
-                    <button class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</button>
-                    <button class="btn bg-blue" href="{% url 'profile' %}">My Details</button>
+                    <a class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</a>
+                    <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
+                    <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
                 {% else %}
                     <button class="btn bg-grey" href="{% url 'invoice' 0 %}" disabled>New Invoice</button>
                     <button class="btn bg-grey" href="{% url 'customer' 0 %}" disabled>New Customer</button>
                     <button class="btn bg-blue" href="{% url 'profile' %}">My Details</button>
                 {% endif %}
-                
             </div>
+            <!-- Subscription summary -->
             <div class="col-12 col-lg-6 mb-4 subs-box">
                 {% if subscription.status == "active" %}
                     <div class="col-12 row">
                         <div class="col-12 col-md-6">
                             <h2>Your subscription:</h2>
                             {% if cancelled %}
-                            <p>Your subscription is cancelled and will expire on {{ subscription_end }}</p>
-                            <a class="btn bg-orange mt-1 mb-3" href="{% url 'reactivate' %}">Reactivate</a>
-                        {% else %}
-                            <a class="btn bg-blue mt-1 mb-3" href="{% url 'cancel' %}">Cancel</a>
-                        {% endif %}
+                                <p>Your subscription is cancelled and will expire on {{ subscription_end }}</p>
+                                <a class="btn bg-orange mt-1 mb-3" href="{% url 'reactivate' %}">Reactivate</a>
+                            {% else %}
+                                <a class="btn bg-blue mt-1 mb-3" href="{% url 'cancel' %}">Cancel</a>
+                            {% endif %}
                         </div>
                         <div class="col-12 col-md-6">
                             <p class=""><strong>{{ product.name }}</strong></p>
@@ -62,6 +63,8 @@
                     </div>
                 {% endif %}
             </div>
+
+            <!-- List of invoices -->
             <div class="col-12 col-lg-6">
                 <h2>Invoice overview</h2>
                 <p>Here are your invoices</p>
@@ -88,6 +91,8 @@
                     {% endfor %}
                 </div>
             </div>
+
+            <!-- List of customers -->
             <div class="col-12 col-lg-6">
                 <h2>Customer overview</h2>
                 <p>Here are your customers</p>
