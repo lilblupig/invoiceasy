@@ -7,20 +7,91 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid hero-container-home">
-        <div class="hero-overlay-home">&nbsp;</div>
-        <div class="row">
-            <div class="col-12 hero-text">
-                <h1>View Invoice</h1>
+    <div class="container view-invoice">
+        <a class="btn btn-sm mt-3 bg-grey" href="{% url 'dashboard' %}">Back</a>
+        <div class="row pt-3">
+            <!-- Customer info -->
+            <div class="col-12 col-md-5 order-2 order-md-1 inv-customer">
+                <h2>Customer info</h2>
+            </div>
+            <div class="col-12 col-md-2 order-1 order-md-2 text-center">
+                <h1>Invoice</h1>
+            </div>
+            <!-- Subscriber info -->
+            <div class="col-12 col-md-5 order-3 text-end inv-subscriber">
+                <h2>{{ subscriber.business_name }}</h2>
+                <p>{{ subscriber.first_name }} {{ subscriber.last_name }}</p>
+                <address>{{ subscriber.address_1 }}<br>
+                    {{ subscriber.address_2 }}<br>
+                    {{ subscriber.town_or_city }}<br>
+                    {{ subscriber.county }}<br>
+                    {{ subscriber.postcode }}<br>
+                </address>
+                <p>{{ subscriber.telephone }}</p>
+                <p>{{ subscriber.email }}</p>
             </div>
         </div>
-    </div>
-
-    <div class="container">
+        <!-- Invoice codes -->
         <div class="row">
-            <div class="col-12">
-                <h2>Life is busy</h2>
-                <p>Blah blah blah.</p>
+            <div class="col-12 col-md-4 grey-border">
+                <p class="my-0">Date: (ADD DATE TO INVOICE MODEL)</p>
+            </div>
+            <div class="col-12 col-md-4 grey-border">
+                <p class="my-0">Invoice No: {{ invoice.invoice_number }}</p>
+            </div>
+            <div class="col-12 col-md-4 grey-border">
+                <p class="my-0">Customer No: </p>
+            </div>
+        </div>
+        <!-- Invoice body -->
+        <div class="row">
+            <div class="col-8 col-md-10 text-center grey-border">
+                Invoice Details
+            </div>
+            <div class="col-4 col-md-2 text-center grey-border">
+                (£)
+            </div>
+        </div>
+        <div class="row inv-info">
+            <div class="col-8 col-md-10 grey-border">
+                {{ invoice.invoice_info }}
+            </div>
+            <div class="col-4 col-md-2 text-end grey-border">
+                {{ invoice.invoice_subtotal }}
+            </div>
+        </div>
+        <!-- Invoice totals and VAT -->
+        <div class="row">
+            <div class="offset-4 offset-md-8 col-4 col-md-2 grey-border">
+                Subtotal:
+            </div>
+            <div class="col-4 col-md-2 text-end grey-border">
+                {{ invoice.invoice_subtotal }}
+            </div>
+            <div class="offset-4 offset-md-8 col-4 col-md-2 grey-border">
+                VAT:
+            </div>
+            <div class="col-4 col-md-2 text-end grey-border">
+                0.00
+            </div>
+            <div class="offset-4 offset-md-8 col-4 col-md-2 grey-border">
+                Total:
+            </div>
+            <div class="col-4 col-md-2 text-end grey-border">
+                {{ invoice.invoice_subtotal }}
+            </div>
+        </div>
+        <!-- Invoice Footer -->
+        <div class="row mt-3">
+            <div class="col-12 col-md-6 grey-border">
+                <strong>Payment Information</strong><br>
+                Account name: {{ subscriber.bank_account_name }}<br>
+                Sort code: {{ subscriber.bank_sort_code }}<br>
+                Account number: {{ subscriber.bank_account_number }}
+            </div>
+            <div class="col-12 col-md-6 grey-border">
+                VAT No: {{ subscriber.vat_number }}<br>
+                Terms: {{ subscriber.payment_terms }}
             </div>
         </div>
     </div>

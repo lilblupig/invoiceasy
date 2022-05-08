@@ -39,6 +39,15 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
     background-color: #292f38;
     color: #fff;
 }
+.bg-grey:hover {
+    color: #a1c6ea;
+}
+
+.grey-border {
+    border: solid 1px #292f38;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
 
 
 /* Navbar */
@@ -281,6 +290,14 @@ span.navbar-toggler-icon {
     border-radius: 5px;
     padding-top: 1rem;
     background-color: #bbd1ea;
+}
+
+/* View Invoice */
+.view-invoice {
+    max-width: 1000px;
+}
+.inv-info {
+    min-height: 20rem;
 }
 
 /* Footer */

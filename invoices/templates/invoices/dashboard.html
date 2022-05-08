@@ -31,6 +31,7 @@
                     <button class="btn bg-blue" href="{% url 'profile' %}">My Details</button>
                 {% endif %}
             </div>
+
             <!-- Subscription summary -->
             <div class="col-12 col-lg-6 mb-4 subs-box">
                 {% if subscription.status == "active" %}
@@ -87,6 +88,7 @@
                             <div class="col-3">
                                 {% if subscribed %}
                                     <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-blue">Edit</a>
+                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue">View</a>
                                 {% else %}
                                     <button class="btn btn-sm bg-grey" disabled>View Only</button>
                                 {% endif %}
