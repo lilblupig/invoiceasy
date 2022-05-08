@@ -28,7 +28,7 @@
                 {% else %}
                     <button class="btn bg-grey" href="{% url 'invoice' 0 %}" disabled>New Invoice</button>
                     <button class="btn bg-grey" href="{% url 'customer' 0 %}" disabled>New Customer</button>
-                    <button class="btn bg-blue" href="{% url 'profile' %}">My Details</button>
+                    <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
                 {% endif %}
             </div>
 
