@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+{{ block.super }}
+    | View Invoice
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid hero-container-home">
+        <div class="hero-overlay-home">&nbsp;</div>
+        <div class="row">
+            <div class="col-12 hero-text">
+                <h1>View Invoice</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Life is busy</h2>
+                <p>Blah blah blah.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

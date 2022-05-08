@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'profiles',
     'subscriptions',
     'invoices',
+    'documents',
 
     'crispy_forms',
     'crispy_bootstrap5',
