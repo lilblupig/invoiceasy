@@ -15,11 +15,16 @@ def view_pdf(request, invoice_id):
     user = request.user
     subscriber = get_object_or_404(UserProfile, user=user)
     invoice = Invoice.objects.get(id=invoice_id)
+    customer_id = invoice.customer_code_id
+    customer = InvoiceCustomer.objects.get(id=customer_id)
+
+    print(customer_id)
 
     context = {
         'user': user,
         'subscriber': subscriber,
         'invoice': invoice,
+        'customer': customer,
     }
 
     return render(request, 'documents/view_pdf.html', context)

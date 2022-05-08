@@ -12,7 +12,16 @@
         <div class="row pt-3">
             <!-- Customer info -->
             <div class="col-12 col-md-5 order-2 order-md-1 inv-customer">
-                <h2>Customer info</h2>
+                <h2>{{ customer.customer_business_name }}</h2>
+                <p>{{ customer.customer_first_name }} {{ customer.customer_last_name }}</p>
+                <address>{{ customer.customer_address_1 }}<br>
+                    {{ customer.customer_address_2 }}<br>
+                    {{ customer.customer_town_or_city }}<br>
+                    {{ customer.customer_county }}<br>
+                    {{ customer.customer_postcode }}<br>
+                </address>
+                <p>{{ customer.customer_telephone }}</p>
+                <p>{{ customer.customer_email }}</p>
             </div>
             <div class="col-12 col-md-2 order-1 order-md-2 text-center">
                 <h1>Invoice</h1>
@@ -40,7 +49,7 @@
                 <p class="my-0">Invoice No: {{ invoice.invoice_number }}</p>
             </div>
             <div class="col-12 col-md-4 grey-border">
-                <p class="my-0">Customer No: </p>
+                <p class="my-0">Customer No: {{ customer.customer_code }}</p>
             </div>
         </div>
         <!-- Invoice body -->

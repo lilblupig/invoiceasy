@@ -296,6 +296,9 @@ span.navbar-toggler-icon {
 .view-invoice {
     max-width: 1000px;
 }
+.view-invoice h1, .view-invoice h2 {
+    color: #292f38;
+}
 .inv-info {
     min-height: 20rem;
 }
