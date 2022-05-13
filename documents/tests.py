@@ -1,4 +1,4 @@
-""" Test information for for PDF creation pages """
+""" Test information for PDF creation pages """
 
 from django.test import TestCase
 

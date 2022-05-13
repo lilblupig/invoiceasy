@@ -1,10 +1,9 @@
-""" View information for for PDF creation pages """
+""" View information for PDF creation pages """
 
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from profiles.models import UserProfile
 from invoices.models import InvoiceCustomer, Invoice
-
 from .utils import render_to_pdf
 
 # Create your views here.

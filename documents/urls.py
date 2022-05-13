@@ -1,4 +1,4 @@
-""" URL information for for PDF creation pages """
+""" URL information for PDF creation pages """
 
 from django.urls import path
 from . import views

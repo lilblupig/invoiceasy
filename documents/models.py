@@ -1,4 +1,4 @@
-""" Model information for for PDF creation pages """
+""" Model information for PDF creation pages """
 
 from django.db import models
 

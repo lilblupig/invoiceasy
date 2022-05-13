@@ -1,9 +1,12 @@
+""" Helper for PDF creation pages """
+
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
 
 def render_to_pdf(template_src, context_dict={}):
+    """ Helper function to produce PDF view """
     template = get_template(template_src)
     html = template.render(context_dict)
     response = HttpResponse(content_type='application/pdf')
