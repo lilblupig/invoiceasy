@@ -88,7 +88,7 @@
                             <div class="col-3">
                                 {% if subscribed %}
                                     <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-blue">Edit</a>
-                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue">View</a>
+                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue" target="_blank">View</a>
                                 {% else %}
                                 <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-grey">View Only</a>
                                 {% endif %}

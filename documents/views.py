@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from profiles.models import UserProfile
 from invoices.models import InvoiceCustomer, Invoice
 
+from .utils import render_to_pdf
+
 # Create your views here.
 
 
@@ -18,8 +20,7 @@ def view_pdf(request, invoice_id):
     customer_id = invoice.customer_code_id
     customer = InvoiceCustomer.objects.get(id=customer_id)
 
-    print(customer_id)
-
+    template = "documents/view_pdf.html"
     context = {
         'user': user,
         'subscriber': subscriber,
@@ -27,4 +28,4 @@ def view_pdf(request, invoice_id):
         'customer': customer,
     }
 
-    return render(request, 'documents/view_pdf.html', context)
+    return render_to_pdf(template, context)
