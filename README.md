@@ -305,6 +305,8 @@ Where did the website content come from?
 * Make sense of redirect/render differences [Real Python](https://realpython.com/django-redirects/)
 * [Join data, but in Django](https://stackoverflow.com/questions/860941/how-to-do-this-join-query-in-django)
 * [How to make PDF tutorial](https://medium.com/nerd-for-tech/a-beginners-guide-to-generate-pdf-s-with-django-part-1-901e258f0f93)
+* [xhtml2pdf docs](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html#)
+* [Display 2 decimal places](https://stackoverflow.com/questions/23739030/restrict-django-floatfield-to-2-decimal-places)
 
 #### Media
 * The photographs used for the website were obtained from [Unsplash](https://unsplash.com/):
