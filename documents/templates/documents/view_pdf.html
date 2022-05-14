@@ -133,7 +133,7 @@
         <table id="codes">
                 <tr class="center">
                     <td>
-                        Date: (ADD DATE TO INVOICE MODEL)
+                        Date: {{ invoice.invoice_date }}
                     </td>
                     <td>
                         Invoice No: {{ invoice.invoice_number }}
@@ -159,7 +159,7 @@
                     {{ invoice.invoice_info }}
                 </td>
                 <td class="right">
-                    {{ invoice.invoice_subtotal }}
+                    {{ invoice.invoice_subtotal|floatformat:2 }}
                 </td>
             </tr>
             <!-- Invoice totals and VAT -->
@@ -168,7 +168,7 @@
                     Subtotal:
                 </td>
                 <td>
-                    {{ invoice.invoice_subtotal }}
+                    {{ invoice.invoice_subtotal|floatformat:2 }}
                 </td>
             </tr>
             <tr class="right">
@@ -176,7 +176,7 @@
                     VAT:
                 </td>
                 <td>
-                    0.00
+                    {{ invoice.invoice_vat|floatformat:2 }}
                 </td>
             </tr>
             <tr class="right">
@@ -184,7 +184,7 @@
                     Total:
                 </td>
                 <td>
-                    {{ invoice.invoice_subtotal }}
+                    {{ invoice.invoice_gross|floatformat:2 }}
                 </td>
             </tr>
         </table>

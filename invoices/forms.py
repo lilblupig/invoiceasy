@@ -37,7 +37,7 @@ class InvoiceForm(forms.ModelForm):
     class Meta:
         """ Define form fields """
         model = Invoice
-        exclude = ('user',)
+        exclude = ('user', 'invoice_vat', 'invoice_gross',)
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
@@ -46,6 +46,7 @@ class InvoiceForm(forms.ModelForm):
         self.fields["customer_code"] = forms.ModelChoiceField(queryset=customers, required=False)
         placeholders = {
             'customer_code': '',
+            'invoice_date': 'Date',
             'invoice_number': 'This should be sequential',
             'invoice_info': 'Write the invoice details here',
             'invoice_subtotal': '0.00'

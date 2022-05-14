@@ -3,9 +3,10 @@
 import datetime
 import stripe
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from profiles.models import UserProfile
 from subscriptions.models import StripeCustomer
 from .models import InvoiceCustomer, Invoice
 from .forms import InvoiceCustomerForm, InvoiceForm
@@ -126,6 +127,19 @@ def invoice(request, invoice_id):
 
         if form.is_valid():
             hold_form = form.save(commit=False)
+
+            # If VAT registered, calculate VAT and gross
+            subscriber = get_object_or_404(UserProfile, user=request.user)
+            if subscriber.vat_number:
+                vat = hold_form.invoice_subtotal * 0.2
+                gross = hold_form.invoice_subtotal + vat
+            # Otherwise set VAT to nil and gross to subtotal value
+            else:
+                vat = 0.00
+                gross = hold_form.invoice_subtotal
+
+            hold_form.invoice_vat = vat
+            hold_form.invoice_gross = gross
             hold_form.user = request.user
             hold_form.save()
             messages.success(request, 'Invoice updated successfully!')
