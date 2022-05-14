@@ -323,6 +323,8 @@ Where did the website content come from?
   * [Keys](https://unsplash.com/photos/C1P4wHhQbjM)
   * [Hola sign](https://unsplash.com/photos/8MMtYM_3xMY)
   * [Filing boxes](https://unsplash.com/photos/lRoX0shwjUQ)
+  * [Girl with Binoculars](https://unsplash.com/photos/1bhp9zBPHVE)
+  * [Broken ice cream](https://unsplash.com/photos/WtRuYJ2EPMA)
 
 * The icons used for the website are from [FlatIcon]():
   * [Monitor in Logo - created by DinosoftLabs](https://www.flaticon.com/free-icons/monitor>)

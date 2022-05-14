@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+{{ block.super }}
+    | Not Found
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid hero-container-404">
+        <div class="hero-overlay-skinny">&nbsp;</div>
+        <div class="row">
+            <div class="col-12 hero-text">
+                <h1>Not Found</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Can't find that</h2>
+                <p>We are sorry, we can't seem to find that page.  Sign in to get to the Dashboard, take a look at our prices or contact us if you can't find what you need.</p>
+            </div>
+            <div class="col-12 text-center mt-4">
+                {% if request.user.is_authenticated %}
+                    <a class="btn btn-lg bg-orange" href="{% url 'dashboard' %}">Dashboard</a>
+                {% else %}
+                    <a class="btn btn-lg bg-orange" href="{% url 'account_login' %}">Login</a>
+                {% endif %}
+                <a class="btn btn-lg bg-orange" href="{% url 'pricing' %}">Pricing</a>
+                <a class="btn btn-lg bg-orange" href="{% url 'contact' %}">Contact Us</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
