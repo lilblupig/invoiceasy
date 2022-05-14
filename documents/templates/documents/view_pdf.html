@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Obviously css should be in external stylesheets, however,
+             xhtml2pdf has limitations so styles are included here in the head -->
+            <style>
+            @page {
+                size: a4 portrait;
+                margin: 2.5cm;
+            }
+            table {
+                border: 1px solid #000;
+                font-size: 12px;
+            }
+            td, th {
+                padding: 3px 15px 0px;
+            }
+            .center {
+                text-align: center;
+            }
+            .right {
+                text-align: right;
+            }
+            #contact {
+                border: none;
+            }
+            #contact td {
+                padding: 0px 15px;
+            }
+            #contact td p {
+                padding: 5px 15px 2px;
+            }
+            #codes, #footer {
+                margin-top: 60px;
+            }
+            #codes td {
+                padding: 10px 0px 7px;
+            }
+            #inv-body .inv-info {
+                height: 350px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Table for contact details -->
+        <table id="contact">
+            <tr>
+                <th colspan="2"><h1>Invoice</h1></th>
+            </tr>
+            <tr>
+                <td>
+                    {% if customer.customer_business_name %}
+                        <h2>{{ customer.customer_business_name }}</h2>
+                    {% endif %}
+                </td>
+                <td class="right">
+                    <h2>{{ subscriber.business_name }}</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>{{ customer.customer_first_name }} {{ customer.customer_last_name }}</p>
+                </td>
+                <td class="right">
+                    <p>{{ subscriber.first_name }} {{ subscriber.last_name }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ customer.customer_address_1 }}
+                </td>
+                <td class="right">
+                    {{ subscriber.address_1 }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if customer.customer_address_2 %}
+                        {{ customer.customer_address_2 }}
+                    {% endif %}
+                </td>
+                <td class="right">
+                    {% if subscriber.address_2 %}
+                        {{ subscriber.address_2 }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ customer.customer_town_or_city }}
+                </td>
+                <td class="right">
+                    {{ subscriber.town_or_city }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ customer.customer_county }}
+                </td>
+                <td class="right">
+                    {{ subscriber.county }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ customer.customer_postcode }}
+                </td>
+                <td class="right">
+                    {{ subscriber.postcode }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if customer.customer_telephone %}
+                        <p>{{ customer.customer_telephone }}</p>
+                    {% endif %}
+                    
+                </td>
+                <td class="right">
+                    {% if subscriber.telephone %}
+                        <p>{{ subscriber.telephone }}</p>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>{{ customer.customer_email }}</p>
+                </td>
+                <td class="right">
+                    {% if subscriber.email %}
+                        <p>{{ subscriber.email }}</p>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
+        <!-- Table for invoice codes etc -->
+        <table id="codes">
+                <tr class="center">
+                    <td>
+                        Date: {{ invoice.invoice_date }}
+                    </td>
+                    <td>
+                        Invoice No: {{ invoice.invoice_number }}
+                    </td>
+                    <td>
+                        Customer No: {{ customer.customer_code }}
+                    </td>
+                </tr>
+        </table>
+
+        <!-- Invoice body -->
+        <table id="inv-body">
+            <tr>
+                <th class="center" width="70%">
+                    Invoice Details
+                </th>
+                <th class="center" width="30%">
+                    (£)
+                </th>
+            </tr>
+            <tr class="inv-info">
+                <td>
+                    {{ invoice.invoice_info }}
+                </td>
+                <td class="right">
+                    {{ invoice.invoice_subtotal|floatformat:2 }}
+                </td>
+            </tr>
+            <!-- Invoice totals and VAT -->
+            <tr class="right">
+                <td>
+                    Subtotal:
+                </td>
+                <td>
+                    {{ invoice.invoice_subtotal|floatformat:2 }}
+                </td>
+            </tr>
+            <tr class="right">
+                <td>
+                    {% if subscriber.vat_number %}
+                        VAT:
+                    {% else %}
+                        Not registered for VAT:<br>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ invoice.invoice_vat|floatformat:2 }}
+                </td>
+            </tr>
+            <tr class="right">
+                <td>
+                    Total:
+                </td>
+                <td>
+                    {{ invoice.invoice_gross|floatformat:2 }}
+                </td>
+            </tr>
+        </table>
+
+        <!-- Invoice footer -->
+        <table id="footer">
+            <tr>
+                <td>
+                    {% if subscriber.bank_account_number %}
+                        <strong>Payment Information</strong><br>
+                        Account name: {{ subscriber.bank_account_name }}<br>
+                        Sort code: {{ subscriber.bank_sort_code }}<br>
+                        Account number: {{ subscriber.bank_account_number }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if subscriber.vat_number %}
+                        <strong>VAT No:</strong> {{ subscriber.vat_number }}<br>
+                    {% else %}
+                        <strong>VAT No:</strong> We are not registered for VAT, no VAT can be claimed on this invoice.<br>
+                    {% endif %}
+                    {% if subscriber.payment_terms %}
+                        <strong>Terms:</strong> {{ subscriber.payment_terms }}
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
+    </body>
+</html>

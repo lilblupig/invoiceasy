@@ -267,6 +267,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 * [DJ Database URL](https://pypi.org/project/dj-database-url/) is used to facilitate PostgreSQL.
 * [Psycopg](https://pypi.org/project/psycopg2-binary/) is also used to facilitate PostgreSQL.
 * [SQLite3]() is used for the development database.
+* [xhtml2pdf](https://pypi.org/project/xhtml2pdf/) is used to produce the PDFs.
 
 ### **Tools**
 * [Git](https://git-scm.com/)/[GitHub](https://github.com/) was used for version control and repository storage.
@@ -302,11 +303,13 @@ Where did the website content come from?
 * [Save user as foreign key to form](http://www.learningaboutelectronics.com/Articles/How-to-save-the-current-user-logged-in-to-a-database-table-in-Django.php)
 * [Access user in form.py](https://stackoverflow.com/questions/7299973/django-how-to-access-current-request-user-in-modelform/7300076#7300076) Clues here also from mentor Reuben Ferrante
 * Make sense of redirect/render differences [Real Python](https://realpython.com/django-redirects/)
+* [Join data, but in Django](https://stackoverflow.com/questions/860941/how-to-do-this-join-query-in-django)
+* [How to make PDF tutorial](https://medium.com/nerd-for-tech/a-beginners-guide-to-generate-pdf-s-with-django-part-1-901e258f0f93)
+* [xhtml2pdf docs](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html#)
+* [Display 2 decimal places](https://stackoverflow.com/questions/23739030/restrict-django-floatfield-to-2-decimal-places)
 
 #### Media
-* The photographs used for the website were obtained from [Pexels.com](https://www.pexels.com/):
-
-* And [Unsplash](https://unsplash.com/):
+* The photographs used for the website were obtained from [Unsplash](https://unsplash.com/):
   * [Bulldog clip of papers](https://unsplash.com/photos/bSkAq6XEYyk)
   * [Artisan office](https://unsplash.com/photos/cWpgJrVgkr0)
   * [Telephone](https://unsplash.com/photos/-0xCCPIbl3M)
@@ -320,6 +323,8 @@ Where did the website content come from?
   * [Keys](https://unsplash.com/photos/C1P4wHhQbjM)
   * [Hola sign](https://unsplash.com/photos/8MMtYM_3xMY)
   * [Filing boxes](https://unsplash.com/photos/lRoX0shwjUQ)
+  * [Girl with Binoculars](https://unsplash.com/photos/1bhp9zBPHVE)
+  * [Broken ice cream](https://unsplash.com/photos/WtRuYJ2EPMA)
 
 * The icons used for the website are from [FlatIcon]():
   * [Monitor in Logo - created by DinosoftLabs](https://www.flaticon.com/free-icons/monitor>)

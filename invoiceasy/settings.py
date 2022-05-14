@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'profiles',
     'subscriptions',
     'invoices',
+    'documents',
 
     'crispy_forms',
     'crispy_bootstrap5',
@@ -94,6 +95,9 @@ TEMPLATES = [
         },
     },
 ]
+
+# For Toasts
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Config primarily for AllAuth
 AUTHENTICATION_BACKENDS = [
@@ -208,6 +212,6 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_ENDPOINT_SECRET = os.environ.get('STRIPE_ENDPOINT_SECRET')
 
 if 'DEVELOPMENT' in os.environ:
-    DOMAIN_URL = 'https://8000-lilblupig-invoiceasy-1i26yyobyrv.ws-eu44.gitpod.io/'
+    DOMAIN_URL = 'https://8000-lilblupig-invoiceasy-1i26yyobyrv.ws-eu45.gitpod.io/'
 else:
     DOMAIN_URL = 'https://invoiceasy.herokuapp.com/'

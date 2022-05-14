@@ -30,8 +30,11 @@ class Invoice(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     customer_code = models.ForeignKey(to=InvoiceCustomer, on_delete=models.CASCADE)
     invoice_number = models.CharField(max_length=20)
+    invoice_date = models.CharField(max_length=20)
     invoice_info = models.TextField()
     invoice_subtotal = models.FloatField()
+    invoice_vat = models.FloatField()
+    invoice_gross = models.FloatField()
 
     def __str__(self):
         return self.invoice_number

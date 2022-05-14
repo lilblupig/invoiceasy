@@ -11,8 +11,6 @@ class Plan(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     duration = models.IntegerField()
-    image = models.ImageField(null=True, blank=True)
-    image_alt = models.CharField(max_length=100, null=True, blank=True)
     stripe_id = models.CharField(max_length=255)
 
 
