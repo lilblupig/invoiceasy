@@ -4,7 +4,7 @@
 
 /* General font styles */
 
-h1, h2, h3, h4, .navbar-brand {
+h1, h2, h3, h4, .navbar-brand, .toast-header {
     color: #ff4d00;
     font-family: Flamenco, Verdana, sans-serif;
 }
@@ -260,6 +260,17 @@ span.navbar-toggler-icon {
 .hero-text h1 {
     font-size: 6rem;
     color: #fff;
+}
+
+/* Toasts */
+.toast {
+    z-index: 11;
+    border: 2px solid #292f38;
+    border-radius: 5px;
+}
+
+.toast-header strong {
+    font-size: 20px;
 }
 
 /* Price cards */

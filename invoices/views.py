@@ -74,7 +74,7 @@ def customer(request, customer_id):
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
-        messages.success(request, 'You cannot add new customers as you do not have a current subscription')
+        messages.info(request, 'You cannot add new customers as you do not have a current subscription')
         return redirect('/invoices/')
 
     if request.method == 'POST':
@@ -113,7 +113,7 @@ def invoice(request, invoice_id):
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
-        messages.success(request, 'You cannot add new invoices as you do not have a current subscription')
+        messages.info(request, 'You cannot add new invoices as you do not have a current subscription')
         return redirect('/invoices/')
 
     if request.method == 'POST':
