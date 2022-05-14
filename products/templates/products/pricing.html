@@ -25,11 +25,7 @@
                         {% for plan in plans %}
                         <div class="card-container col-12 col-sm-6 col-lg-4">
                             <div class="card">
-                                {% if plan.image %}
-                                    <img src="{{ plan.image.url }}" class="card-img-top" alt="{{ plan.image_alt }}">
-                                {% else %}
-                                <img src="" alt="InvoicEasy logo">
-                                {% endif %}
+                                <img src="{% static 'images/noimage.png' %}" class="card-img-top" alt="InvoicEasy logo">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ plan.name }}</h5>
                                     <p class="card-text">{{ plan.description }}</p>
