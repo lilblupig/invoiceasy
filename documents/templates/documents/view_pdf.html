@@ -5,46 +5,45 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <!-- Obviously css should be in internal stylesheets, however,
+        <!-- Obviously css should be in external stylesheets, however,
              xhtml2pdf has limitations so styles are included here in the head -->
-             <style>
-                @page {
-                    size: a4 portrait;
-                    margin: 2.5cm;
-                }
-                table {
-                    border: 1px solid #000;
-                    font-size: 12px;
-                }
-                td, th {
-                    padding: 3px 15px 0px;
-                }
-                .center {
-                    text-align: center;
-                }
-                .right {
-                    text-align: right;
-                }
-                #contact {
-                    border: none;
-                }
-                #contact td {
-                    padding: 0px 15px;
-                }
-                #contact td p {
-                    padding: 5px 15px 2px;
-                }
-                #codes, #footer {
-                    margin-top: 60px;
-                }
-                #codes td {
-                    padding: 10px 0px 7px;
-                }
-                #inv-body .inv-info {
-                    height: 350px;
-                }
-            
-            </style>
+            <style>
+            @page {
+                size: a4 portrait;
+                margin: 2.5cm;
+            }
+            table {
+                border: 1px solid #000;
+                font-size: 12px;
+            }
+            td, th {
+                padding: 3px 15px 0px;
+            }
+            .center {
+                text-align: center;
+            }
+            .right {
+                text-align: right;
+            }
+            #contact {
+                border: none;
+            }
+            #contact td {
+                padding: 0px 15px;
+            }
+            #contact td p {
+                padding: 5px 15px 2px;
+            }
+            #codes, #footer {
+                margin-top: 60px;
+            }
+            #codes td {
+                padding: 10px 0px 7px;
+            }
+            #inv-body .inv-info {
+                height: 350px;
+            }
+        </style>
     </head>
 
     <body>
@@ -81,10 +80,14 @@
             </tr>
             <tr>
                 <td>
-                    {{ customer.customer_address_2 }}
+                    {% if customer.customer_address_2 %}
+                        {{ customer.customer_address_2 }}
+                    {% endif %}
                 </td>
                 <td class="right">
-                    {{ subscriber.address_2 }}
+                    {% if subscriber.address_2 %}
+                        {{ subscriber.address_2 }}
+                    {% endif %}
                 </td>
             </tr>
             <tr>
@@ -113,10 +116,15 @@
             </tr>
             <tr>
                 <td>
-                    <p>{{ customer.customer_telephone }}</p>
+                    {% if customer.customer_telephone %}
+                        <p>{{ customer.customer_telephone }}</p>
+                    {% endif %}
+                    
                 </td>
                 <td class="right">
-                    <p>{{ subscriber.telephone }}</p>
+                    {% if subscriber.telephone %}
+                        <p>{{ subscriber.telephone }}</p>
+                    {% endif %}
                 </td>
             </tr>
             <tr>
@@ -124,7 +132,9 @@
                     <p>{{ customer.customer_email }}</p>
                 </td>
                 <td class="right">
-                    <p>{{ subscriber.email }}</p>
+                    {% if subscriber.email %}
+                        <p>{{ subscriber.email }}</p>
+                    {% endif %}
                 </td>
             </tr>
         </table>
@@ -173,7 +183,11 @@
             </tr>
             <tr class="right">
                 <td>
-                    VAT:
+                    {% if subscriber.vat_number %}
+                        VAT:
+                    {% else %}
+                        Not registered for VAT:<br>
+                    {% endif %}
                 </td>
                 <td>
                     {{ invoice.invoice_vat|floatformat:2 }}
@@ -193,14 +207,22 @@
         <table id="footer">
             <tr>
                 <td>
-                    <strong>Payment Information</strong><br>
-                    Account name: {{ subscriber.bank_account_name }}<br>
-                    Sort code: {{ subscriber.bank_sort_code }}<br>
-                    Account number: {{ subscriber.bank_account_number }}
+                    {% if subscriber.bank_account_number %}
+                        <strong>Payment Information</strong><br>
+                        Account name: {{ subscriber.bank_account_name }}<br>
+                        Sort code: {{ subscriber.bank_sort_code }}<br>
+                        Account number: {{ subscriber.bank_account_number }}
+                    {% endif %}
                 </td>
                 <td>
-                    <strong>VAT No:</strong> {{ subscriber.vat_number }}<br>
-                    <strong>Terms:</strong> {{ subscriber.payment_terms }}
+                    {% if subscriber.vat_number %}
+                        <strong>VAT No:</strong> {{ subscriber.vat_number }}<br>
+                    {% else %}
+                        <strong>VAT No:</strong> We are not registered for VAT, no VAT can be claimed on this invoice.<br>
+                    {% endif %}
+                    {% if subscriber.payment_terms %}
+                        <strong>Terms:</strong> {{ subscriber.payment_terms }}
+                    {% endif %}
                 </td>
             </tr>
         </table>
