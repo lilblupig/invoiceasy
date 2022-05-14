@@ -90,7 +90,7 @@
                                     <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-blue">Edit</a>
                                     <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue" target="_blank">View</a>
                                 {% else %}
-                                <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-grey">View Only</a>
+                                <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-grey" target="_blank">View Only</a>
                                 {% endif %}
                             </div>
                         </div>
