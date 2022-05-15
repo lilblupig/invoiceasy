@@ -164,3 +164,9 @@ def invoice(request, invoice_id):
 def delete_invoice(request, invoice_id):
     Invoice.objects.filter(id=invoice_id).delete()
     return redirect('/invoices/')
+
+
+@login_required()
+def delete_customer(request, customer_id):
+    InvoiceCustomer.objects.filter(id=customer_id).delete()
+    return redirect('/invoices/')

@@ -42,6 +42,15 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
 .bg-grey:hover {
     color: #a1c6ea;
 }
+.delete {
+    background-color: #fff;
+    border: 1px solid #292f38;
+}
+.delete:hover {
+    background-color: #ff0000;
+    border: 1px solid #ff0000;
+    color: #fff;
+}
 
 .grey-border {
     border: solid 1px #292f38;

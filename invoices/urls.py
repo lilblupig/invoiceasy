@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('customer/<customer_id>', views.customer, name='customer'),
     path('invoice/<invoice_id>', views.invoice, name='invoice'),
+    path('delete_customer/<customer_id>', views.delete_customer, name='delete_customer'),
     path('delete_invoice/<invoice_id>', views.delete_invoice, name='delete_invoice'),
 ]

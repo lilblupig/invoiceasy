@@ -103,15 +103,16 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="invoiceModalLabel{{ invoice.id }}">Delete Invoice</h5>
+                                        <h3 class="modal-title" id="invoiceModalLabel{{ invoice.id }}">Delete Invoice</h3>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <strong>Deleting this invoice is irreversible</strong>, and cannot be undone. Clicking 'Delete' below will remove the invoice permanently.
+                                        <p><strong>Deleting this invoice is irreversible</strong>, and cannot be undone. Clicking 'Delete' below will remove the invoice permanently.</p>
+                                        <p>We strongly discourage this action.</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn bg-orange" data-bs-dismiss="modal">Close</button>
-                                        <a href="{% url 'delete_invoice' invoice.id %}" class="btn bg-grey">Delete</a>
+                                        <a href="{% url 'delete_invoice' invoice.id %}" class="btn delete">Delete</a>
                                     </div>
                                 </div>
                             </div>
@@ -140,9 +141,32 @@
                             <div class="col-3">
                                 {% if subscribed %}
                                     <a href="{% url 'customer' customer.id %}" class="btn btn-sm bg-blue">Edit</a>
+                                    <button type="button" class="btn btn-sm bg-grey" data-bs-toggle="modal" data-bs-target="#customerModal{{ customer.id }}">
+                                        Delete
+                                    </button>
                                 {% else %}
                                     <button class="btn btn-sm bg-grey" disabled>N/A</button>
                                 {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Modal - Delete customer -->
+                        <div class="modal fade" id="customerModal{{ customer.id }}" tabindex="-1" aria-labelledby="customerModalLabel{{ customer.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="customerModalLabel{{ customer.id }}">Delete Customer</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Deleting this customer is irreversible</strong>, and cannot be undone. Clicking 'Delete' below will remove the customer <strong>and ALL related invoices</strong> permanently.</p>
+                                        <p>We strongly discourage this action.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn bg-orange" data-bs-dismiss="modal">Close</button>
+                                        <a href="{% url 'delete_customer' customer.id %}" class="btn delete">Delete</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
