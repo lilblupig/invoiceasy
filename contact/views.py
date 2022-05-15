@@ -1,11 +1,12 @@
 """ View information for contact page """
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 from django.conf import settings
+from profiles.models import UserProfile
 from .forms import ContactForm
 
 # Create your views here.
@@ -64,5 +65,15 @@ def contact(request):
                 return HttpResponse('Invalid header found.')
             return redirect('contact')
 
-    form = ContactForm()
+    if request.user.is_authenticated:
+        user_profile = UserProfile.objects.get(user=request.user)
+        form = ContactForm(initial={
+            'first_name': user_profile.first_name,
+            'last_name': user_profile.last_name,
+            'email': user_profile.email,
+            'telephone': user_profile.telephone,
+            })
+    else:
+        form = ContactForm()
+
     return render(request, 'contact/contact.html', {'form': form})
