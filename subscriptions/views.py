@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from profiles.models import UserProfile
 from .models import StripeCustomer
 
 # Create your views here.
@@ -75,6 +76,7 @@ def create_checkout_session(request):
         domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         plan_stripe_id = request.session.__getitem__('plan_stripe_id')
+        customer = UserProfile.objects.get(user=request.user)
         try:
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
@@ -82,6 +84,7 @@ def create_checkout_session(request):
                 cancel_url=domain_url + 'subscriptions/abort/',
                 payment_method_types=['card'],
                 mode='subscription',
+                customer_email=customer.email,
                 line_items=[
                     {
                         'price': plan_stripe_id,
