@@ -75,6 +75,7 @@
                 <h2>Invoice overview</h2>
                 <p>Here are your invoices</p>
                 <div>
+                    <hr>
                     {% for invoice in invoices %}
                         <div class="row mb-1">
                             <div class="col-2">
@@ -92,15 +93,16 @@
                             </div>
                             <div class="col-4 text-center">
                                 {% if subscribed %}
-                                    <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-grey">Edit</a>
-                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue" target="_blank">View</a>
-                                    <button type="button" class="btn btn-sm delete" data-bs-toggle="modal" data-bs-target="#invoiceModal{{ invoice.id }}">
+                                    <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm mb-1 bg-grey">Edit</a>
+                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm mb-1 bg-blue" target="_blank">View</a>
+                                    <button type="button" class="btn btn-sm mb-1 delete" data-bs-toggle="modal" data-bs-target="#invoiceModal{{ invoice.id }}">
                                         Delete
                                     </button>
                                 {% else %}
-                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-grey" target="_blank">View Only</a>
+                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm mb-1 bg-grey" target="_blank">View Only</a>
                                 {% endif %}
                             </div>
+                            <hr>
                         </div>
 
                         <!-- Modal - Delete invoice -->
@@ -130,6 +132,7 @@
             <div class="col-12 col-lg-6">
                 <h2>Customer overview</h2>
                 <p>Here are your customers</p>
+                <hr>
                 <div>
                     {% for customer in customers %}
                         <div class="row mb-1">
@@ -145,14 +148,15 @@
                             </div>
                             <div class="col-3 text-center">
                                 {% if subscribed %}
-                                    <a href="{% url 'customer' customer.id %}" class="btn btn-sm bg-grey">Edit</a>
-                                    <button type="button" class="btn btn-sm delete" data-bs-toggle="modal" data-bs-target="#customerModal{{ customer.id }}">
+                                    <a href="{% url 'customer' customer.id %}" class="btn btn-sm mb-1 bg-grey">Edit</a>
+                                    <button type="button" class="btn btn-sm mb-1 delete" data-bs-toggle="modal" data-bs-target="#customerModal{{ customer.id }}">
                                         Delete
                                     </button>
                                 {% else %}
-                                    <button class="btn btn-sm bg-grey" disabled>N/A</button>
+                                    <button class="btn btn-sm mb-1 bg-grey" disabled>N/A</button>
                                 {% endif %}
                             </div>
+                            <hr>
                         </div>
 
                         <!-- Modal - Delete customer -->
