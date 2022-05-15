@@ -24,6 +24,9 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
 /* Colours */
 .bg-orange {
     background-color: #ff4d00;
+    color: #000;
+}
+.bg-orange:hover {
     color: #fff;
 }
 
