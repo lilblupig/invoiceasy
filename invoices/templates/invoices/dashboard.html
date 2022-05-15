@@ -90,11 +90,11 @@
                             <div class="col-2 text-end">
                                 {{ invoice.invoice_gross|floatformat:2 }}
                             </div>
-                            <div class="col-4">
+                            <div class="col-4 text-center">
                                 {% if subscribed %}
-                                    <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-blue">Edit</a>
+                                    <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-grey">Edit</a>
                                     <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue" target="_blank">View</a>
-                                    <button type="button" class="btn btn-sm bg-grey" data-bs-toggle="modal" data-bs-target="#invoiceModal{{ invoice.id }}">
+                                    <button type="button" class="btn btn-sm delete" data-bs-toggle="modal" data-bs-target="#invoiceModal{{ invoice.id }}">
                                         Delete
                                     </button>
                                 {% else %}
@@ -143,10 +143,10 @@
                                     {{ customer.customer_first_name }} {{ customer.customer_last_name }}
                                 {% endif %}
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 text-center">
                                 {% if subscribed %}
-                                    <a href="{% url 'customer' customer.id %}" class="btn btn-sm bg-blue">Edit</a>
-                                    <button type="button" class="btn btn-sm bg-grey" data-bs-toggle="modal" data-bs-target="#customerModal{{ customer.id }}">
+                                    <a href="{% url 'customer' customer.id %}" class="btn btn-sm bg-grey">Edit</a>
+                                    <button type="button" class="btn btn-sm delete" data-bs-toggle="modal" data-bs-target="#customerModal{{ customer.id }}">
                                         Delete
                                     </button>
                                 {% else %}
