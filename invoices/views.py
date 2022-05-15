@@ -158,3 +158,9 @@ def invoice(request, invoice_id):
         'invoice_id': invoice_id,
     }
     return render(request, template, context)
+
+
+@login_required()
+def delete_invoice(request, invoice_id):
+    Invoice.objects.filter(id=invoice_id).delete()
+    return redirect('/invoices/')

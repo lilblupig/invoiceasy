@@ -75,7 +75,7 @@
                             <div class="col-2">
                                 {{ invoice.invoice_number }}
                             </div>
-                            <div class="col-5">
+                            <div class="col-4">
                                 {% if invoice.customer_code.customer_business_name %}
                                     {{ invoice.customer_code.customer_business_name }}
                                 {% else %}
@@ -85,13 +85,35 @@
                             <div class="col-2 text-end">
                                 {{ invoice.invoice_gross|floatformat:2 }}
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 {% if subscribed %}
                                     <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-blue">Edit</a>
                                     <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue" target="_blank">View</a>
+                                    <button type="button" class="btn btn-sm bg-grey" data-bs-toggle="modal" data-bs-target="#invoiceModal{{ invoice.id }}">
+                                        Delete
+                                    </button>
                                 {% else %}
-                                <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-grey" target="_blank">View Only</a>
+                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-grey" target="_blank">View Only</a>
                                 {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Modal - Delete invoice -->
+                        <div class="modal fade" id="invoiceModal{{ invoice.id }}" tabindex="-1" aria-labelledby="invoiceModalLabel{{ invoice.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="invoiceModalLabel{{ invoice.id }}">Delete Invoice</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <strong>Deleting this invoice is irreversible</strong>, and cannot be undone. Clicking 'Delete' below will remove the invoice permanently.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn bg-orange" data-bs-dismiss="modal">Close</button>
+                                        <a href="{% url 'delete_invoice' invoice.id %}" class="btn bg-grey">Delete</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -128,4 +150,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}
