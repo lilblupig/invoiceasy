@@ -6,6 +6,11 @@
     | Profile
 {% endblock %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Update your business and contact info here."/>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid hero-container-invoices">
     <div class="hero-overlay-skinny">&nbsp;</div>

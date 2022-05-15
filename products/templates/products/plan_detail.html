@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="See plan details for our easy, no nonsense invoicing service aimed at the small or micro business."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Plan Detail
@@ -22,10 +27,10 @@
                 <p>Find out more about our {{ plan.name }} plan below.  It's important that you find the right deal for you so feel free to browse until you are ready.</p>
                 <div class="row">
                     <div class="col-12 col-sm-6 offset-lg-1 col-lg-5 offset-xl-2 col-xl-4">
-                        <img src="{% static 'images/noimage.png' %}" alt="InvoicEasy logo">
+                        <img class="pricing-img" src="{% static 'images/noimage.png' %}" alt="InvoicEasy logo">
                     </div>
                     <div class="col-12 col-sm-6">
-                        <h5 class="">{{ plan.name }}</h5>
+                        <h2 class="">{{ plan.name }}</h2>
                         <p>£{{ plan.price }} per month</p>
                         <p class="">{{ plan.description }}</p>
                         <a href="{% url 'subscribe' %}" class="btn bg-orange">Choose this Plan</a>

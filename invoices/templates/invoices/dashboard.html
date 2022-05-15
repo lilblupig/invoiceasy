@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Everything you need to invoice, all in one place."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Invoices
@@ -23,12 +28,12 @@
             <div class="col-12 col-lg-6 mb-4">
                 {% if subscribed %}
                     <a class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</a>
-                    <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
-                    <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+                    <a class="btn bg-orange" href="{% url 'customer' 0 %}">New Customer</a>
+                    <a class="btn bg-grey" href="{% url 'profile' %}">My Details</a>
                 {% else %}
                     <button class="btn bg-grey" href="{% url 'invoice' 0 %}" disabled>New Invoice</button>
                     <button class="btn bg-grey" href="{% url 'customer' 0 %}" disabled>New Customer</button>
-                    <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+                    <a class="btn bg-grey" href="{% url 'profile' %}">My Details</a>
                 {% endif %}
             </div>
 
@@ -42,7 +47,7 @@
                                 <p>Your subscription is cancelled and will expire on {{ subscription_end }}</p>
                                 <a class="btn bg-orange mt-1 mb-3" href="{% url 'reactivate' %}">Reactivate</a>
                             {% else %}
-                                <a class="btn bg-blue mt-1 mb-3" href="{% url 'cancel' %}">Cancel</a>
+                                <a class="btn bg-grey mt-1 mb-3" href="{% url 'cancel' %}">Cancel</a>
                             {% endif %}
                         </div>
                         <div class="col-12 col-md-6">

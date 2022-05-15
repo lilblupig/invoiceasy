@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="See prices for our easy, no nonsense invoicing service aimed at the small or micro business."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Pricing
@@ -27,11 +32,11 @@
                             <div class="card">
                                 <img src="{% static 'images/noimage.png' %}" class="card-img-top" alt="InvoicEasy logo">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ plan.name }}</h5>
+                                    <h2 class="card-title">{{ plan.name }}</h2>
                                     <p class="card-text">{{ plan.description }}</p>
                                     <p>£{{ plan.price }}</p>
                                     <div class="text-center">
-                                        <a href="{% url 'plan_detail' plan.id %}" class="btn bg-orange">More information</a>
+                                        <a href="{% url 'plan_detail' plan.id %}" class="btn bg-orange">About this plan</a>
                                     </div>
                                 </div>
                             </div>

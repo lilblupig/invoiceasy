@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Learn a little about who and what is behind InvoicEasy."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | About

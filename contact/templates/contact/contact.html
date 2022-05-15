@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Have a question about InvoicEasy? Get in touch."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Contact

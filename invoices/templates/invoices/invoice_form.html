@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Manage your invoice information here."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Invoice
@@ -20,9 +25,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 mb-4">
-                <a class="btn bg-blue" href="{% url 'dashboard' %}">Dashboard</a>
-                <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
-                <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+                <a class="btn bg-grey" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="btn bg-orange" href="{% url 'customer' 0 %}">New Customer</a>
+                <a class="btn bg-grey" href="{% url 'profile' %}">My Details</a>
             </div>
             <div class="col-12">
                 {% if invoice_id == '0' %}

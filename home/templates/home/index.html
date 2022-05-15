@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Spend less time and money invoicing using our dedicated, small business centered service."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Home
