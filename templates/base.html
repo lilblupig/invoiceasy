@@ -24,7 +24,7 @@
             <!-- Need to fix up accessibility re adding "active" class to <a> tag and aria-current="page" attribute with jQuery -->
             <nav class="navbar fixed-top navbar-expand-lg">
                 <div class="container-fluid">
-                <a class="navbar-brand" href="#">InvoicEasy</a>
+                <a class="navbar-brand" href="{% url 'home' %}">InvoicEasy</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -93,11 +93,11 @@
                 <div class="container-fluid gx-0">
                     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 px-3 mt-4 border-top">
                         <p class="col-12 col-md-4 mb-0">Copyright lilblupig April 2022</p>
-                        <a href="" class="d-none d-md-inline-block col-md-4 d-flex align-items-center mb-3 mb-md-0 me-md-auto text-center text-decoration-none">
+                        <a href="{% url 'home' %}" class="d-none d-md-inline-block col-md-4 d-flex align-items-center mb-3 mb-md-0 me-md-auto text-center text-decoration-none">
                             <h2>InvoicEasy</h2>
                         </a>
                         <ul class="nav col-12 col-md-4 justify-content-end">
-                            <li class="nav-item"><a href="" class="nav-link px-2">Pricing</a></li>
+                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2">Pricing</a></li>
                             <li class="nav-item"><a href="{% url 'about' %}" class="nav-link px-2">About</a></li>
                             <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link px-2">Contact</a></li>
                         </ul>
