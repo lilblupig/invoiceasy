@@ -329,6 +329,10 @@ span.navbar-toggler-icon {
     min-height: 80px;
 }
 
+.pricing-img {
+    width: 100%;
+}
+
 /* Allauth template restyling */
 .allauth-container a {
     color: #3b66a2;
