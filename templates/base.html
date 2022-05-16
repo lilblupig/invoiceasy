@@ -21,7 +21,6 @@
 
     <body>
         <div id="page-container">
-            <!-- Need to fix up accessibility re adding "active" class to <a> tag and aria-current="page" attribute with jQuery -->
             <nav class="navbar fixed-top navbar-expand-lg">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{% url 'home' %}">InvoicEasy</a>
@@ -31,13 +30,13 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                <a class="nav-link {% ifequal request.path '/' %}active{% endifequal%}" href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'about' %}">About</a>
+                                <a class="nav-link {% ifequal request.path '/about/' %}active{% endifequal%}" href="{% url 'about' %}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+                                <a class="nav-link {% ifequal request.path '/products/' %}active{% endifequal%}" href="{% url 'pricing' %}">Pricing</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,7 +54,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                                <a class="nav-link {% ifequal request.path '/contact/' %}active{% endifequal%}" href="{% url 'contact' %}">Contact</a>
                             </li>
                         </ul>
                         <span class="navbar-text">Signed in as {{ request.user }}</span>
