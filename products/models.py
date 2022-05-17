@@ -13,7 +13,6 @@ class Plan(models.Model):
     duration = models.IntegerField()
     stripe_id = models.CharField(max_length=255)
 
-
     def __str__(self):
         """ Return name of plan """
         return self.name

@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Hero image/header -->
     <div class="container-fluid hero-container-plan-details">
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
@@ -23,8 +24,10 @@
 
     <div class="container">
         <div class="row">
+            <!-- Pull through and expand on details for specific plan -->
             <div class="col-12">
-                <p>Find out more about our {{ plan.name }} plan below.  It's important that you find the right deal for you so feel free to browse until you are ready.</p>
+                <p>Find out more about our {{ plan.name }} plan below. It's important that you find the right deal for
+                    you so feel free to browse until you are ready.</p>
                 <div class="row">
                     <div class="col-12 col-sm-6 offset-lg-1 col-lg-5 offset-xl-2 col-xl-4">
                         <img class="pricing-img" src="{% static 'images/noimage.png' %}" alt="InvoicEasy logo">
@@ -37,7 +40,8 @@
                     </div>
                     <div class="col-12 mt-5">
                         <h3>Full info:</h3>
-                        <p>At this time, our plans are exactly the same.  We give you a chunky discount for committing to us for 3 months and paying in advance.  Everything else is the same.</p>
+                        <p>At this time, our plans are exactly the same. We give you a chunky discount for committing to
+                            us for 3 months and paying in advance. Everything else is the same.</p>
                         <ul>
                             <li>Unlimited customers</li>
                             <li>Unlimited invoices</li>

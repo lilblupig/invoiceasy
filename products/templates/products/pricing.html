@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Hero image/header -->
     <div class="container-fluid hero-container-pricing">
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
@@ -24,8 +25,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <p>At the moment we have two plans, and we are working on getting a free trial period setup.  If you aren't sure yet that we are for you, keep checking back.</p>
+                <p>At the moment we have two plans, and we are working on getting a free trial period setup. If you
+                    aren't sure yet that we are for you, keep checking back.</p>
                 <div class="row">
+                    <!-- If there are Plans set up, loop through each and create cards -->
                     {% if plans %}
                         {% for plan in plans %}
                         <div class="card-container col-12 col-sm-6 col-lg-4">
@@ -42,6 +45,7 @@
                             </div>
                         </div>
                         {% endfor %}
+                    <!-- If no Plans available, show placeholder text -->
                     {% else %}
                         <p>Maybe we don't have any plans, doesn't seem like we are sure.  Check back later!</p>
                     {% endif %}
