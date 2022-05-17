@@ -1,6 +1,6 @@
 """ View information for PDF creation pages """
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from profiles.models import UserProfile
 from invoices.models import InvoiceCustomer, Invoice
@@ -12,9 +12,10 @@ from .utils import render_to_pdf
 @login_required()
 def view_pdf(request, invoice_id):
     """ View to return overview of invoice """
-
+    # Get user information and profile
     user = request.user
     subscriber = get_object_or_404(UserProfile, user=user)
+    # Get invoice and customer information
     invoice = Invoice.objects.get(id=invoice_id)
     customer_id = invoice.customer_code_id
     customer = InvoiceCustomer.objects.get(id=customer_id)

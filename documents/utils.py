@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
+# Taken primarily from xhtml2pdf documentation
+
 
 def render_to_pdf(template_src, context_dict={}):
     """ Helper function to produce PDF view """
