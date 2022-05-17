@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-
+    <!-- Hero image/header -->
     <div class="container-fluid hero-container-invoices">
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
@@ -22,14 +22,17 @@
         </div>
     </div>
 
+    <!-- Form to add new/edit existing Invoice -->
     <div class="container">
         <div class="row">
+            <!-- UI buttons -->
             <div class="col-12 mb-4">
                 <a class="btn bg-grey" href="{% url 'dashboard' %}">Dashboard</a>
                 <a class="btn bg-orange" href="{% url 'customer' 0 %}">New Customer</a>
                 <a class="btn bg-grey" href="{% url 'profile' %}">My Details</a>
             </div>
             <div class="col-12">
+                <!-- Use invoice id to determine new/edit text -->
                 {% if invoice_id == '0' %}
                     <h2>New Invoice</h2>
                     <p>Please complete the form below for your new invoice.</p>
@@ -38,6 +41,7 @@
                     <p>Please update the details below for your existing invoice.</p>
                 {% endif %}
 
+                <!-- Form -->
                 <form id="invoice-form" action="{% url 'invoice' invoice_id %}" method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
