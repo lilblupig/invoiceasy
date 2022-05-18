@@ -12,23 +12,28 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid hero-container-invoices">
-    <div class="hero-overlay-skinny">&nbsp;</div>
-    <div class="row">
-        <div class="col-12 hero-text">
-            <h1>Profile</h1>
+    <!-- Hero image/header -->
+    <div class="container-fluid hero-container-invoices">
+        <div class="hero-overlay-skinny">&nbsp;</div>
+        <div class="row">
+            <div class="col-12 hero-text">
+                <h1>Profile</h1>
+            </div>
         </div>
     </div>
-</div>
 
+    
     <div class="container">
         <div class="row">
+            <!-- UI buttons -->
             <div class="col-12 col-lg-6 mb-4">
                 <a class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</a>
                 <a class="btn bg-orange" href="{% url 'customer' 0 %}">New Customer</a>
                 <a class="btn bg-grey" href="{% url 'dashboard' %}">Dashboard</a>
             </div>
-            <div class="col-12">
+
+            <!-- Form -->
+            <div class="col-12 offset-md-2 col-md-8">
                 <p>This area holds the information about your business which will be included on your invoices, make sure to keep it up to date.</p>
                 <form id="profile-update-form" action="{% url 'profile' %}" method="POST">
                     {% csrf_token %}
