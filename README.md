@@ -307,6 +307,7 @@ Where did the website content come from?
 * [How to make PDF tutorial](https://medium.com/nerd-for-tech/a-beginners-guide-to-generate-pdf-s-with-django-part-1-901e258f0f93)
 * [xhtml2pdf docs](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html#)
 * [Display 2 decimal places](https://stackoverflow.com/questions/23739030/restrict-django-floatfield-to-2-decimal-places)
+* [Active nav items](https://stackoverflow.com/questions/25044370/make-clicked-tab-active-in-bootstrap)
 
 #### Media
 * The photographs used for the website were obtained from [Unsplash](https://unsplash.com/):

@@ -33,4 +33,6 @@ class UserProfileForm(forms.ModelForm):
 
         self.fields['first_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholders[
+                                                                field
+                                                            ]

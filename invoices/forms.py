@@ -29,7 +29,9 @@ class InvoiceCustomerForm(forms.ModelForm):
 
         self.fields['customer_code'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholders[
+                field
+            ]
 
 
 class InvoiceForm(forms.ModelForm):
@@ -43,7 +45,9 @@ class InvoiceForm(forms.ModelForm):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         customers = InvoiceCustomer.objects.filter(user_id__exact=user)
-        self.fields["customer_code"] = forms.ModelChoiceField(queryset=customers, required=False)
+        self.fields["customer_code"] = forms.ModelChoiceField(
+            queryset=customers, required=False
+        )
         placeholders = {
             'customer_code': '',
             'invoice_date': 'Date',
@@ -54,4 +58,6 @@ class InvoiceForm(forms.ModelForm):
 
         self.fields['customer_code'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholders[
+                field
+            ]

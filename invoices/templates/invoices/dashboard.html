@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Everything you need to invoice, all in one place."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Invoices
@@ -8,7 +13,7 @@
 
 {% block content %}
     <!-- Hero and Header -->
-    <div class="container-fluid hero-container-invoices">
+    <div class="container-fluid hero-container hero-invoices">
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
             <div class="col-12 hero-text">
@@ -23,12 +28,12 @@
             <div class="col-12 col-lg-6 mb-4">
                 {% if subscribed %}
                     <a class="btn bg-orange" href="{% url 'invoice' 0 %}">New Invoice</a>
-                    <a class="btn bg-blue" href="{% url 'customer' 0 %}">New Customer</a>
-                    <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+                    <a class="btn bg-orange" href="{% url 'customer' 0 %}">New Customer</a>
+                    <a class="btn bg-grey" href="{% url 'profile' %}">My Details</a>
                 {% else %}
                     <button class="btn bg-grey" href="{% url 'invoice' 0 %}" disabled>New Invoice</button>
                     <button class="btn bg-grey" href="{% url 'customer' 0 %}" disabled>New Customer</button>
-                    <a class="btn bg-blue" href="{% url 'profile' %}">My Details</a>
+                    <a class="btn bg-grey" href="{% url 'profile' %}">My Details</a>
                 {% endif %}
             </div>
 
@@ -42,7 +47,7 @@
                                 <p>Your subscription is cancelled and will expire on {{ subscription_end }}</p>
                                 <a class="btn bg-orange mt-1 mb-3" href="{% url 'reactivate' %}">Reactivate</a>
                             {% else %}
-                                <a class="btn bg-blue mt-1 mb-3" href="{% url 'cancel' %}">Cancel</a>
+                                <a class="btn bg-grey mt-1 mb-3" href="{% url 'cancel' %}">Cancel</a>
                             {% endif %}
                         </div>
                         <div class="col-12 col-md-6">
@@ -70,12 +75,13 @@
                 <h2>Invoice overview</h2>
                 <p>Here are your invoices</p>
                 <div>
+                    <hr>
                     {% for invoice in invoices %}
                         <div class="row mb-1">
                             <div class="col-2">
                                 {{ invoice.invoice_number }}
                             </div>
-                            <div class="col-5">
+                            <div class="col-4">
                                 {% if invoice.customer_code.customer_business_name %}
                                     {{ invoice.customer_code.customer_business_name }}
                                 {% else %}
@@ -85,13 +91,37 @@
                             <div class="col-2 text-end">
                                 {{ invoice.invoice_gross|floatformat:2 }}
                             </div>
-                            <div class="col-3">
+                            <div class="col-4 text-center">
                                 {% if subscribed %}
-                                    <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm bg-blue">Edit</a>
-                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-blue" target="_blank">View</a>
+                                    <a href="{% url 'invoice' invoice.id %}" class="btn btn-sm mb-1 bg-grey">Edit</a>
+                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm mb-1 bg-blue" target="_blank">View</a>
+                                    <button type="button" class="btn btn-sm mb-1 delete" data-bs-toggle="modal" data-bs-target="#invoiceModal{{ invoice.id }}">
+                                        Delete
+                                    </button>
                                 {% else %}
-                                <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm bg-grey" target="_blank">View Only</a>
+                                    <a href="{% url 'view_pdf' invoice.id %}" class="btn btn-sm mb-1 bg-grey" target="_blank">View Only</a>
                                 {% endif %}
+                            </div>
+                            <hr>
+                        </div>
+
+                        <!-- Modal - Delete invoice -->
+                        <div class="modal fade" id="invoiceModal{{ invoice.id }}" tabindex="-1" aria-labelledby="invoiceModalLabel{{ invoice.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="invoiceModalLabel{{ invoice.id }}">Delete Invoice</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Deleting this invoice is irreversible</strong>, and cannot be undone. Clicking 'Delete' below will remove the invoice permanently.</p>
+                                        <p>We strongly discourage this action.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn bg-orange" data-bs-dismiss="modal">Close</button>
+                                        <a href="{% url 'delete_invoice' invoice.id %}" class="btn delete">Delete</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -102,6 +132,7 @@
             <div class="col-12 col-lg-6">
                 <h2>Customer overview</h2>
                 <p>Here are your customers</p>
+                <hr>
                 <div>
                     {% for customer in customers %}
                         <div class="row mb-1">
@@ -115,12 +146,36 @@
                                     {{ customer.customer_first_name }} {{ customer.customer_last_name }}
                                 {% endif %}
                             </div>
-                            <div class="col-3">
+                            <div class="col-3 text-center">
                                 {% if subscribed %}
-                                    <a href="{% url 'customer' customer.id %}" class="btn btn-sm bg-blue">Edit</a>
+                                    <a href="{% url 'customer' customer.id %}" class="btn btn-sm mb-1 bg-grey">Edit</a>
+                                    <button type="button" class="btn btn-sm mb-1 delete" data-bs-toggle="modal" data-bs-target="#customerModal{{ customer.id }}">
+                                        Delete
+                                    </button>
                                 {% else %}
-                                    <button class="btn btn-sm bg-grey" disabled>N/A</button>
+                                    <button class="btn btn-sm mb-1 bg-grey" disabled>N/A</button>
                                 {% endif %}
+                            </div>
+                            <hr>
+                        </div>
+
+                        <!-- Modal - Delete customer -->
+                        <div class="modal fade" id="customerModal{{ customer.id }}" tabindex="-1" aria-labelledby="customerModalLabel{{ customer.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="customerModalLabel{{ customer.id }}">Delete Customer</h3>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Deleting this customer is irreversible</strong>, and cannot be undone. Clicking 'Delete' below will remove the customer <strong>and ALL related invoices</strong> permanently.</p>
+                                        <p>We strongly discourage this action.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn bg-orange" data-bs-dismiss="modal">Close</button>
+                                        <a href="{% url 'delete_customer' customer.id %}" class="btn delete">Delete</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -128,4 +183,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}

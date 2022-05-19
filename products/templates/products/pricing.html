@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="See prices for our easy, no nonsense invoicing service aimed at the small or micro business."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Pricing
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid hero-container-pricing">
+    <!-- Hero image/header -->
+    <div class="container-fluid hero-container hero-pricing">
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
             <div class="col-12 hero-text">
@@ -19,24 +25,27 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <p>At the moment we have two plans, and we are working on getting a free trial period setup.  If you aren't sure yet that we are for you, keep checking back.</p>
+                <p>At the moment we have two plans, and we are working on getting a free trial period setup. If you
+                    aren't sure yet that we are for you, keep checking back.</p>
                 <div class="row">
+                    <!-- If there are Plans set up, loop through each and create cards -->
                     {% if plans %}
                         {% for plan in plans %}
                         <div class="card-container col-12 col-sm-6 col-lg-4">
                             <div class="card">
                                 <img src="{% static 'images/noimage.png' %}" class="card-img-top" alt="InvoicEasy logo">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ plan.name }}</h5>
+                                    <h2 class="card-title">{{ plan.name }}</h2>
                                     <p class="card-text">{{ plan.description }}</p>
                                     <p>£{{ plan.price }}</p>
                                     <div class="text-center">
-                                        <a href="{% url 'plan_detail' plan.id %}" class="btn bg-orange">More information</a>
+                                        <a href="{% url 'plan_detail' plan.id %}" class="btn bg-orange">About this plan</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
+                    <!-- If no Plans available, show placeholder text -->
                     {% else %}
                         <p>Maybe we don't have any plans, doesn't seem like we are sure.  Check back later!</p>
                     {% endif %}

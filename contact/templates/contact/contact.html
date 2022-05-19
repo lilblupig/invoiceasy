@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Have a question about InvoicEasy? Get in touch."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Contact
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid hero-container-contact">
+    <!-- Hero image/header -->
+    <div class="container-fluid hero-container hero-contact">
         <div class="hero-overlay-skinny">&nbsp;</div>
         <div class="row">
             <div class="col-12 hero-text">
@@ -15,10 +21,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Form and intro -->
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6">
-                <p>Stuck with something?  Have a question?  Send us a message:</p>
+            <h2>Stuck with something?  Have a question?  Send us a message:</h2>
+            <div class="col-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <form id="contact-form" action="{% url 'contact' %}" method="post">
                     {% csrf_token %}
                     {{ form|crispy }}

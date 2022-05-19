@@ -4,7 +4,7 @@
 
 /* General font styles */
 
-h1, h2, h3, h4, .navbar-brand, .toast-header {
+h1, h2, h3, h4, h5, .navbar-brand, .toast-header {
     color: #ff4d00;
     font-family: Flamenco, Verdana, sans-serif;
 }
@@ -24,6 +24,9 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
 /* Colours */
 .bg-orange {
     background-color: #ff4d00;
+    color: #000;
+}
+.bg-orange:hover {
     color: #fff;
 }
 
@@ -41,6 +44,15 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
 }
 .bg-grey:hover {
     color: #a1c6ea;
+}
+.delete {
+    background-color: #fff;
+    border: 1px solid #292f38;
+}
+.delete:hover {
+    background-color: #ff0000;
+    border: 1px solid #ff0000;
+    color: #fff;
 }
 
 .grey-border {
@@ -66,6 +78,16 @@ a.navbar-brand {
 
 span.navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+a.nav-link.active {
+    text-decoration: overline;
+}
+
+span.navbar-text {
+    color: #ff4d00;
+    font-size: 24px;
+    font-family: Flamenco, Verdana, sans-serif;
 }
 
 
@@ -94,176 +116,68 @@ span.navbar-toggler-icon {
     position: absolute;
 }
 
-.hero-container-about {
-    height: 30vh;
-
+.hero-about {
     background: url("../images/hero-about.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-pricing {
-    height: 30vh;
-
+.hero-pricing {
     background: url("../images/hero-pricing.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-plan-details {
-    height: 30vh;
-
+.hero-plan-details {
     background: url("../images/hero-plan-details.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-contact {
-    height: 30vh;
-
+.hero-contact {
     background: url("../images/hero-contact.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-subscribe {
-    height: 30vh;
-
+.hero-subscribe {
     background: url("../images/hero-subscribe.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-invoices {
-    height: 30vh;
-
+.hero-invoices {
     background: url("../images/hero-invoices.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-login {
-    height: 30vh;
-
+.hero-login {
     background: url("../images/hero-login.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-logout {
-    height: 30vh;
-
+.hero-logout {
     background: url("../images/hero-logout.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-register {
-    height: 30vh;
-
+.hero-register {
     background: url("../images/hero-register.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-allauth {
-    height: 30vh;
-
+.hero-allauth {
     background: url("../images/hero-allauth.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-404 {
-    height: 30vh;
-
+.hero-404 {
     background: url("../images/hero-404.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-500 {
-    height: 30vh;
-
+.hero-500 {
     background: url("../images/hero-500.jpg") no-repeat center center;
     background-size: cover;
+}
+
+.hero-container {
+    height: 30vh;
 
     display: flex;
     align-items: center;
@@ -292,6 +206,18 @@ span.navbar-toggler-icon {
     color: #fff;
 }
 
+@media only screen and (max-width: 600px) {
+    .hero-text h1 {
+        font-size: 4rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .hero-text h1 {
+        font-size: 3.5rem;
+    }
+}
+
 /* Toasts */
 .toast {
     z-index: 11;
@@ -317,6 +243,10 @@ span.navbar-toggler-icon {
     min-height: 80px;
 }
 
+.pricing-img {
+    width: 100%;
+}
+
 /* Allauth template restyling */
 .allauth-container a {
     color: #3b66a2;
@@ -330,7 +260,6 @@ span.navbar-toggler-icon {
     border: solid 1px #292f38;
     border-radius: 5px;
     padding-top: 1rem;
-    background-color: #bbd1ea;
 }
 
 /* View Invoice */

@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+{{ block.super }}
+    <meta name="description" content="Spend less time and money invoicing using our dedicated, small business centered service."/>
+{% endblock %}
+
 {% block extra_title %}
 {{ block.super }}
     | Home
 {% endblock %}
 
 {% block content %}
+    <!-- Hero image/header -->
     <div class="container-fluid hero-container-home">
         <div class="hero-overlay-home">&nbsp;</div>
         <div class="row">
@@ -16,22 +22,34 @@
         </div>
     </div>
 
+    <!-- Page container -->
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h2>Life is busy</h2>
-                <p>It's hard enough to try and fit business into your life, knowing that what you are doing enables you to work to live.  Trying to pack in a ton of admin for billing and postage doesn't help, and it isn't what you want to be doing either.  Then you need to find a postbox too, those are rapidly disappearing!  A necessary evil but one which takes time you could be spending on other things, and consumes funds you really need for more interesting things.</p>
+                <p>It's hard enough to try and fit business into your life, knowing that what you are doing enables you
+                    to work to live. Trying to pack in a ton of admin for billing and postage doesn't help, and it isn't
+                    what you want to be doing either. Then you need to find a postbox too, those are rapidly
+                    disappearing! A necessary evil but one which takes time you could be spending on other things, and
+                    consumes funds you really need for more interesting things.</p>
             </div>
             <div class="col-12">
                 <h2>It's only getting more expensive</h2>
-                <p>With fuel and energy prices both rising steeply and showing no sign of stopping, the cost of posting physical documents will almost certainly shoot up too.  It is costly enough to mail a bill as it is, which is why our cheapest subscription is priced at the cost of mailing just 3 letters a month.</p>
+                <p>With fuel and energy prices both rising steeply and showing no sign of stopping, the cost of posting
+                    physical documents will almost certainly shoot up too. It is costly enough to mail a bill as it is,
+                    which is why our cheapest subscription is priced at the cost of mailing just 3 letters a month.</p>
             </div>
             <div class="col-12">
                 <h2>For the small business</h2>
-                <p>There are many, many fantastic accounts management programs, apps and subscriptions out there.  They offer stock control and visual reporting, they run your payroll and they can even file your taxes for you - but they are expensive.  We know that life as a small sole trader, partnership or even a small incorporated business is hard and that a lot of the bells and whistles on these great systems just don't apply to everyone.  InvoicEasy has been built to allow small businesses and trades to quickly and easily send invoices to customers by email, in a cost effective way, and with only your branding on the page.</p>
+                <p>There are many, many fantastic accounts management programs, apps and subscriptions out there. They
+                    offer stock control and visual reporting, they run your payroll and they can even file your taxes
+                    for you - but they are expensive. We know that life as a small sole trader, partnership or even a
+                    small incorporated business is hard and that a lot of the bells and whistles on these great systems
+                    just don't apply to everyone. InvoicEasy has been built to allow small businesses and trades to
+                    quickly and easily produce PDF invoices to send to customers by email, in a cost effective way.</p>
             </div>
             <div class="col-12 text-center mt-4">
-                <a class="btn btn-lg bg-blue" href="{% url 'about' %}">So, who are we?</a>
+                <a class="btn btn-lg bg-orange" href="{% url 'about' %}">So, who are we?</a>
             </div>
         </div>
     </div>

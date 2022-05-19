@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from profiles.models import UserProfile
 from .models import StripeCustomer
 
 # Create your views here.
@@ -21,20 +22,21 @@ def subscribe(request):
 
     def make_date(date_value):
         """ Convert Stripe value to user friendly date """
-        nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y')
+        nice_date = datetime.datetime.fromtimestamp(date_value).strftime(
+            '%d-%m-%Y')
         return nice_date
 
     try:
         # Retrieve the subscription & product
         stripe_customer = StripeCustomer.objects.get(user=request.user)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription = stripe.Subscription.retrieve(
+            stripe_customer.stripeSubscriptionId)
         subscription_start = make_date(subscription.current_period_start)
         subscription_end = make_date(subscription.current_period_end)
         product = stripe.Product.retrieve(subscription.plan.product)
         cancelled = subscription.cancel_at_period_end
 
-        # Feel free to fetch any additional data from 'subscription' or 'product'
         # https://stripe.com/docs/api/subscriptions/object
         # https://stripe.com/docs/api/products/object
 
@@ -75,6 +77,7 @@ def create_checkout_session(request):
         domain_url = settings.DOMAIN_URL
         stripe.api_key = settings.STRIPE_SECRET_KEY
         plan_stripe_id = request.session.__getitem__('plan_stripe_id')
+        customer = UserProfile.objects.get(user=request.user)
         try:
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
@@ -82,6 +85,7 @@ def create_checkout_session(request):
                 cancel_url=domain_url + 'subscriptions/abort/',
                 payment_method_types=['card'],
                 mode='subscription',
+                customer_email=customer.email,
                 line_items=[
                     {
                         'price': plan_stripe_id,

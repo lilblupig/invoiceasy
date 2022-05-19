@@ -20,21 +20,24 @@ def dashboard(request):
 
     # Get user and create invoices and customers, check subscription
     user = request.user
-    invoices = Invoice.objects.filter(user_id__exact=user).select_related('customer_code')
+    invoices = Invoice.objects.filter(
+        user_id__exact=user).select_related('customer_code')
     customers = InvoiceCustomer.objects.filter(user_id__exact=user)
     subscribed = StripeCustomer.objects.filter(user=user).exists()
 
     # Function to make Stripe date values into human date
     def make_date(date_value):
         """ Convert Stripe value to user friendly date """
-        nice_date = datetime.datetime.fromtimestamp(date_value).strftime('%d-%m-%Y')
+        nice_date = datetime.datetime.fromtimestamp(
+            date_value).strftime('%d-%m-%Y')
         return nice_date
 
     try:
         # Retrieve the subscription & product for Dashboard
         stripe_customer = StripeCustomer.objects.get(user=request.user)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription = stripe.Subscription.retrieve(
+            stripe_customer.stripeSubscriptionId)
         subscription_start = make_date(subscription.current_period_start)
         subscription_end = make_date(subscription.current_period_end)
         product = stripe.Product.retrieve(subscription.plan.product)
@@ -74,7 +77,10 @@ def customer(request, customer_id):
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
-        messages.info(request, 'You cannot add new customers as you do not have a current subscription')
+        messages.info(
+            request,
+            'You cannot add new customers as you do not have a subscription'
+        )
         return redirect('/invoices/')
 
     if request.method == 'POST':
@@ -113,7 +119,10 @@ def invoice(request, invoice_id):
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
-        messages.info(request, 'You cannot add new invoices as you do not have a current subscription')
+        messages.info(
+            request,
+            'You cannot add new invoices as you do not have a subscription'
+        )
         return redirect('/invoices/')
 
     if request.method == 'POST':
@@ -123,7 +132,11 @@ def invoice(request, invoice_id):
         # Otherwise update existing invoice
         else:
             this_invoice = Invoice.objects.get(id=invoice_id)
-            form = InvoiceForm(request.POST, instance=this_invoice, user=request.user)
+            form = InvoiceForm(
+                request.POST,
+                instance=this_invoice,
+                user=request.user
+            )
 
         if form.is_valid():
             hold_form = form.save(commit=False)
@@ -158,3 +171,17 @@ def invoice(request, invoice_id):
         'invoice_id': invoice_id,
     }
     return render(request, template, context)
+
+
+@login_required()
+def delete_invoice(request, invoice_id):
+    """ View to delete an invoice """
+    Invoice.objects.filter(id=invoice_id).delete()
+    return redirect('/invoices/')
+
+
+@login_required()
+def delete_customer(request, customer_id):
+    """ View to delete a customer and all invoices """
+    InvoiceCustomer.objects.filter(id=customer_id).delete()
+    return redirect('/invoices/')
