@@ -22,7 +22,6 @@ class ContactForm(forms.Form):
     )
     telephone = forms.CharField(
         label='Telephone number',
-        required=True,
         min_length=5, max_length=20,
     )
     message = forms.CharField(
