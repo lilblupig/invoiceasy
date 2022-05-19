@@ -116,176 +116,68 @@ span.navbar-text {
     position: absolute;
 }
 
-.hero-container-about {
-    height: 30vh;
-
+.hero-about {
     background: url("../images/hero-about.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-pricing {
-    height: 30vh;
-
+.hero-pricing {
     background: url("../images/hero-pricing.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-plan-details {
-    height: 30vh;
-
+.hero-plan-details {
     background: url("../images/hero-plan-details.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-contact {
-    height: 30vh;
-
+.hero-contact {
     background: url("../images/hero-contact.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-subscribe {
-    height: 30vh;
-
+.hero-subscribe {
     background: url("../images/hero-subscribe.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-invoices {
-    height: 30vh;
-
+.hero-invoices {
     background: url("../images/hero-invoices.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-login {
-    height: 30vh;
-
+.hero-login {
     background: url("../images/hero-login.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-logout {
-    height: 30vh;
-
+.hero-logout {
     background: url("../images/hero-logout.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-register {
-    height: 30vh;
-
+.hero-register {
     background: url("../images/hero-register.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-allauth {
-    height: 30vh;
-
+.hero-allauth {
     background: url("../images/hero-allauth.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-404 {
-    height: 30vh;
-
+.hero-404 {
     background: url("../images/hero-404.jpg") no-repeat center center;
     background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    position: relative;
-    margin-bottom: 3rem;
 }
 
-.hero-container-500 {
-    height: 30vh;
-
+.hero-500 {
     background: url("../images/hero-500.jpg") no-repeat center center;
     background-size: cover;
+}
+
+.hero-container {
+    height: 30vh;
 
     display: flex;
     align-items: center;
