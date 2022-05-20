@@ -308,6 +308,8 @@ Where did the website content come from?
 * [xhtml2pdf docs](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html#)
 * [Display 2 decimal places](https://stackoverflow.com/questions/23739030/restrict-django-floatfield-to-2-decimal-places)
 * [Active nav items](https://stackoverflow.com/questions/25044370/make-clicked-tab-active-in-bootstrap)
+* [Mocking users](https://stackoverflow.com/questions/2036202/how-to-mock-users-and-requests-in-django)
+* [Mocking with foreign keys(accepted answer)](https://stackoverflow.com/questions/53907647/django-tests-py-django-db-utils-integrityerror-unique-constraint-failed-auth-u)
 
 #### Media
 * The photographs used for the website were obtained from [Unsplash](https://unsplash.com/):
