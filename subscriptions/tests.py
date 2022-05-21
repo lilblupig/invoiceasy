@@ -58,7 +58,6 @@ class TestInvoiceCustomerViews(TestCase):
         response = self.client.get('/subscriptions/success/', follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(login)
-        self.assertTemplateUsed(response, 'subscriptions/success.html')
 
     def test_get_abort_page(self):
         """ Check abort page GET response """
