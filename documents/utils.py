@@ -15,6 +15,7 @@ def render_to_pdf(template_src, context_dict={}):
     pdf_status = pisa.CreatePDF(html, dest=response)
 
     if pdf_status.err:
-        return HttpResponse('Some errors were encountered <pre>' + html + '</pre>')
+        return HttpResponse(
+            'Some errors were encountered <pre>' + html + '</pre>')
 
     return response
