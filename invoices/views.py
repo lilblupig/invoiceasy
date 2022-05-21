@@ -75,14 +75,15 @@ def dashboard(request):
 def customer(request, customer_id):
     """ View to return customer form """
     # Prevent non-owners from accessing material
-    user_id = request.user.id
-    owner_id = InvoiceCustomer.objects.get(id=customer_id).user_id
-    if user_id != owner_id:
-        messages.info(
-            request,
-            'You cannot access this item.'
-        )
-        return redirect('/invoices/')
+    if customer_id != '0':
+        user_id = request.user.id
+        owner_id = InvoiceCustomer.objects.get(id=customer_id).user_id
+        if user_id != owner_id:
+            messages.info(
+                request,
+                'You cannot access this item.'
+            )
+            return redirect('/invoices/')
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
@@ -126,14 +127,15 @@ def customer(request, customer_id):
 def invoice(request, invoice_id):
     """ View to return invoice form """
     # Prevent non-owners from accessing material
-    user_id = request.user.id
-    owner_id = Invoice.objects.get(id=invoice_id).user_id
-    if user_id != owner_id:
-        messages.info(
-            request,
-            'You cannot access this item.'
-        )
-        return redirect('/invoices/')
+    if invoice_id != '0':
+        user_id = request.user.id
+        owner_id = Invoice.objects.get(id=invoice_id).user_id
+        if user_id != owner_id:
+            messages.info(
+                request,
+                'You cannot access this item.'
+            )
+            return redirect('/invoices/')
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
