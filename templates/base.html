@@ -57,7 +57,9 @@
                                 <a class="nav-link {% ifequal request.path '/contact/' %}active{% endifequal%}" href="{% url 'contact' %}">Contact</a>
                             </li>
                         </ul>
-                        <span class="navbar-text">Signed in as {{ request.user }}</span>
+                        {% if request.user.is_authenticated %}
+                            <span class="navbar-text">Signed in as {{ request.user }}</span>
+                        {% endif %}
                     </div>
                 </div>
             </nav>
