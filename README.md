@@ -268,6 +268,8 @@ You can find more information on cloning a repository from GitHub [here](https:/
 * [Psycopg](https://pypi.org/project/psycopg2-binary/) is also used to facilitate PostgreSQL.
 * [SQLite3]() is used for the development database.
 * [xhtml2pdf](https://pypi.org/project/xhtml2pdf/) is used to produce the PDFs.
+* [Django Extensions - PyDotPlus](https://pypi.org/project/pydotplus/) is used to produce the database schema.
+* [GraphVizOnline](https://dreampuf.github.io/GraphvizOnline/) is used to translate the dot file to a visual image.
 
 ### **Tools**
 * [Git](https://git-scm.com/)/[GitHub](https://github.com/) was used for version control and repository storage.
@@ -310,6 +312,7 @@ Where did the website content come from?
 * [Active nav items](https://stackoverflow.com/questions/25044370/make-clicked-tab-active-in-bootstrap)
 * [Mocking users](https://stackoverflow.com/questions/2036202/how-to-mock-users-and-requests-in-django)
 * [Mocking with foreign keys(accepted answer)](https://stackoverflow.com/questions/53907647/django-tests-py-django-db-utils-integrityerror-unique-constraint-failed-auth-u)
+* [Create DB schema](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
 
 #### Media
 * The photographs used for the website were obtained from [Unsplash](https://unsplash.com/):
