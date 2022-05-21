@@ -74,6 +74,15 @@ def dashboard(request):
 @login_required()
 def customer(request, customer_id):
     """ View to return customer form """
+    # Prevent non-owners from accessing material
+    user_id = request.user.id
+    owner_id = InvoiceCustomer.objects.get(id=customer_id).user_id
+    if user_id != owner_id:
+        messages.info(
+            request,
+            'You cannot access this item.'
+        )
+        return redirect('/invoices/')
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
@@ -116,6 +125,15 @@ def customer(request, customer_id):
 @login_required()
 def invoice(request, invoice_id):
     """ View to return invoice form """
+    # Prevent non-owners from accessing material
+    user_id = request.user.id
+    owner_id = Invoice.objects.get(id=invoice_id).user_id
+    if user_id != owner_id:
+        messages.info(
+            request,
+            'You cannot access this item.'
+        )
+        return redirect('/invoices/')
 
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
     if subscribed is False:
@@ -176,6 +194,24 @@ def invoice(request, invoice_id):
 @login_required()
 def delete_invoice(request, invoice_id):
     """ View to delete an invoice """
+    # Prevent non-owners from accessing material
+    user_id = request.user.id
+    owner_id = Invoice.objects.get(id=invoice_id).user_id
+    if user_id != owner_id:
+        messages.info(
+            request,
+            'You cannot access this item.'
+        )
+        return redirect('/invoices/')
+
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.info(
+            request,
+            'You cannot delete invoices as you do not have a subscription'
+        )
+        return redirect('/invoices/')
+
     Invoice.objects.filter(id=invoice_id).delete()
     return redirect('/invoices/')
 
@@ -183,5 +219,23 @@ def delete_invoice(request, invoice_id):
 @login_required()
 def delete_customer(request, customer_id):
     """ View to delete a customer and all invoices """
+    # Prevent non-owners from accessing material
+    user_id = request.user.id
+    owner_id = InvoiceCustomer.objects.get(id=customer_id).user_id
+    if user_id != owner_id:
+        messages.info(
+            request,
+            'You cannot access this item.'
+        )
+        return redirect('/invoices/')
+
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.info(
+            request,
+            'You cannot delete customers as you do not have a subscription'
+        )
+        return redirect('/invoices/')
+
     InvoiceCustomer.objects.filter(id=customer_id).delete()
     return redirect('/invoices/')
