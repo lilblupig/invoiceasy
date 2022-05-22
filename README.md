@@ -42,7 +42,6 @@ The premise of InvoicEasy is to allow small businesses of all types to make use 
 1. As a returning user, I want to be able to reproduce and resend invoices quickly to customers who have not yet paid.
 1. As a frequent user, I want to be able to see and manage my subscription information.
 1. As a frequent user, I want to be able to see and manage my own business information.
-1. As the site owner I want to be able to add and amend Plans easily in the admin.
 
 These stories are addressed fully in the [Testing](documentation/testing/TESTING.md) document.
 

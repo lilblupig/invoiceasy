@@ -80,27 +80,31 @@ A number of security holes were found and patched, and some minor pages which sh
 * The checkout pages issue above requires attention.  A possible fix is to add logic which means the pages will only be viewable if they were referred by a particular source, which should prevent this issue.
 
 ## Client Stories Testing
-1. As a new user, I want to 
-    1. 
-    1. 
-    ![User story 1 screenshot](assets/readme-images/user-story-1.png)
-1. As a new user, I want to 
-    1. 
-    1. 
-    ![User story 2 screenshot](assets/readme-images/user-story-2.png)
-1. As a new user, I want to l
-    1. 
-    ![User story 3 screenshot](assets/readme-images/user-story-3.png)
-1. As a returning user, I want to 
-    1. 
-    ![User story 4 screenshot](assets/readme-images/user-story-4.png)
-1. As a returning user, I want to 
-    1. 
-    1. 
-    ![User story 5 screenshot](assets/readme-images/user-story-5.png)
-1. As a frequent user, I want to 
-    1. 
-    ![User story 6 screenshot](assets/readme-images/user-story-6.png)
+1. As a new user, I want to learn quickly what InvoicEasy is, and how it can help me. 
+    1. The home page has an overview of the product.
+    ![User story 1 screenshot](user-stories/user-story-1a.png)
+    1. The pricing pages supply more detailed information about what is involved for each plan.
+    ![User story 1 screenshot](user-stories/user-story-1b.png)
+1. As a new user, I want to follow as simple a process as possible to sign up, having chosen my plan. 
+    1. One click from the Plan details page and the Subscribe page explains what will happen during sign up and payment.
+    ![User story 2 screenshot](user-stories/user-story-2a.png)
+    1. One more click and the Stripe Checkout appears, with user email prefilled.
+    ![User story 2 screenshot](user-stories/user-story-2b.png)
+1. As a new user, I want to intuitively understand how the system works, and get started right away.
+    1. The Dashboard has buttons which go straight to all the components for an invoice, 'My Details' for the subscriber business info, 'New Customer' to set up someone to invoice and 'New Invoice' to create an invoice.
+    ![Screenshot of dashboard](user-stories/dashboard.png)
+1. As a returning user, I want to see my existing customers and invoices readily, so I don't duplicate input. 
+    1. The Dashboard shows a list of all existing Customers and Invoices.
+    ![User story 4 screenshot](user-stories/user-story-4.png)
+1. As a returning user, I want to be able to reproduce and resend invoices quickly to customers who have not yet paid. 
+    1. The 'View' button on all invoices will open a PDF in the browser ready to check and download.
+    ![User story 5 screenshot](user-stories/user-story-5.png)
+1. As a frequent user, I want to be able to see and manage my subscription information.
+    1. This is present on the Dashboard, with the option to cancel if a subscription is current, resubscribe if the subscription is cancelled but still valid or visit the pricing page if the subscription has expired.
+    ![User story 6 screenshot](user-stories/user-story-6.png)
+1. As a frequent user, I want to be able to see and manage my own business information.
+    1. This can be done using the Profile form, which is accessible from the Dashboard, and from the navbar when signed in.
+    ![Profile screenshot](user-stories/profile.png)
 
 ## Manual Testing
 
