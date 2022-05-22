@@ -16,7 +16,7 @@ InvoicEasy is to be a simple online invoicing tool which allows small businesses
 1. [Features](#features)
     * [Existing Features](#existing-features)
     * [Features for Future Implementation](#features-for-future-implementation)
-1. [Testing](#testing)
+1. [Testing](#testing) - see [Testing Log](documentation/testing/TESTING.md)
 1. [Development Life Cycle](#development-life-cycle)
 1. [Deployment of the Application](#deployment)
     * [Cloning via GitPod](#cloning-a-project-into-gitpod)
@@ -44,7 +44,7 @@ The premise of InvoicEasy is to allow small businesses of all types to make use 
 1. As a frequent user, I want to be able to see and manage my own business information.
 1. As the site owner I want to be able to add and amend Plans easily in the admin.
 
-These stories are addressed fully in the [Testing](TESTING.md) document.
+These stories are addressed fully in the [Testing](documentation/testing/TESTING.md) document.
 
 ### **Strategy**
 **Who is the website for?** <br>
@@ -203,7 +203,7 @@ Users are prompted for confirmation before deletion of customers or invoices to 
 
 ## Testing
 
-This information is held in the [Testing](TESTING.md) file.
+This information is held in the [Testing](documentation/testing/TESTING.md) file.
 
 ## Development Life Cycle
 The project was deployed using Heroku immediately.  This allowed for immediate assessment of any issues in the deployment environment and enabled testing of the page during development on different devices.
