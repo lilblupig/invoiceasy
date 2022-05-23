@@ -80,8 +80,8 @@ def create_checkout_session(request):
         customer = UserProfile.objects.get(user=request.user)
         try:
             checkout_session = stripe.checkout.Session.create(
-                client_reference_id=request.user.id if request.user.is_authenticated else None,
-                success_url=domain_url + 'subscriptions/success?session_id={CHECKOUT_SESSION_ID}',
+                client_reference_id=request.user.id if request.user.is_authenticated else None, # Remove ternary statement?
+                success_url=domain_url + 'subscriptions/success?session_id={CHECKOUT_SESSION_ID}', # No idea about this!
                 cancel_url=domain_url + 'subscriptions/abort/',
                 payment_method_types=['card'],
                 mode='subscription',
@@ -101,6 +101,13 @@ def create_checkout_session(request):
 @login_required
 def success(request):
     """ Return page for successful subscription """
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.info(
+            request,
+            'You cannot view this page as you do not have a subscription'
+        )
+        return redirect('/invoices/')
     return render(request, 'subscriptions/success.html')
 
 
@@ -154,6 +161,14 @@ def stripe_webhook(request):
 @login_required()
 def cancel(request):
     """ Cancel subscription effective from end of current period """
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is False:
+        messages.info(
+            request,
+            'You cannot view this page as you do not have a subscription'
+        )
+        return redirect('/invoices/')
+
     stripe_customer = StripeCustomer.objects.get(user=request.user)
     stripe.api_key = settings.STRIPE_SECRET_KEY
     subscription = stripe_customer.stripeSubscriptionId
@@ -172,6 +187,14 @@ def cancel(request):
 @login_required()
 def reactivate(request):
     """ Reactivate subscription if still valid """
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    if subscribed is True:
+        messages.info(
+            request,
+            'You cannot view this page as you already have a subscription'
+        )
+        return redirect('/invoices/')
+
     stripe_customer = StripeCustomer.objects.get(user=request.user)
     stripe.api_key = settings.STRIPE_SECRET_KEY
     subscription = stripe_customer.stripeSubscriptionId

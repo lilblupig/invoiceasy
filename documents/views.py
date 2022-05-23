@@ -1,6 +1,7 @@
 """ View information for PDF creation pages """
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from profiles.models import UserProfile
 from invoices.models import InvoiceCustomer, Invoice
@@ -12,6 +13,16 @@ from .utils import render_to_pdf
 @login_required()
 def view_pdf(request, invoice_id):
     """ View to return overview of invoice """
+    # Prevent non-owners from accessing material
+    user_id = request.user.id
+    owner_id = Invoice.objects.get(id=invoice_id).user_id
+    if user_id != owner_id:
+        messages.info(
+            request,
+            'You cannot access this item.'
+        )
+        return redirect('/invoices/')
+
     # Get user information and profile
     user = request.user
     subscriber = get_object_or_404(UserProfile, user=user)

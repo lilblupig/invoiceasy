@@ -49,7 +49,7 @@ class InvoiceForm(forms.ModelForm):
             queryset=customers, required=False
         )
         placeholders = {
-            'customer_code': '',
+            'customer_code': None,
             'invoice_date': 'Date',
             'invoice_number': 'This should be sequential',
             'invoice_info': 'Write the invoice details here',
@@ -58,6 +58,7 @@ class InvoiceForm(forms.ModelForm):
 
         self.fields['customer_code'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = placeholders[
-                field
-            ]
+            if field != 'customer_code':
+                self.fields[field].widget.attrs['placeholder'] = placeholders[
+                    field
+                ]

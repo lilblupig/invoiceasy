@@ -1,0 +1,76 @@
+Conversation with Code Institute
+Started on May 21, 2022 at 08:10 AM Europe/Dublin time IST (GMT+0100)
+
+---
+
+08:10 AM | amyhacker1@gmail.com: Begin a Tutoring Session
+
+08:10 AM | Operator: Please confirm that you have prepared for this session as per the steps on this page: https://code-institute-org.github.io/tutoring-info/guidelines/ 
+ You should have: 
+ - A clear description of your issue 
+- A list of the debugging steps and research you have carried so far 
+ Failure to answer all of the bots questions will result in this conversation being closed. 
+ By clicking "I'm Prepared," you agree to these conditions.
+
+08:10 AM | amyhacker1@gmail.com: I'm Prepared
+
+08:10 AM | Operator: Your tutoring usage time for this week (in minutes): 28
+
+08:10 AM | Operator: Please provide us with your Problem Statement. This is a clear description of the problem that you're currently facing. 
+ At the very least, you need to tell us what should your code be doing, and what is it actually doing? 
+ If you are getting an error, please send a screenshot. 
+ If you are working on a particular file, which file is it, and which lines of code?
+
+08:37 AM | amyhacker1@gmail.com: I swear automated testing is going to finish me off 😆 
+ I'm using the test for POST method from the tutorial (in video tests part 4) for my 'create or update an invoice' view, which uses my Invoice model. 
+ The model used in the view has two foreign keys, one to the User which seems to be working ok, and one to the InvoiceCustomer which determines which customer the invoice is made out to. 
+ When testing the post using self.client.post(), I receive the error:
+django.db.utils.IntegrityError: NOT NULL constraint failed: invoices_invoice.customer_code_id 
+ However, my post dictionary explicitly contains 'customer_code_id': 2 
+ Why is this error being thrown? 
+ Files: invoices >
+tests.py from row 174
+forms.py from row 37
+models.py from row 35
+views.py from row 116
+
+08:37 AM | Operator: What steps have you taken so far to resolve the issue, or to address current gaps in your knowledge? 
+ Vague answers like "searched on Slack and Google" are not sufficient here. What specific steps have you taken? What code and debugging steps have you tried? What resources have you used (e.g. provide links to StackOverflow questions you have read)?
+
+08:38 AM | amyhacker1@gmail.com: I have tried:
+Hard coding customer and invoice ids in both test data creation and post dictionary. 
+ Removing various parts of the test to confirm it is definitely the post throwing the error.\
+
+08:38 AM | Operator: One final thing. Please share your code with us. 
+ If you are working on Gitpod, please set your workspace to shared, and send us the link to it. If you are working on a course challenge, please send the name of the challenge.
+
+08:39 AM | amyhacker1@gmail.com: https://lilblupig-invoiceasy-1i26yyobyrv.ws-eu45.gitpod.io
+
+08:39 AM | Operator: Thank you. We will get back to you as soon as possible. You can see how busy tutoring currently is on this page: https://code-institute-org.github.io/tutoring-info/status/ 
+ Note that if you have failed to sufficiently answer any of the above questions, tutors will have to re-ask you for the information, which will use up part of your weekly tutoring time allowance.
+
+08:40 AM | amyhacker1@gmail.com: Also tried (sorry fat thumbs): 
+ Changing url format to include trailing slash, but this just returns 404 (as you would expect)
+
+08:45 AM | amyhacker1@gmail.com: I think it might be to do with a filter in the InvoiceForm on forms row 47, which ensures the user will only be shown their own customers (since I unfortunately have all customers of all subscribers in the same table which is not ideal).
+
+09:10 AM | Christine from Code Institute: Hey Amy, how're you? 
+ 
+ Looking at the information you've sent, it sounds like you're working on automated testing. 
+ 
+ Manual testing is also sufficient for submitting a project, and you should be alright with using this method instead of automated testing. 
+ 
+ If you want to use automated testing, you're not required to cover the whole project, just the main parts like the home page and shop page to show that you can set up automated tests.
+
+09:11 AM | amyhacker1@gmail.com: Hi Christine! 
+ I'm good thanks, how are you? 
+ Yep, I am! Ok, so your advice is to just not use automated tests for this part of my code?
+
+09:12 AM | amyhacker1@gmail.com: Even though this is one of the core parts of my project.
+
+09:15 AM | Christine from Code Institute: I think the assessors look to see if you're running testing on parts of the project like the home, products. profile pages. You're not required to use automated testing or test every part of the project this method. As long as you can show that you've tested the main apps that were based on Boutique Ado, you should be ok
+
+09:16 AM | amyhacker1@gmail.com: Cool thanks, how do I save a copy of this chat?
+
+---
+Exported from Code Institute on May 21, 2022 at 09:17 AM Europe/Dublin time IST (GMT+0100)
