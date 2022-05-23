@@ -119,29 +119,28 @@ These components are present on every page, and each page has been tested.
 **Intent** - a navbar which collapses to hamburger on mobile.
 
 * All links are valid and link to the appropriate page.
-* Logo alt displays on hover (added title attribute).
 * Hover effect occurs correctly for each navigation section.
-* Active class is applied correctly for current page.
+* Active class is applied correctly for current page for main links.
 * Resize to mobile/tablet and check that navigation bar collapses to hamburger.
 * Expand hamburger menu and check all sections present, and displaying correctly.
 
-**Result** - `Text here to explain what happened when tested`
+**Result** - `All behaviour as expected.`
 
-**Verdict** - XXXX
+**Verdict** - PASS
 
 ---
 
 #### Hero Images
 
-**Intent** - a full width image relevant to the page content, different for each page.  Primary purpose, to elicit a positive emotional response from the user.  The image should display correctly on all device sizes.  The image should display XXX% height on the home page and XXX% on the 404 page to display redirect information.
+**Intent** - a full width image relevant to the page content, different for each page.  Primary purpose, to elicit a positive emotional response from the user.  The image should display correctly on all device sizes.  The image should display 90% height on the home page and 30% on all other pages.
 
 * Image fills the viewport as expected depending on page.
 * Resize to mobile/tablet and check that image still displays without distortion.
 * Text remains centered with no overflow at mobile/tablet.
 
-**Result** - `Text here to explain what happened when tested`
+**Result** - `Initial text overflow on narrow mobile, fixed with media query.`
 
-**Verdict** - XXXX
+**Verdict** - PASS
 
 ---
 
@@ -149,15 +148,13 @@ These components are present on every page, and each page has been tested.
 
 **Intent** - The footer should be reflective of the design of the nav to bookend each page and provide familiarity to the user.  This helps with intuitive learning.  Any external links should open in new tabs and provide user feedback when hovered over.
 
-* Footer appears in XXX sections.
-* Social media icons display correctly, and show feedback behaviour on hover.
-* Social links open in new tabs to correct locations.
+* Footer appears in three sections, two on mobile.
 * Resize to tablet and check for text overflow issues.
 * Resize to mobile and check that sections wrap neatly below one another.
 
-**Result** - `Text here to explain what happened when tested`
+**Result** - `All behaviour as expected.`
 
-**Verdict** - XXXX
+**Verdict** - PASS
 
 ---
 
@@ -186,23 +183,56 @@ These items are specific to each individual page.
 Contact Us Form
 * Form contents align nicely and that there is no overflow of content.
 * Fields display correctly on mobile/tablet and PC.
-* Placeholder text displays in fields.
+* Prefill text displays in fields where appropriate.
 * Fields and submit button display feedback on hover.
 * Fields display feedback on focus.
 * Try to submit blank form, error messages display with information.
 * Try to submit email in incorrect format, error message displays with information.
 * Try to submit form without question, error message displays with information.
-* Submit correctly completed form, receive success modal.
-* Modal information centers correctly with no overflow on all device widths.
+* Submit correctly completed form, receive success toast.
+* Email received at admin email address.
+* Confirmation email sent to user.
 
-**Result** - `Text here to explain what happened when tested`
+**Result** - `Tested as anonymous user and logged in user.  All behaviour as expected.`
 
-**Verdict** - XXXX
+**Verdict** - PASS
 
 ---
-#### 404
+#### Stripe Checkout
 
-**Intent** - Catch users who would normally encounter a browser generated 404 page, and redirect them back to the website as cleanly as possible.
+**Intent** - Allow users to sign up for a subscription as easily as possible, then confirm payment to create subscription info in database via webhook.
+
+* Custom colour scheme display as set in Stripe dashboard.
+* Email address prefills.
+* Backing out returns the user to the aborted payment page.
+* Stripe Generic Decline number used to ensure useful feedback is given to the user.
+* Stripe Visa number used to ensure payment goes through correctly.
+* Closed tab partway through payment, if successful webhook should still be triggered and shows as subscribed in dashboard.
+* Redirected to success page after successful subscription.
+
+**Result** - `All behaviour as expected.`
+
+**Verdict** - PASS
+
+---
+#### Dashboard, Invoicing Forms and PDF View
+
+**Intent** - Give users one place to do everything.  Forms are easy to use and PDFs are generated from one click.
+
+* Sections stack on mobile and align on larger screens.
+* Forms prefill where editing a customer or invoice.
+* All forms log data to the database as expected.
+* PDF view opens cleanly and with user data displayed.
+* Subscription summary contains appropriate information for the status of the user.
+
+**Result** - `All behaviour as expected.`
+
+**Verdict** - PASS
+
+---
+#### 404/403/500 Pages
+
+**Intent** - Catch users who would normally encounter a browser generated error page, and redirect them back to the website as cleanly as possible.
 
 * All text sections display correctly across tested device widths.
 * All buttons and links display user feedback on hover.
@@ -210,19 +240,20 @@ Contact Us Form
 * User is guided back to the home page.
 * Mistyped url for website to ensure 404 page displays in such situations.
 * Deliberately broke page link to ensure 404 page will display in this instance too.
+* Manually typed url for customer with non-existent customer id to ensure 500 errors diplay correctly.
 
-**Result** - `Text here to explain what happened when tested`
+**Result** - `All behaviour as expected.`
 
-**Verdict** - XXXX
+**Verdict** - PASS
 
 ---
 
 ### **Accessibility**
 
 The colourblind feature on Coolors was used to check that the colours appeared sufficiently different, and not jarring for these users.
-![Colourblindness assessment via Coolors](assets/readme-images/colourblindness.png)
+![Colourblindness assessment via Coolors](coolors-colourblindness.png)
 
-As well as the use of the Lighthouse assessments of accessibility, the website was browsed at intervals by two users who may experience difficulty.  A dyslexic user with ASD and a colourblind user both XXXXX.
+As well as the use of the Lighthouse assessments of accessibility, the website was browsed at intervals by two users who may experience difficulty.  A dyslexic user with ASD and a colourblind user both explored the site through development.
 
 ## Bugs
 
@@ -230,12 +261,28 @@ Details of any persistent or difficult bugs, and any bugs which remain unresolve
 
 ### **Fixed Bugs**
 
+#### **Subscriber Specific Info**
+Restricting users to see only their own customers was fairly straightforward, as was loading only their own invoices in the dashboard.  Populating the select dropdown in the New Invoice form with only customers owned by that user was really time consuming.  Ideally this data would have been restricted in the model, but a workaround in the forms file was found and used instead.
+
+#### **Webhooks**
+Stripe webhooks proved difficult to implement and test, largely because of my lack of understanding of how they wrked when trying to build with and use them.  Tutors were not able to help on occasion and I had to just figure things out.  I had initially set up endpoints for both the draft deployed site and the development environment not realising that they would interfere with one another.  Subscriptions made in the dev site would attempt to register a webhook against the sleeping Heroku dynos of the live site and fail, and subscriptions made in the live site would try and trigger the dev site which was often not running while live was tested.
+
+Additionally, gitpod urls change regularly, so the dev endpoint had to be almost constantly updated, and the webhooks wouldn't work if the workspace was still set to private.
+
+Overall, issues were solved by monitoring the dev environment closely for changes and updating the Stripe dashboard accordingly, and by deactivating one of the two endpoints at all times.
+
+#### **Cloudinary**
+Initially I wanted to allow site owners the option of uploading a graphic to go with each plan, if new plans were added and to give subscribers the option to upload a logo for use in white-labelling the invoices.  As such I chose Cloudinary as my replacement for Amazon S3, having heard about future billing issues via LinkedIn.
+
+For some reason, Cloudinary would only collect static when called from Heroku during a build.  It would collect all the admin static files, all the media files, but not a single file from the static directory containing the custom css and site imagery.  Simply using Heroku builds was a workaround initially, which was discovered after a lengthy session with tutors.  However, once the Github integration was lost and the builds were created manually from the terminal, Cloudinary did not collectstatic at all.  Multiple sessions with tutors where this remained unresolved led to one to suggest just moving to Whitenoise in order to move forward with the project.
+
+This bug is not considered solved, as such, since functionality was lost and the issue was never identified nor fixed.  However, using Whitenoise was wonderfully simple, and I have absolutely no regrets in making the choice to switch service.
 
 ### **Remaining Bugs**
+There is one large remaining known bug.  If the user proceeds successfully through checkout, and then uses the back buttons in the browser to return to the 'subscribe' page, the browser loads the cached version of the page, and so the user can potentially sign up for multiple subscriptions.
 
 
-
-Testing first completed XX/XX/2021 - AKH
-Testing repeated XX/XX/2021 - AKH
+Testing first completed 22/05/2022 - AKH
+Testing repeated XX/XX/2022 - AKH
 
 [Return to Top](#title)
