@@ -162,7 +162,7 @@ The final schema is as detailed in the image above, where green boxes are Django
 The colours chosen are based on making the UI as clean and intuitive as possible.  A dark grey was chosen as the main colour and is used for nav, footer and the majority of body text.<br><br>
 A bright orange was chosen as the highlight colour as warmer colours draw the attention better than cooler colours, and should therefore stand out more to the user as call to action items.  Red was not chosen because of negative connotations within the realms of finance, and a general association with danger/threat.<br><br>
 The complimentary colours are all cool blues, with the intent to use for secondary buttons, hover colours etc.  In the end, the blues were used very little, keeping primarily to the orange and grey.<br><br>
-![Colours option 1](documentation/readme-images/colors-opt-1.png)
+![Colours option 1](documentation/readme-images/colours.png)
 
 #### Typography
 Only one font was really chosen for the site as the accent, for headers, logos and other items that need to stand out.  It was decided to proceed with the standard font used by Bootstrap for the majority of the body etc, as the creators will have chosen a suitably inclusive and easy to read design.
