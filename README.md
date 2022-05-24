@@ -3,7 +3,9 @@
 # Overview
 InvoicEasy is to be a simple online invoicing tool which allows small businesses to quickly and easily set up customer accounts and produce PDF invoices.  Inspired by the major accounting packages, but recognising the needs of the microbusiness first.
 <br><br>
-Use Stripe test card 4242 4242 4242 4242 with any future dated expiry and any CVC to sign up.
+[The deployed site can be found here](https://invoiceasy.herokuapp.com/)
+
+Use Stripe test card 4242 4242 4242 4242 with any future dated expiry and any CVC to sign up.  [Other card types](https://stripe.com/docs/testing#declined-payments) for Declined payments etc can be found in the Stripe documentation.
 
 ![Am I Responsive Image](documentation/readme-images/am-i-responsive.png)
 
