@@ -279,7 +279,12 @@ For some reason, Cloudinary would only collect static when called from Heroku du
 This bug is not considered solved, as such, since functionality was lost and the issue was never identified nor fixed.  However, using Whitenoise was wonderfully simple, and I have absolutely no regrets in making the choice to switch service.
 
 ### **Remaining Bugs**
-There is one small remaining known bug.  If the user proceeds successfully through checkout, and then uses the back buttons in the browser to return to the 'subscribe' page, the browser loads the cached version of the page, and so the user could potentially sign up for multiple subscriptions.  This has been mitigated by using javascript to interrupt the on-click event which loads the Stripe checkout and make a ajax request to check the subscription status.  If a subscription already exists then jQuery is used to manipulate the page contents.  Unfortunately the 'Subscribe' and 'Dashboard' buttons are only display: none and so could be accessed by using the developer tools in the browser.  The javascript should still prevent multiple subscriptions when clicked, however it would be best if these were not accessible at all.
+
+#### **Email receipts**
+Stripe has been configured to send payment receipts and invoices on every successful payment.  However, [per the documentation](https://stripe.com/docs/receipts#receipts-in-test-mode) automated emails are not enabled in test mode.  Example PDF [invoice](stripe-invoice.pdf)/[receipt](stripe-receipt.pdf) can be found in the documentation.
+
+#### **Checkout**
+If the user proceeds successfully through checkout, and then uses the back buttons in the browser to return to the 'subscribe' page, the browser loads the cached version of the page, and so the user could potentially sign up for multiple subscriptions.  This has been mitigated by using javascript to interrupt the on-click event which loads the Stripe checkout and make a ajax request to check the subscription status.  If a subscription already exists then jQuery is used to manipulate the page contents.  Unfortunately the 'Subscribe' and 'Dashboard' buttons are only display: none and so could be accessed by using the developer tools in the browser.  The javascript should still prevent multiple subscriptions when clicked, however it would be best if these were not accessible at all.
 
 
 Testing first completed 22/05/2022 - AKH
