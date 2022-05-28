@@ -329,6 +329,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 * [PEP8 Online](http://pep8online.com/checkresult) was used to validate the Python code, alongside the Gitpod linter included in the CI template.
 * [Responsively](https://responsively.app/) was used to explore responsiveness across various devices.
 * [GraphVizOnline](https://dreampuf.github.io/GraphvizOnline/) is used to translate the database schema dot file to a visual image.
+* [Heidi SQL](https://www.heidisql.com/) is used to manipulate the data in the live database.
 
 ### **Other Resources**
 * [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template) was used to set up the repository.
@@ -363,6 +364,8 @@ The website content is original, but the following resources and tutorials were 
 * [Mocking users](https://stackoverflow.com/questions/2036202/how-to-mock-users-and-requests-in-django)
 * [Mocking with foreign keys(accepted answer)](https://stackoverflow.com/questions/53907647/django-tests-py-django-db-utils-integrityerror-unique-constraint-failed-auth-u)
 * [Create DB schema](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
+* [Python, Flask and Ajax tutorial](https://towardsdatascience.com/using-python-flask-and-ajax-to-pass-information-between-the-client-and-server-90670c64d688)
+* [jQuery ajax docs](https://api.jquery.com/jquery.ajax/)
 
 #### Media
 * The photographs used for the website were obtained from [Unsplash](https://unsplash.com/):

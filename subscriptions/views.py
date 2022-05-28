@@ -53,9 +53,11 @@ def subscribe(request):
     except StripeCustomer.DoesNotExist:
 
         plan_name = request.session.__getitem__('plan_name')
+        user = request.user.id
 
         context = {
             'plan_name': plan_name,
+            'user': user,
         }
 
         return render(request, 'subscriptions/subscribe.html', context)
@@ -213,3 +215,15 @@ def reactivate(request):
     messages.success(request, 'Subscription reactivated successfully!')
 
     return redirect('/invoices/')
+
+
+@login_required()
+def check_subs(request):
+    """ Check for existing subs and send back to JS """
+
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    print(subscribed)
+
+    results = {'subscribed': subscribed}
+
+    return JsonResponse(results)

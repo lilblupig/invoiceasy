@@ -61,6 +61,9 @@ nav a.nav-link:focus, nav a.navbar-brand:focus, nav a.dropdown-item:focus, foote
     padding-bottom: 0.75rem;
 }
 
+.hide-me {
+    display: none;
+}
 
 /* Navbar */
 
