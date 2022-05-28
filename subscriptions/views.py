@@ -1,5 +1,5 @@
 """ View information for subscription pages """
-# From https://testdriven.io/blog/django-stripe-subscriptions/
+# Primarily from https://testdriven.io/blog/django-stripe-subscriptions/
 
 import datetime
 import stripe
@@ -13,9 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 from profiles.models import UserProfile
 from .models import StripeCustomer
 
-# Create your views here.
 
-
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @login_required
 def subscribe(request):
     """ View to return checkout page """
@@ -62,6 +61,7 @@ def subscribe(request):
         return render(request, 'subscriptions/subscribe.html', context)
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @csrf_exempt
 def stripe_config(request):
     """ Handle Stripe AJAX request """
@@ -70,6 +70,7 @@ def stripe_config(request):
         return JsonResponse(stripe_configs, safe=False)
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @csrf_exempt
 def create_checkout_session(request):
     """ Create a checkout session """
@@ -100,6 +101,7 @@ def create_checkout_session(request):
             return JsonResponse({'error': str(e)})
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @login_required
 def success(request):
     """ Return page for successful subscription """
@@ -113,12 +115,14 @@ def success(request):
     return render(request, 'subscriptions/success.html')
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @login_required
 def abort(request):
     """ Return page for aborted subscription """
     return render(request, 'subscriptions/abort.html')
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @csrf_exempt
 def stripe_webhook(request):
     """ Create new StripeCustomer on subscription """

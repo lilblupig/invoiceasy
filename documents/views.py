@@ -7,8 +7,6 @@ from profiles.models import UserProfile
 from invoices.models import InvoiceCustomer, Invoice
 from .utils import render_to_pdf
 
-# Create your views here.
-
 
 @login_required()
 def view_pdf(request, invoice_id):

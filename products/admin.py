@@ -3,8 +3,6 @@
 from django.contrib import admin
 from .models import Plan
 
-# Register your models here.
-
 
 class PlanAdmin(admin.ModelAdmin):
     """ Set fields to display in admin """

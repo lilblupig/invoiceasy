@@ -3,8 +3,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Plan
 
-# Create your views here.
-
 
 def pricing(request):
     """ View to return pricing information """

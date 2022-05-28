@@ -5,8 +5,6 @@ from subscriptions.models import StripeCustomer
 from invoices.models import InvoiceCustomer, Invoice
 from django.test import TestCase
 
-# Create your tests here.
-
 
 class TestDocumentsViews(TestCase):
     """ Test Documents app views """

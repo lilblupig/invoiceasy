@@ -3,8 +3,6 @@
 from django.test import TestCase
 from .models import Plan
 
-# Create your tests here.
-
 
 # Test Models
 class TestProductsModels(TestCase):

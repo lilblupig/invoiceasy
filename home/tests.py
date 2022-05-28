@@ -2,8 +2,6 @@
 
 from django.test import TestCase
 
-# Create your tests here.
-
 
 class TestHomeViews(TestCase):
     """ Test Contact app views """

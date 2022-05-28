@@ -11,8 +11,6 @@ from subscriptions.models import StripeCustomer
 from .models import InvoiceCustomer, Invoice
 from .forms import InvoiceCustomerForm, InvoiceForm
 
-# Create your views here.
-
 
 @login_required()
 def dashboard(request):

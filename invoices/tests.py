@@ -6,8 +6,6 @@ from subscriptions.models import StripeCustomer
 from .forms import InvoiceCustomerForm
 from .models import InvoiceCustomer, Invoice
 
-# Create your tests here.
-
 
 # Test Forms
 class TestInvoiceCustomerForm(TestCase):

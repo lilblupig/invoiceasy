@@ -3,8 +3,6 @@
 from django.contrib import admin
 from .models import InvoiceCustomer, Invoice
 
-# Register your models here.
-
 
 class InvoiceCustomerAdmin(admin.ModelAdmin):
     """ Set fields to display in admin """

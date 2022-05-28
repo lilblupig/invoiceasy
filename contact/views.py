@@ -9,8 +9,6 @@ from django.conf import settings
 from profiles.models import UserProfile
 from .forms import ContactForm
 
-# Create your views here.
-
 
 def contact(request):
     """ View to return contact page """

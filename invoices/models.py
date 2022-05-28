@@ -3,8 +3,6 @@
 from django.db import models
 from django.conf import settings
 
-# Create your models here.
-
 
 class InvoiceCustomer(models.Model):
     """ Store user customer info """
