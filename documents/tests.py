@@ -26,6 +26,7 @@ class TestDocumentsViews(TestCase):
                             user_id=self.test_user.id,
                             invoice_number='INV001',
                             invoice_subtotal=100,
+                            invoice_date='2022-04-30',
                             customer_code_id=self.test_customer.id,
                             invoice_gross=100,
                             invoice_vat=0,
