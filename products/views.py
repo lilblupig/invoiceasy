@@ -24,8 +24,8 @@ def plan_detail(request, plan_id):
     # Store in session
     plan_stripe_id = plan.stripe_id
     plan_name = plan.name
-    request.session.__setitem__('plan_stripe_id', plan_stripe_id)
-    request.session.__setitem__('plan_name', plan_name)
+    request.session['plan_stripe_id'] = plan_stripe_id
+    request.session['plan_name'] = plan_name
 
     context = {
         'plan': plan,

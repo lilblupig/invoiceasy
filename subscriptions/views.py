@@ -1,7 +1,6 @@
 """ View information for subscription pages """
 # Primarily from https://testdriven.io/blog/django-stripe-subscriptions/
 
-import datetime
 import stripe
 from django.conf import settings
 from django.contrib import messages
@@ -11,6 +10,7 @@ from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from profiles.models import UserProfile
+from utils.utils import make_date
 from .models import StripeCustomer
 
 
@@ -18,13 +18,6 @@ from .models import StripeCustomer
 @login_required
 def subscribe(request):
     """ View to return checkout page """
-
-    def make_date(date_value):
-        """ Convert Stripe value to user friendly date """
-        nice_date = datetime.datetime.fromtimestamp(date_value).strftime(
-            '%d-%m-%Y')
-        return nice_date
-
     try:
         # Retrieve the subscription & product
         stripe_customer = StripeCustomer.objects.get(user=request.user)
@@ -107,8 +100,8 @@ def create_checkout_session(request):
 @login_required
 def success(request):
     """ Return page for successful subscription """
-    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
-    if subscribed is False:
+    if not (subscribed := StripeCustomer.objects.filter(
+            user=request.user).exists()):
         messages.info(
             request,
             'You cannot view this page as you do not have a subscription'
@@ -169,8 +162,8 @@ def stripe_webhook(request):
 @login_required()
 def cancel(request):
     """ Cancel subscription effective from end of current period """
-    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
-    if subscribed is False:
+    if not (subscribed := StripeCustomer.objects.filter(
+            user=request.user).exists()):
         messages.info(
             request,
             'You cannot view this page as you do not have a subscription'
@@ -195,14 +188,6 @@ def cancel(request):
 @login_required()
 def reactivate(request):
     """ Reactivate subscription if still valid """
-    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
-    if subscribed is True:
-        messages.info(
-            request,
-            'You cannot view this page as you already have a subscription'
-        )
-        return redirect('/invoices/')
-
     stripe_customer = StripeCustomer.objects.get(user=request.user)
     stripe.api_key = settings.STRIPE_SECRET_KEY
     subscription = stripe_customer.stripeSubscriptionId
@@ -220,10 +205,7 @@ def reactivate(request):
 @login_required()
 def check_subs(request):
     """ Check for existing subs and send back to JS """
-
     subscribed = StripeCustomer.objects.filter(user=request.user).exists()
-    print(subscribed)
-
     results = {'subscribed': subscribed}
 
     return JsonResponse(results)
