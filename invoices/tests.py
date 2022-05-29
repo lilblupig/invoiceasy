@@ -58,6 +58,7 @@ class TestInvoiceCustomerModels(TestCase):
                             customer_code_id=1,
                             invoice_gross=100,
                             invoice_vat=0,
+                            invoice_date='2022-04-30',
                         )
         self.assertEqual(str(invoice), 'INV001')
 
@@ -86,6 +87,7 @@ class TestInvoiceCustomerViews(TestCase):
                             customer_code_id=1,
                             invoice_gross=100,
                             invoice_vat=0,
+                            invoice_date='2022-04-30',
                         )
 
         self.test_subscription = StripeCustomer.objects.create(
@@ -180,7 +182,7 @@ class TestInvoiceCustomerViews(TestCase):
             invoice_number='INV002',
             invoice_info='Bloopy bloop',
             invoice_subtotal=100.00,
-            invoice_date='01/01/2022',
+            invoice_date='2022-01-01',
             invoice_gross=100.00,
             invoice_vat=0.00,
         )

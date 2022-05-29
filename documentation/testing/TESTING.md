@@ -51,10 +51,10 @@ Some automated tests were undertaken for the site, particularly around get and p
 2.| [Contact](coverage-reports/contact-overview.pdf) | 93% | [Contact Views](coverage-reports/contact-views-breakdown.pdf) |
 3.| [Products](coverage-reports/products-overview.pdf) | 100% | N/A |
 4.| [Profiles](coverage-reports/profiles-overview.pdf) | 90% | [Profiles Models](coverage-reports/profiles-models-breakdown.pdf), [Profiles Views](coverage-reports/profiles-views-breakdown.pdf)
-5.| [Invoices](coverage-reports/invoices-overview.pdf) | 85% | [Invoices Views](coverage-reports/invoices-views-breakdown.pdf) |
+5.| [Invoices](coverage-reports/invoices-overview.pdf) | 81% | [Invoices Views](coverage-reports/invoices-views-breakdown.pdf) |
 6.| [Subscriptions](coverage-reports/subscriptions-overview.pdf) | 51% | [Subscriptions Models](coverage-reports/subscriptions-models-breakdown.pdf), [Subscriptions Views](coverage-reports/subscriptions-views-breakdown.pdf) |
 7.| [Documents](coverage-reports/documents-overview.pdf) | 95% | [Documents Utils](coverage-reports/documents-utils-breakdown.pdf), [Documents Views](coverage-reports/documents-views-breakdown.pdf) |
--| Overall (mean average) | 88% |
+-| Overall (mean average) | % |
 
 It was intended to make use of the xhtml2pdf unit tests and functional tests, however the steps as [outlined in the docs](https://xhtml2pdf.readthedocs.io/en/latest/howto-running-tests.html) just resulted in errors in the terminal, likely due to the age of the extension.
 
