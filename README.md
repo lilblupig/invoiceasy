@@ -151,12 +151,11 @@ The final schema is as detailed in the image above, where green boxes are Django
 ### **Skeleton**
 
 #### Wireframes
-1. [Mobile](documentation/documents/XXXXX-mobile-final.pdf) 375px
-1. [Tablet](documentation/documents/XXXXX-tablet-final.pdf) 768px
-1. [PC/Laptop](documentation/documents/XXXXX-pc-final.pdf) 1200px
+The project actually began as an exploration of Django, and a way to gain more understanding of the modular app approach, and precisely how this transalated to database tables.  I really became passionate about the idea however, and decided to take it on as my final project.  As such, the first few pages existed before any kind of UX planning was really considered.  Instead, I have general sketches around ideas for a very uncluttered, basic layout with the idea of delivering functionality over form.  I decided to keep the image at the top of each page to soften the appearance, and to provide the user relief from a purely data driven page.  I have translated my sketches into Balsamic docs to give an idea of the overall plan for the site.
 
-##### Summary of Changes
-* 
+1. [Mobile](documentation/wireframes/invoiceasy-mobile.pdf) 375px
+1. [PC/Laptop](documentation/wireframes/invoiceasy-pc.pdf) 1200px
+
 
 ### **Surface**
 
