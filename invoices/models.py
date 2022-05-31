@@ -3,8 +3,6 @@
 from django.db import models
 from django.conf import settings
 
-# Create your models here.
-
 
 class InvoiceCustomer(models.Model):
     """ Store user customer info """
@@ -43,7 +41,7 @@ class Invoice(models.Model):
         on_delete=models.CASCADE
     )
     invoice_number = models.CharField(max_length=20)
-    invoice_date = models.CharField(max_length=20)
+    invoice_date = models.DateField()
     invoice_info = models.TextField()
     invoice_subtotal = models.FloatField()
     invoice_vat = models.FloatField()

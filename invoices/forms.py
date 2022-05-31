@@ -40,6 +40,10 @@ class InvoiceForm(forms.ModelForm):
         """ Define form fields """
         model = Invoice
         exclude = ('user', 'invoice_vat', 'invoice_gross',)
+        widgets = {
+            'invoice_date': forms.TextInput(attrs={'type': 'date'}),
+        }
+
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
@@ -48,6 +52,7 @@ class InvoiceForm(forms.ModelForm):
         self.fields["customer_code"] = forms.ModelChoiceField(
             queryset=customers, required=False
         )
+
         placeholders = {
             'customer_code': None,
             'invoice_date': 'Date',

@@ -1,7 +1,6 @@
 """ View information for subscription pages """
-# From https://testdriven.io/blog/django-stripe-subscriptions/
+# Primarily from https://testdriven.io/blog/django-stripe-subscriptions/
 
-import datetime
 import stripe
 from django.conf import settings
 from django.contrib import messages
@@ -11,21 +10,14 @@ from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from profiles.models import UserProfile
+from utils.utils import make_date
 from .models import StripeCustomer
 
-# Create your views here.
 
-
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @login_required
 def subscribe(request):
     """ View to return checkout page """
-
-    def make_date(date_value):
-        """ Convert Stripe value to user friendly date """
-        nice_date = datetime.datetime.fromtimestamp(date_value).strftime(
-            '%d-%m-%Y')
-        return nice_date
-
     try:
         # Retrieve the subscription & product
         stripe_customer = StripeCustomer.objects.get(user=request.user)
@@ -54,14 +46,17 @@ def subscribe(request):
     except StripeCustomer.DoesNotExist:
 
         plan_name = request.session.__getitem__('plan_name')
+        user = request.user.id
 
         context = {
             'plan_name': plan_name,
+            'user': user,
         }
 
         return render(request, 'subscriptions/subscribe.html', context)
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @csrf_exempt
 def stripe_config(request):
     """ Handle Stripe AJAX request """
@@ -70,6 +65,7 @@ def stripe_config(request):
         return JsonResponse(stripe_configs, safe=False)
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @csrf_exempt
 def create_checkout_session(request):
     """ Create a checkout session """
@@ -80,8 +76,10 @@ def create_checkout_session(request):
         customer = UserProfile.objects.get(user=request.user)
         try:
             checkout_session = stripe.checkout.Session.create(
-                client_reference_id=request.user.id if request.user.is_authenticated else None, # Remove ternary statement?
-                success_url=domain_url + 'subscriptions/success?session_id={CHECKOUT_SESSION_ID}', # No idea about this!
+                client_reference_id=(request.user.id if
+                                     request.user.is_authenticated else None),
+                success_url=domain_url + 'subscriptions/success'
+                                         '?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=domain_url + 'subscriptions/abort/',
                 payment_method_types=['card'],
                 mode='subscription',
@@ -98,11 +96,12 @@ def create_checkout_session(request):
             return JsonResponse({'error': str(e)})
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @login_required
 def success(request):
     """ Return page for successful subscription """
-    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
-    if subscribed is False:
+    if not (subscribed := StripeCustomer.objects.filter(
+            user=request.user).exists()):
         messages.info(
             request,
             'You cannot view this page as you do not have a subscription'
@@ -111,12 +110,14 @@ def success(request):
     return render(request, 'subscriptions/success.html')
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @login_required
 def abort(request):
     """ Return page for aborted subscription """
     return render(request, 'subscriptions/abort.html')
 
 
+# https://testdriven.io/blog/django-stripe-subscriptions/
 @csrf_exempt
 def stripe_webhook(request):
     """ Create new StripeCustomer on subscription """
@@ -153,7 +154,6 @@ def stripe_webhook(request):
             stripeCustomerId=stripe_customer_id,
             stripeSubscriptionId=stripe_subscription_id,
         )
-        print(user.username + ' just subscribed.')
 
     return HttpResponse(status=200)
 
@@ -161,8 +161,8 @@ def stripe_webhook(request):
 @login_required()
 def cancel(request):
     """ Cancel subscription effective from end of current period """
-    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
-    if subscribed is False:
+    if not (subscribed := StripeCustomer.objects.filter(
+            user=request.user).exists()):
         messages.info(
             request,
             'You cannot view this page as you do not have a subscription'
@@ -187,14 +187,6 @@ def cancel(request):
 @login_required()
 def reactivate(request):
     """ Reactivate subscription if still valid """
-    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
-    if subscribed is True:
-        messages.info(
-            request,
-            'You cannot view this page as you already have a subscription'
-        )
-        return redirect('/invoices/')
-
     stripe_customer = StripeCustomer.objects.get(user=request.user)
     stripe.api_key = settings.STRIPE_SECRET_KEY
     subscription = stripe_customer.stripeSubscriptionId
@@ -207,3 +199,12 @@ def reactivate(request):
     messages.success(request, 'Subscription reactivated successfully!')
 
     return redirect('/invoices/')
+
+
+@login_required()
+def check_subs(request):
+    """ Check for existing subs and send back to JS """
+    subscribed = StripeCustomer.objects.filter(user=request.user).exists()
+    results = {'subscribed': subscribed}
+
+    return JsonResponse(results)

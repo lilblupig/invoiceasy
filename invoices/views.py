@@ -1,6 +1,5 @@
 """ View information for invoicing pages """
 
-import datetime
 import stripe
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
@@ -8,10 +7,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from profiles.models import UserProfile
 from subscriptions.models import StripeCustomer
+from utils.utils import make_date
 from .models import InvoiceCustomer, Invoice
 from .forms import InvoiceCustomerForm, InvoiceForm
-
-# Create your views here.
 
 
 @login_required()
@@ -24,13 +22,6 @@ def dashboard(request):
         user_id__exact=user).select_related('customer_code')
     customers = InvoiceCustomer.objects.filter(user_id__exact=user)
     subscribed = StripeCustomer.objects.filter(user=user).exists()
-
-    # Function to make Stripe date values into human date
-    def make_date(date_value):
-        """ Convert Stripe value to user friendly date """
-        nice_date = datetime.datetime.fromtimestamp(
-            date_value).strftime('%d-%m-%Y')
-        return nice_date
 
     try:
         # Retrieve the subscription & product for Dashboard

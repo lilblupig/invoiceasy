@@ -3,7 +3,9 @@
 # Overview
 InvoicEasy is to be a simple online invoicing tool which allows small businesses to quickly and easily set up customer accounts and produce PDF invoices.  Inspired by the major accounting packages, but recognising the needs of the microbusiness first.
 <br><br>
-Use Stripe test card 4242 4242 4242 4242 with any future dated expiry and any CVC to sign up.
+[The deployed site can be found here](https://invoiceasy.herokuapp.com/)
+
+Use Stripe test card 4242 4242 4242 4242 with any future dated expiry and any CVC to sign up.  [Other card types](https://stripe.com/docs/testing#declined-payments) for Declined payments etc can be found in the Stripe documentation.
 
 ![Am I Responsive Image](documentation/readme-images/am-i-responsive.png)
 
@@ -149,12 +151,11 @@ The final schema is as detailed in the image above, where green boxes are Django
 ### **Skeleton**
 
 #### Wireframes
-1. [Mobile](documentation/documents/XXXXX-mobile-final.pdf) 375px
-1. [Tablet](documentation/documents/XXXXX-tablet-final.pdf) 768px
-1. [PC/Laptop](documentation/documents/XXXXX-pc-final.pdf) 1200px
+The project actually began as an exploration of Django, and a way to gain more understanding of the modular app approach, and precisely how this transalated to database tables.  I really became passionate about the idea however, and decided to take it on as my final project.  As such, the first few pages existed before any kind of UX planning was really considered.  Instead, I have general sketches around ideas for a very uncluttered, basic layout with the idea of delivering functionality over form.  I decided to keep the image at the top of each page to soften the appearance, and to provide the user relief from a purely data driven page.  I have translated my sketches into Balsamic docs to give an idea of the overall plan for the site.
 
-##### Summary of Changes
-* 
+1. [Mobile](documentation/wireframes/invoiceasy-mobile.pdf) 375px
+1. [PC/Laptop](documentation/wireframes/invoiceasy-pc.pdf) 1200px
+
 
 ### **Surface**
 
@@ -327,6 +328,7 @@ You can find more information on cloning a repository from GitHub [here](https:/
 * [PEP8 Online](http://pep8online.com/checkresult) was used to validate the Python code, alongside the Gitpod linter included in the CI template.
 * [Responsively](https://responsively.app/) was used to explore responsiveness across various devices.
 * [GraphVizOnline](https://dreampuf.github.io/GraphvizOnline/) is used to translate the database schema dot file to a visual image.
+* [Heidi SQL](https://www.heidisql.com/) is used to manipulate the data in the live database.
 
 ### **Other Resources**
 * [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template) was used to set up the repository.
@@ -361,6 +363,8 @@ The website content is original, but the following resources and tutorials were 
 * [Mocking users](https://stackoverflow.com/questions/2036202/how-to-mock-users-and-requests-in-django)
 * [Mocking with foreign keys(accepted answer)](https://stackoverflow.com/questions/53907647/django-tests-py-django-db-utils-integrityerror-unique-constraint-failed-auth-u)
 * [Create DB schema](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
+* [Python, Flask and Ajax tutorial](https://towardsdatascience.com/using-python-flask-and-ajax-to-pass-information-between-the-client-and-server-90670c64d688)
+* [jQuery ajax docs](https://api.jquery.com/jquery.ajax/)
 
 #### Media
 * The photographs used for the website were obtained from [Unsplash](https://unsplash.com/):

@@ -3,8 +3,6 @@
 from django.test import TestCase
 from .forms import ContactForm
 
-# Create your tests here.
-
 
 class TestContactForm(TestCase):
     """ Check form fields behave as expected """

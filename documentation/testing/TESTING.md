@@ -51,12 +51,14 @@ Some automated tests were undertaken for the site, particularly around get and p
 2.| [Contact](coverage-reports/contact-overview.pdf) | 93% | [Contact Views](coverage-reports/contact-views-breakdown.pdf) |
 3.| [Products](coverage-reports/products-overview.pdf) | 100% | N/A |
 4.| [Profiles](coverage-reports/profiles-overview.pdf) | 90% | [Profiles Models](coverage-reports/profiles-models-breakdown.pdf), [Profiles Views](coverage-reports/profiles-views-breakdown.pdf)
-5.| [Invoices](coverage-reports/invoices-overview.pdf) | 85% | [Invoices Views](coverage-reports/invoices-views-breakdown.pdf) |
-6.| [Subscriptions](coverage-reports/subscriptions-overview.pdf) | 51% | [Subscriptions Models](coverage-reports/subscriptions-models-breakdown.pdf), [Subscriptions Views](coverage-reports/subscriptions-views-breakdown.pdf) |
-7.| [Documents](coverage-reports/documents-overview.pdf) | 98% | [Documents Utils](coverage-reports/documents-utils-breakdown.pdf) |
+5.| [Invoices](coverage-reports/invoices-overview.pdf) | 81% | [Invoices Views](coverage-reports/invoices-views-breakdown.pdf) |
+6.| [Subscriptions](coverage-reports/subscriptions-overview.pdf) | 58% | [Subscriptions Models](coverage-reports/subscriptions-models-breakdown.pdf), [Subscriptions Views](coverage-reports/subscriptions-views-breakdown.pdf) |
+7.| [Documents](coverage-reports/documents-overview.pdf) | 95% | [Documents Utils](coverage-reports/documents-utils-breakdown.pdf), [Documents Views](coverage-reports/documents-views-breakdown.pdf) |
 -| Overall (mean average) | 88% |
 
 It was intended to make use of the xhtml2pdf unit tests and functional tests, however the steps as [outlined in the docs](https://xhtml2pdf.readthedocs.io/en/latest/howto-running-tests.html) just resulted in errors in the terminal, likely due to the age of the extension.
+
+An attempt was made to mock the Stripe API by patching, however for some reason the patch was not used by the code when running tests, and continued to access the live API.  Tutors were unable to assist with this, and since it only added 4% to the coverage of subscriptions > views.py, the test was abandoned.  The [Python unittest.mock documents](https://docs.python.org/3/library/unittest.mock.html#the-patchers) were used as the basis for the test.
 
 ## Logic Error Testing
 1. The site was browsed extensively with the console open and the terminal visible.  During the testthere were no errors or print statements visible in either the console or terminal.
@@ -279,10 +281,15 @@ For some reason, Cloudinary would only collect static when called from Heroku du
 This bug is not considered solved, as such, since functionality was lost and the issue was never identified nor fixed.  However, using Whitenoise was wonderfully simple, and I have absolutely no regrets in making the choice to switch service.
 
 ### **Remaining Bugs**
-There is one large remaining known bug.  If the user proceeds successfully through checkout, and then uses the back buttons in the browser to return to the 'subscribe' page, the browser loads the cached version of the page, and so the user can potentially sign up for multiple subscriptions.
+
+#### **Email receipts**
+Stripe has been configured to send payment receipts and invoices on every successful payment.  However, [per the documentation](https://stripe.com/docs/receipts#receipts-in-test-mode) automated emails are not enabled in test mode.  Example PDF [invoice](stripe-invoice.pdf)/[receipt](stripe-receipt.pdf) can be found in the documentation.
+
+#### **Checkout**
+If the user proceeds successfully through checkout, and then uses the back buttons in the browser to return to the 'subscribe' page, the browser loads the cached version of the page, and so the user could potentially sign up for multiple subscriptions.  This has been mitigated by using javascript to interrupt the on-click event which loads the Stripe checkout and make a ajax request to check the subscription status.  If a subscription already exists then jQuery is used to manipulate the page contents.  Unfortunately the 'Subscribe' and 'Dashboard' buttons are only display: none and so could be accessed by using the developer tools in the browser.  The javascript should still prevent multiple subscriptions when clicked, however it would be best if these were not accessible at all.
 
 
 Testing first completed 22/05/2022 - AKH
-Testing repeated XX/XX/2022 - AKH
+Testing repeated 31/05/2022 - AKH
 
 [Return to Top](#title)

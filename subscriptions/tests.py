@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from.models import StripeCustomer
 
-# Create your tests here.
-
 
 # Test Models
 class TestSubscriptionsModels(TestCase):

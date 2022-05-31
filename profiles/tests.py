@@ -5,8 +5,6 @@ from django.test import TestCase
 from .forms import UserProfileForm
 from .models import UserProfile
 
-# Create your tests here.
-
 
 # Test Forms
 class TestUserProfilesForm(TestCase):
