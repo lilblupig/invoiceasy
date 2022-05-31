@@ -154,7 +154,6 @@ def stripe_webhook(request):
             stripeCustomerId=stripe_customer_id,
             stripeSubscriptionId=stripe_subscription_id,
         )
-        print(user.username + ' just subscribed.')
 
     return HttpResponse(status=200)
 
